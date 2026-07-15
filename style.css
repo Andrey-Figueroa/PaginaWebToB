@@ -78,18 +78,19 @@ body {
 }
 
 
-/* CENTRO (Ahora con forma de pastilla) */
+/* CENTRO (Ahora con forma de pastilla y efecto glassmorphism oscuro) */
 .navbar-center {
     display: flex;
     gap: 30px;
     align-items: center;
     height: 45px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(10, 14, 23, 0.6); /* Fondo oscuro semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 50px;
     padding: 0 25px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(24px); /* Fuerte desenfoque para el efecto de luz */
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: inset 0 -1px 2px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .nav-item {
@@ -258,18 +259,6 @@ body {
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
 }
 
-/* Botón Asistir en el Navbar (Estilo Solcard: blanco sólido) */
-.navbar-right .btn-primary, .mobile-actions .btn-primary {
-    background: #ffffff;
-    color: #000000;
-    box-shadow: none;
-    border-radius: 30px;
-}
-
-.navbar-right .btn-primary:hover, .mobile-actions .btn-primary:hover {
-    background: #e6e6e6;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-}
 
 /* =========================================
    HAMBURGER MENU & RESPONSIVE
