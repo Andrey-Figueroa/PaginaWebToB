@@ -8,7 +8,7 @@
     --color-secondary: #5379AE;
     --color-accent: #A8C4EC;
     --color-dark-teal: #2C444C;
-    --color-background: #262B40;
+    --color-background: #0A0F19;
     /* Fondo oscuro del body */
 
     /* Variables adicionales */
@@ -113,12 +113,14 @@ body {
 }
 
 /* Enlace Destacado (HackaToB) */
-.nav-link.highlight-link, .mobile-link.highlight-link {
+.nav-link.highlight-link,
+.mobile-link.highlight-link {
     color: var(--color-primary);
     font-weight: 800;
 }
 
-.nav-link.highlight-link:hover, .mobile-link.highlight-link:hover {
+.nav-link.highlight-link:hover,
+.mobile-link.highlight-link:hover {
     color: var(--color-primary-dark);
 }
 
@@ -395,7 +397,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
-    padding: 120px 5% 50px 10%; /* Espacio arriba para el navbar */
+    padding: 120px 5% 50px 10%;
+    /* Espacio arriba para el navbar */
     align-items: center;
     gap: 40px;
     overflow: hidden;
@@ -414,19 +417,44 @@ body {
     z-index: 10;
 }
 
+/* === Estilo original de "Pastilla" (Comentado por si se desea regresar a él) ===
 .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    background: rgba(83, 121, 174, 0.15);
+    border: 1px solid rgba(83, 121, 174, 0.3);
     padding: 8px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: 700;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.badge-icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+*/
+
+/* === Nuevo estilo sin pastilla === */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 20px;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    width: max-content;
-    color: var(--color-text-muted);
+}
+
+.badge-icon {
+    margin-right: 12px;
+    font-size: 1.8rem;
+    color: var(--color-primary); /* Color vibrante para la estrella */
+    font-weight: 300;
+    line-height: 1;
 }
 
 .badge-dot {
@@ -552,7 +580,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px; /* Para efecto 3D */
+    perspective: 1000px;
+    /* Para efecto 3D */
 }
 
 .solar-system {
@@ -563,7 +592,8 @@ body {
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out; /* Para el parallax del mouse */
+    transition: transform 0.1s ease-out;
+    /* Para el parallax del mouse */
 }
 
 /* Logo Central */
@@ -588,7 +618,8 @@ body {
 
 /* Animación de Moneda (Click en logo) */
 .coin-spin {
-    transform: rotateY(720deg) scale(1.1); /* 2 vueltas completas arrastradas */
+    transform: rotateY(720deg) scale(1.1);
+    /* 2 vueltas completas arrastradas */
 }
 
 /* Órbitas */
@@ -600,7 +631,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: orbit-spin linear infinite;
-    pointer-events: none; /* Dejar pasar los clicks a los elementos internos */
+    pointer-events: none;
+    /* Dejar pasar los clicks a los elementos internos */
 }
 
 /* Lunas / Puntos Celestes en las órbitas */
@@ -608,10 +640,12 @@ body {
     position: absolute;
     width: 6px;
     height: 6px;
-    background-color: #21d0ff; /* Color celeste brillante tipo neón */
+    background-color: #21d0ff;
+    /* Color celeste brillante tipo neón */
     border-radius: 50%;
     box-shadow: 0 0 10px #21d0ff, 0 0 20px #21d0ff;
-    transform: translate(-50%, -50%); /* Centrar exactamente en la línea de la órbita */
+    transform: translate(-50%, -50%);
+    /* Centrar exactamente en la línea de la órbita */
     pointer-events: none;
 }
 
@@ -629,7 +663,8 @@ body {
     transform: translate(-50%, -50%);
     /* El planeta debe contra-rotar para que el texto siempre esté al derecho */
     animation: anti-orbit-spin linear infinite;
-    pointer-events: auto; /* Para poder hacer click en la palabra */
+    pointer-events: auto;
+    /* Para poder hacer click en la palabra */
 }
 
 .planet-word {
@@ -683,34 +718,101 @@ body {
 
 /* Tamaños y Velocidades de las 6 Órbitas */
 /* 1. Más cercana */
-.orbit-1 { width: 220px; height: 220px; animation-duration: 20s; }
-.orbit-1 .planet { animation-duration: 20s; }
+.orbit-1 {
+    width: 220px;
+    height: 220px;
+    animation-duration: 20s;
+}
+
+.orbit-1 .planet {
+    animation-duration: 20s;
+}
+
 /* 2 */
-.orbit-2 { width: 300px; height: 300px; animation-duration: 25s; animation-delay: -5s; }
-.orbit-2 .planet { animation-duration: 25s; animation-delay: -5s; }
+.orbit-2 {
+    width: 300px;
+    height: 300px;
+    animation-duration: 25s;
+    animation-delay: -5s;
+}
+
+.orbit-2 .planet {
+    animation-duration: 25s;
+    animation-delay: -5s;
+}
+
 /* 3 */
-.orbit-3 { width: 380px; height: 380px; animation-duration: 32s; animation-delay: -15s; }
-.orbit-3 .planet { animation-duration: 32s; animation-delay: -15s; }
+.orbit-3 {
+    width: 380px;
+    height: 380px;
+    animation-duration: 32s;
+    animation-delay: -15s;
+}
+
+.orbit-3 .planet {
+    animation-duration: 32s;
+    animation-delay: -15s;
+}
+
 /* 4 */
-.orbit-4 { width: 460px; height: 460px; animation-duration: 40s; animation-delay: -10s; }
-.orbit-4 .planet { animation-duration: 40s; animation-delay: -10s; }
+.orbit-4 {
+    width: 460px;
+    height: 460px;
+    animation-duration: 40s;
+    animation-delay: -10s;
+}
+
+.orbit-4 .planet {
+    animation-duration: 40s;
+    animation-delay: -10s;
+}
+
 /* 5 */
-.orbit-5 { width: 540px; height: 540px; animation-duration: 48s; animation-delay: -25s; }
-.orbit-5 .planet { animation-duration: 48s; animation-delay: -25s; }
+.orbit-5 {
+    width: 540px;
+    height: 540px;
+    animation-duration: 48s;
+    animation-delay: -25s;
+}
+
+.orbit-5 .planet {
+    animation-duration: 48s;
+    animation-delay: -25s;
+}
+
 /* 6. Más lejana, más lenta */
-.orbit-6 { width: 620px; height: 620px; animation-duration: 55s; animation-delay: -40s; }
-.orbit-6 .planet { animation-duration: 55s; animation-delay: -40s; }
+.orbit-6 {
+    width: 620px;
+    height: 620px;
+    animation-duration: 55s;
+    animation-delay: -40s;
+}
+
+.orbit-6 .planet {
+    animation-duration: 55s;
+    animation-delay: -40s;
+}
 
 /* Keyframes de Rotación */
 @keyframes orbit-spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 /* Contra-rotación para mantener el texto horizontal */
 @keyframes anti-orbit-spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(-360deg); }
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
 }
 
 /* Responsivo para el Hero */
@@ -720,18 +822,23 @@ body {
         padding-top: 150px;
         text-align: center;
     }
+
     .hero-content {
         align-items: center;
     }
+
     .hero-slogan {
         margin: 0 auto;
     }
+
     .hero-visual {
         height: 400px;
         margin-top: 50px;
     }
+
     .solar-system {
-        transform: scale(0.6) !important; /* Achicar el sistema solar para pantallas pequeñas */
+        transform: scale(0.6) !important;
+        /* Achicar el sistema solar para pantallas pequeñas */
     }
 }
 
@@ -751,7 +858,8 @@ body {
 
 .marquee-stripe {
     position: absolute;
-    width: 110vw; /* Más ancho que la pantalla para cubrir la rotación */
+    width: 110vw;
+    /* Más ancho que la pantalla para cubrir la rotación */
     left: -5vw;
     padding: 15px 0;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -762,7 +870,7 @@ body {
 
 .marquee-1 {
     transform: rotate(-5deg);
-    background: #262b40;
+    background: #09095d;
     backdrop-filter: blur(10px);
 }
 
@@ -770,7 +878,8 @@ body {
     transform: rotate(5deg);
     background: rgba(4, 116, 196, 0.85);
     backdrop-filter: blur(10px);
-    z-index: 9; /* Va por debajo de la 1 */
+    z-index: 9;
+    /* Va por debajo de la 1 */
 }
 
 .marquee-track {
@@ -803,13 +912,23 @@ body {
 }
 
 @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-25%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-25%);
+    }
 }
 
 @keyframes scroll-right {
-    0% { transform: translateX(-25%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* =========================================
