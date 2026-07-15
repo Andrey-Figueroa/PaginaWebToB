@@ -556,6 +556,24 @@ body {
     pointer-events: none; /* Dejar pasar los clicks a los elementos internos */
 }
 
+/* Lunas / Puntos Celestes en las órbitas */
+.moon {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #21d0ff; /* Color celeste brillante tipo neón */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #21d0ff, 0 0 20px #21d0ff;
+    transform: translate(-50%, -50%); /* Centrar exactamente en la línea de la órbita */
+    pointer-events: none;
+}
+
+.moon.moon-large {
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 15px #21d0ff, 0 0 30px #21d0ff;
+}
+
 /* Planetas (Palabras) */
 .planet {
     position: absolute;
