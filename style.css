@@ -72,7 +72,7 @@ body {
 }
 
 .logo-img {
-    height: 130px;
+    height: 160px;
     width: auto;
     object-fit: contain;
 }
@@ -84,11 +84,13 @@ body {
     gap: 30px;
     align-items: center;
     height: 45px;
-    background: rgba(10, 14, 23, 0.6); /* Fondo oscuro semitransparente */
+    background: rgba(10, 14, 23, 0.6);
+    /* Fondo oscuro semitransparente */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 50px;
     padding: 0 25px;
-    backdrop-filter: blur(24px); /* Fuerte desenfoque para el efecto de luz */
+    backdrop-filter: blur(24px);
+    /* Fuerte desenfoque para el efecto de luz */
     -webkit-backdrop-filter: blur(24px);
     box-shadow: inset 0 -1px 2px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3);
 }
@@ -185,41 +187,53 @@ body {
     gap: 15px;
 }
 
-/* Selector de Idioma (Estilo Solcard) */
+/* Selector de Idioma tipo switch */
 .lang-selector {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 50px;
-    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3px;
+    width: 64px;
+    height: 32px;
     cursor: pointer;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.lang-selector:hover {
-    background: rgba(255, 255, 255, 0.08);
+    justify-content: space-between;
 }
 
 .lang-text {
     font-family: var(--font-main);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #fff;
-    display: none; /* Ocultamos por defecto */
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #a0a0a0;
+    z-index: 2;
+    width: 50%;
+    text-align: center;
+    transition: color 0.3s;
+    user-select: none;
+    display: block;
 }
 
 .lang-text.active {
-    display: inline-block;
+    color: #000;
 }
 
-.globe-icon {
-    width: 16px;
-    height: 16px;
-    opacity: 0.8;
+.lang-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 29px;
+    height: 26px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+.lang-selector[data-lang="EN"] .lang-slider {
+    transform: translateX(29px);
 }
 
 /* Botones */
@@ -281,7 +295,8 @@ body {
     display: block;
     width: 20px;
     height: 2px;
-    background-color: #ffffff; /* Hamburguesa blanca */
+    background-color: #ffffff;
+    /* Hamburguesa blanca */
     position: absolute;
     left: 11px;
     transition: all 0.3s ease;
@@ -443,7 +458,8 @@ body {
 .badge-icon {
     margin-right: 12px;
     font-size: 1.8rem;
-    color: var(--color-primary); /* Color vibrante para la estrella */
+    color: var(--color-primary);
+    /* Color vibrante para la estrella */
     font-weight: 300;
     line-height: 1;
 }
