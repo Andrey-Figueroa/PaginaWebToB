@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToB - Technology On Business</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <!-- Izquierda -->
+        <div class="navbar-left">
+            <a href="#" class="logo-link">
+                <img src="imagenes/LogoTob.png" alt="Logo ToB" class="logo-img">
+            </a>
+        </div>
+
+        <!-- Centro -->
+        <div class="navbar-center">
+            <div class="nav-item">
+                <a href="#programa" class="nav-link">Programa del evento</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4>Agenda completa</h4>
+                        <p>Descubre todas las charlas y talleres del ToB.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#speakers" class="nav-link">Speakers</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4>Nuestros Ponentes</h4>
+                        <p>Conoce a los expertos que liderarán el evento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#sponsors" class="nav-link">Sponsors</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4>Nuestros Aliados</h4>
+                        <p>Empresas que hacen posible este evento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="#hackatob" class="nav-link">HackaToB</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4>Hackathon ToB</h4>
+                        <p>Participa en el reto de programación.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Derecha -->
+        <div class="navbar-right">
+            <div class="lang-selector" id="langToggle" data-lang="ES">
+                <span class="lang-text active">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="lang-slider"></div>
+            </div>
+            <a href="#" class="btn btn-primary">Asistir</a>
+        </div>
+
+        <!-- Hamburger Menu Toggle (Mobile) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+            <span class="hamburger"></span>
+        </button>
+    </nav>
+
+    <!-- Menú Móvil -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#programa" class="mobile-link">Programa del evento</a>
+        <a href="#speakers" class="mobile-link">Speakers</a>
+        <a href="#sponsors" class="mobile-link">Sponsors</a>
+        <a href="#hackatob" class="mobile-link">HackaToB</a>
+        <div class="mobile-actions">
+            <div class="lang-selector" id="langToggleMobile" data-lang="ES">
+                <span class="lang-text active">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="lang-slider"></div>
+            </div>
+            <a href="#" class="btn btn-primary">Asistir</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
