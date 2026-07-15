@@ -762,7 +762,7 @@ body {
 
 .marquee-1 {
     transform: rotate(-5deg);
-    background: rgba(10, 25, 47, 0.95);
+    background: #262b40;
     backdrop-filter: blur(10px);
 }
 
@@ -816,7 +816,7 @@ body {
    ABOUT SECTION
    ========================================= */
 .about-section {
-    background-color: #262b40;
+    background-color: var(--color-bg);
     min-height: 60vh;
     padding: 80px 5%;
     color: #fff;
