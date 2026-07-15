@@ -462,6 +462,10 @@ body {
     color: #21d0ff;
 }
 
+.text-white {
+    color: #ffffff;
+}
+
 .font-bold {
     font-weight: 800;
 }
