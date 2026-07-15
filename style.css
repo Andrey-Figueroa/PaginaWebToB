@@ -112,6 +112,16 @@ body {
     color: var(--color-primary);
 }
 
+/* Enlace Destacado (HackaToB) */
+.nav-link.highlight-link, .mobile-link.highlight-link {
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.nav-link.highlight-link:hover, .mobile-link.highlight-link:hover {
+    color: var(--color-primary-dark);
+}
+
 /* Dropdown estilo "Duna" (Ajustado al nuevo diseño) */
 .dropdown-duna {
     position: absolute;
