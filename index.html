@@ -10,6 +10,11 @@
 
 <body>
 
+    <!-- Pantalla de Carga -->
+    <div id="loader-wrapper" class="loader-wrapper">
+        <img src="imagenes/IsotipoColor.png" alt="Cargando ToB..." class="loader-logo">
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <!-- Izquierda -->
@@ -235,8 +240,58 @@
 
     <!-- Section About -->
     <section id="about" class="about-section">
-        <div class="container">
-            <!-- El contenido del about irá aquí -->
+        <div class="about-container">
+            <!-- Parte Superior: Título + Descripción + Grid 2x2 -->
+            <div class="about-top">
+                <!-- Título (Línea naranja) y Descripción en columnas (Líneas rojas) -->
+                <div class="about-info">
+                    <h2 class="about-title">Technology on Business</h2>
+                    <div class="about-description">
+                        <p>Technology on Business es un congreso donde estudiantes, profesionales y empresas se reúnen para descubrir las tecnologías, ideas y tendencias que están transformando el futuro.</p>
+                        <p>Con la temática "Master the Chaos", la edición 2026 invita a desarrollar las habilidades necesarias para liderar el cambio, innovar y convertir los desafíos en oportunidades.</p>
+                    </div>
+                </div>
+
+                <!-- Cuadros Verdes (Grid 2x2 Glassmorphism con Contadores Animados) -->
+                <div class="about-grid">
+                    <div class="glass-card">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="15" data-suffix="">0</span>
+                            <span class="stat-label">años</span>
+                        </div>
+                        <p class="glass-card-desc">impulsando la innovación y el talento tecnológico</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="500" data-suffix="+">0</span>
+                            <span class="stat-label">asistentes</span>
+                        </div>
+                        <p class="glass-card-desc">esperados para la edición 2026</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="2" data-suffix="">0</span>
+                            <span class="stat-label">días</span>
+                        </div>
+                        <p class="glass-card-desc">de conferencias, networking y experiencias</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="stat-header">
+                            <span class="stat-number" data-target="55" data-suffix="">0</span>
+                            <span class="stat-label">años TEC</span>
+                        </div>
+                        <p class="glass-card-desc">celebrando la innovación y la excelencia académica</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuadro Azul Alargado (Glassmorphism Horizontal) -->
+            <div class="about-bottom-card glass-card">
+                <div class="bottom-card-content">
+                    <h3 class="bottom-card-title">Donde las ideas se convierten en oportunidades.</h3>
+                    <p class="bottom-card-desc">Dos días para aprender, conectar con líderes de la industria y formar parte de una comunidad que impulsa la innovación y el crecimiento profesional.</p>
+                </div>
+            </div>
         </div>
     </section>
 

@@ -202,4 +202,71 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroLogo) heroLogo.classList.remove('dimmed');
         }
     }
+
+    // =========================================
+    // PANTALLA DE CARGA
+    // =========================================
+    // Bloquear el scroll mientras carga
+    document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => {
+        const loader = document.getElementById("loader-wrapper");
+        if (loader) {
+            loader.classList.add("loader-hidden");
+            // Restaurar el scroll
+            document.body.style.overflow = '';
+        }
+    }, 1500);
+
+    // =========================================
+    // ANIMACIÓN SCROLL REVEAL Y CONTADORES (ABOUT)
+    // =========================================
+    function animateCounters() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(numEl => {
+            if (numEl.classList.contains('counted')) return;
+            numEl.classList.add('counted');
+
+            const target = parseInt(numEl.getAttribute('data-target'), 10);
+            const suffix = numEl.getAttribute('data-suffix') || '';
+            const duration = 2400; // 2.4s para que se aprecie cada número
+            const startTime = performance.now();
+
+            function updateCount(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                
+                // Curva de progreso suave para apreciar la subida de números
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentVal = Math.floor(easeOut * target);
+
+                numEl.textContent = currentVal + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    numEl.textContent = target + suffix;
+                }
+            }
+
+            requestAnimationFrame(updateCount);
+        });
+    }
+
+    const aboutContainer = document.querySelector('.about-container');
+    if (aboutContainer) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                    // Iniciar los contadores justo cuando aparecen los cuadros (Paso 3)
+                    setTimeout(() => {
+                        animateCounters();
+                    }, 500);
+                }
+            });
+        }, { threshold: 0.15 });
+        
+        observer.observe(aboutContainer);
+    }
 });
