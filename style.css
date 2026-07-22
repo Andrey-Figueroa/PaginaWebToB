@@ -1226,3 +1226,255 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================
+   SECCIÓN HABILIDADES (Showcase Interactiva)
+   ========================================= */
+.skills-section {
+    width: 100%;
+    padding: 60px 1.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.skills-container {
+    width: 98%;
+    max-width: 1650px;
+    min-height: 600px;
+    border-radius: 32px;
+    border: none;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: relative;
+    padding: 60px 70px;
+    box-sizing: border-box;
+    z-index: 1;
+    --skills-bg: url('imagenes/InspiracionFondo.jpg');
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Efecto Blur en el fondo del bloque */
+.skills-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.8) 100%),
+                var(--skills-bg) no-repeat center center / cover;
+    filter: blur(16px);
+    z-index: -1;
+}
+
+/* Columna Izquierda: Título y Textos */
+.skills-content-left {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+    position: relative;
+    max-width: 800px;
+}
+
+.skills-main-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.skills-main-desc {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 700px;
+}
+
+/* Columna Derecha: Tarjeta con Borde Azul */
+.skills-content-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+    width: 100%;
+}
+
+.skills-showcase-card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1.6;
+    border-radius: 24px;
+    border: 2px solid #21d0ff;
+    box-shadow: 0 0 35px rgba(33, 208, 255, 0.4);
+    overflow: hidden;
+    background: #090c10;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills-card-logo {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.95);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 3;
+}
+
+.skills-showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.skills-showcase-img.fade-out {
+    opacity: 0;
+    transform: scale(1.02);
+}
+
+.skills-card-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 10px 24px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.skills-card-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Pastillas / Botones interactivos (Glassmorphism) */
+.skills-pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+    z-index: 2;
+    position: relative;
+    max-width: 650px;
+}
+
+.skill-pill {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 14px 26px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    font-family: var(--font-main);
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-pill:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.skill-pill.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: transparent; /* El borde real lo dibuja el SVG */
+    color: #fff;
+}
+
+/* Estilo del Borde SVG Animado */
+.pill-border-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.pill-border-rect {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 2px;
+    rx: 25px; /* Crea el mismo borde redondeado capsular */
+    ry: 25px;
+    transition: stroke-dashoffset 5s linear; /* La animación del borde dura exactamente 5 segundos */
+}
+
+.skill-pill.active .pill-border-rect {
+    stroke: #21d0ff;
+    filter: drop-shadow(0 0 5px rgba(33, 208, 255, 0.6));
+}
+
+/* --- Responsividad --- */
+@media (max-width: 1024px) {
+    .skills-container {
+        flex-direction: column;
+        padding: 50px 30px;
+        gap: 40px;
+        min-height: auto;
+    }
+    
+    .skills-content-left, .skills-content-right {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .skills-showcase-card {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 640px) {
+    .skills-container {
+        padding: 40px 20px;
+    }
+    
+    .skills-pills-container {
+        gap: 10px;
+    }
+    
+    .skill-pill {
+        padding: 12px 22px;
+        font-size: 0.9rem;
+    }
+}

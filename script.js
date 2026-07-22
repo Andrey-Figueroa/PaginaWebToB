@@ -269,4 +269,108 @@ document.addEventListener('DOMContentLoaded', () => {
         
         observer.observe(aboutContainer);
     }
+
+    // =========================================
+    // SECCIÓN HABILIDADES - CAMBIO DE FONDO Y CONTORNOS ANIMADOS (5 SEG)
+    // =========================================
+    const skillsContainer = document.querySelector('.skills-container');
+    const skillPills = document.querySelectorAll('.skill-pill');
+    let currentSkillIndex = 0;
+    let skillInterval = null;
+    const ROTATION_TIME = 5000; // 5 segundos
+
+    function animatePillBorder(activePill) {
+        // Resetear todos los bordes
+        skillPills.forEach(pill => {
+            const rect = pill.querySelector('.pill-border-rect');
+            if (rect) {
+                rect.style.transition = 'none';
+                rect.style.strokeDasharray = '0';
+                rect.style.strokeDashoffset = '0';
+            }
+        });
+
+        // Configurar la pastilla activa
+        const rect = activePill.querySelector('.pill-border-rect');
+        if (rect) {
+            // Calcular el perímetro del botón redondeado dinámicamente
+            const length = rect.getTotalLength() || 300; 
+            rect.style.transition = 'none';
+            rect.style.strokeDasharray = length;
+            rect.style.strokeDashoffset = length;
+            // Forzar reflow para reiniciar la animación
+            rect.getBoundingClientRect();
+            rect.style.transition = `stroke-dashoffset ${ROTATION_TIME}ms linear`;
+            rect.style.strokeDashoffset = '0';
+        }
+    }
+
+    function changeSkill(pill, index) {
+        if (!pill) return;
+        currentSkillIndex = index;
+
+        // Cambiar clases activas
+        skillPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const bgImage = pill.getAttribute('data-bg');
+        const activeName = pill.getAttribute('data-name');
+
+        // Cambiar el fondo del contenedor usando la CSS Variable para el blur
+        if (bgImage && skillsContainer) {
+            skillsContainer.style.setProperty('--skills-bg', `url('imagenes/${bgImage}.jpg')`);
+        }
+
+        // Cambiar la imagen de la tarjeta derecha con transición de fundido
+        const showcaseImg = document.getElementById('skillsShowcaseImage');
+        const showcaseLabel = document.getElementById('skillsShowcaseLabel');
+
+        if (showcaseImg) {
+            showcaseImg.classList.add('fade-out');
+            setTimeout(() => {
+                showcaseImg.src = `imagenes/${bgImage}.jpg`;
+                showcaseImg.alt = activeName;
+                showcaseImg.classList.remove('fade-out');
+            }, 200);
+        }
+
+        if (showcaseLabel) {
+            showcaseLabel.textContent = activeName;
+        }
+
+        // Animar el borde SVG
+        animatePillBorder(pill);
+    }
+
+    function startSkillRotation() {
+        // Inicializar el primer elemento
+        const activePill = skillPills[currentSkillIndex];
+        changeSkill(activePill, currentSkillIndex);
+
+        // Crear bucle
+        skillInterval = setInterval(() => {
+            currentSkillIndex = (currentSkillIndex + 1) % skillPills.length;
+            const nextPill = skillPills[currentSkillIndex];
+            changeSkill(nextPill, currentSkillIndex);
+        }, ROTATION_TIME);
+    }
+
+    function resetSkillInterval() {
+        clearInterval(skillInterval);
+        startSkillRotation();
+    }
+
+    if (skillsContainer && skillPills.length > 0) {
+        // Evento de clic en las pastillas
+        skillPills.forEach((pill, idx) => {
+            pill.addEventListener('click', () => {
+                changeSkill(pill, idx);
+                resetSkillInterval(); // Detiene e inicializa el autogiro de nuevo
+            });
+        });
+
+        // Iniciar
+        startSkillRotation();
+    }
 });
+
