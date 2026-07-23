@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa del Evento - Technology On Business</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Pantalla de Carga -->
+    <div id="loader-wrapper" class="loader-wrapper">
+        <img src="../imagenes/IsotipoColor.png" alt="Cargando ToB..." class="loader-logo">
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <!-- Izquierda -->
+        <div class="navbar-left">
+            <a href="../main/index.html" class="logo-link">
+                <img src="../imagenes/LogoTob.png" alt="Logo ToB" class="logo-img">
+            </a>
+        </div>
+
+        <!-- Centro -->
+        <div class="navbar-center">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link active">Programa del evento</a>
+            </div>
+            <div class="nav-item">
+                <a href="../main/index.html#speakers" class="nav-link">Speakers</a>
+            </div>
+            <div class="nav-item">
+                <a href="../main/index.html#sponsors" class="nav-link">Sponsors</a>
+            </div>
+            <div class="nav-item">
+                <a href="../main/index.html#hackatob" class="nav-link highlight-link">HackaToB</a>
+            </div>
+        </div>
+
+        <!-- Derecha -->
+        <div class="navbar-right">
+            <div class="lang-selector" id="langToggle" data-lang="ES">
+                <span class="lang-text active">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="lang-slider"></div>
+            </div>
+            <a href="#" class="btn btn-primary">Asistir</a>
+
+            <!-- Hamburger Menu Toggle (Mobile) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Menú Móvil -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-link">Programa del evento</a>
+        <a href="../main/index.html#speakers" class="mobile-link">Speakers</a>
+        <a href="../main/index.html#sponsors" class="mobile-link">Sponsors</a>
+        <a href="../main/index.html#hackatob" class="mobile-link highlight-link">HackaToB</a>
+        <div class="mobile-actions">
+            <div class="lang-selector" id="langToggleMobile" data-lang="ES">
+                <span class="lang-text active">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="lang-slider"></div>
+            </div>
+            <a href="#" class="btn btn-primary">Asistir</a>
+        </div>
+    </div>
+
+    <!-- Programa Header -->
+    <header class="programa-hero">
+        <div class="programa-hero-content">
+            <h1 class="programa-title">Programa del <span class="text-cyan">Evento</span></h1>
+            <p class="programa-slogan">
+                Explora la agenda completa del congreso <strong>Technology on Business 2026</strong>.
+            </p>
+        </div>
+    </header>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
