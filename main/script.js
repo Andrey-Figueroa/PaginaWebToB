@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         langToggle.addEventListener('click', () => {
             const texts = langToggle.querySelectorAll('.lang-text');
             const isES = texts[0].classList.contains('active');
-            
+
             if (isES) {
                 // Cambiar a EN
                 texts[0].classList.remove('active');
@@ -20,16 +20,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Efecto de sombra al navbar si hubiera scroll
+    // Efecto transparente en hero, fondo sólido al bajar
     const navbar = document.getElementById('navbar');
+    const heroSection = document.getElementById('hero');
+
     if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.2)';
+        const updateNavbar = () => {
+            const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+            if (window.scrollY > heroHeight - 80) {
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+                navbar.classList.remove('scrolled');
             }
-        });
+        };
+        window.addEventListener('scroll', updateNavbar);
+        updateNavbar(); // Ejecutar al cargar
     }
 
     // Lógica del menú hamburguesa
@@ -49,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         langToggleMobile.addEventListener('click', () => {
             const texts = langToggleMobile.querySelectorAll('.lang-text');
             const isES = texts[0].classList.contains('active');
-            
+
             if (isES) {
                 texts[0].classList.remove('active');
                 texts[1].classList.add('active');
@@ -68,6 +73,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    // =========================================
+    // LÍNEA ROTATIVA DEL HERO
+    // =========================================
+    const DISPLAY_TIME = 2000; // ms que se muestra cada frase (ajustar aquí)
+    const TRANSITION_TIME = 400; // ms de la animación de salida (debe coincidir con phrase-leave en CSS)
+
+    const PHRASES = [
+        { text: '15 Aniversario del TOB' },
+        { text: 'Mundo BANI' },
+        { text: '2 días' },
+        { text: '6 bloques' },
+        { text: '18 conferencias' },
+        { html: 'Estudiantes de <a href="#ati" class="text-cyan" style="text-decoration:underline;text-underline-offset:4px">ATI</a>' },
+        { text: 'Congreso de tecnología' },
+        { text: '18-19 de agosto 2026' },
+    ];
+
+    const phraseEl = document.getElementById('rotatorPhrase');
+    if (phraseEl) {
+        let currentIndex = 0;
+
+        function showPhrase(index) {
+            const phrase = PHRASES[index];
+            if (phrase.html) {
+                phraseEl.innerHTML = phrase.html;
+            } else {
+                phraseEl.textContent = phrase.text;
+            }
+            phraseEl.classList.remove('leaving');
+            void phraseEl.offsetWidth; // Forzar reflow para reiniciar la animación
+            phraseEl.classList.add('entering');
+        }
+
+        function nextPhrase() {
+            phraseEl.classList.remove('entering');
+            phraseEl.classList.add('leaving');
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % PHRASES.length;
+                showPhrase(currentIndex);
+            }, TRANSITION_TIME);
+        }
+
+        // Mostrar primera frase y arrancar el ciclo
+        showPhrase(0);
+        setInterval(nextPhrase, DISPLAY_TIME + TRANSITION_TIME);
     }
 
     // =========================================
@@ -112,22 +164,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Efecto Parallax con el Mouse para el Sistema Solar
     const solarSystem = document.getElementById('solarSystem');
-    const heroSection = document.getElementById('hero');
+
 
     if (solarSystem && heroSection) {
         heroSection.addEventListener('mousemove', (e) => {
             const rect = heroSection.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             // Calcular el centro de la sección hero
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             // Calcular la rotación en base a la distancia del centro (máximo 15 grados)
-            const rotateX = ((y - centerY) / centerY) * -15; 
+            const rotateX = ((y - centerY) / centerY) * -15;
             const rotateY = ((x - centerX) / centerX) * 15;
-            
+
             // Aplicar transformación
             solarSystem.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
@@ -136,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroSection.addEventListener('mouseleave', () => {
             solarSystem.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
             solarSystem.style.transition = `transform 0.5s ease-out`;
-            
+
             // Quitar transición después para que el movimiento del mouse sea responsivo de nuevo
             setTimeout(() => {
                 solarSystem.style.transition = `transform 0.1s ease-out`;
@@ -150,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroLogo.addEventListener('click', () => {
             if (!heroLogo.classList.contains('coin-spin')) {
                 heroLogo.classList.add('coin-spin');
-                
+
                 // Quitar clase después de la animación para poder repetirlo
                 setTimeout(() => {
                     heroLogo.classList.remove('coin-spin');
@@ -179,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Aplicar estado seleccionado a este planeta
                 planet.classList.add('highlighted');
-                
+
                 // Atenuar a los demás
                 orbits.forEach(orbit => {
                     // Si el planeta clickeado no está dentro de esta órbita, atenuar la órbita completa
@@ -187,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         orbit.classList.add('dimmed');
                     }
                 });
-                
+
                 // Atenuar también el sol (opcional, para resaltar más la palabra)
                 if (heroLogo) heroLogo.classList.add('dimmed');
             });
@@ -208,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // Bloquear el scroll mientras carga
     document.body.style.overflow = 'hidden';
-    
+
     setTimeout(() => {
         const loader = document.getElementById("loader-wrapper");
         if (loader) {
@@ -235,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
             function updateCount(currentTime) {
                 const elapsedTime = currentTime - startTime;
                 const progress = Math.min(elapsedTime / duration, 1);
-                
+
                 // Curva de progreso suave para apreciar la subida de números
                 const easeOut = 1 - Math.pow(1 - progress, 3);
                 const currentVal = Math.floor(easeOut * target);
@@ -266,111 +318,217 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.15 });
-        
+
         observer.observe(aboutContainer);
     }
 
     // =========================================
-    // SECCIÓN HABILIDADES - CAMBIO DE FONDO Y CONTORNOS ANIMADOS (5 SEG)
+    // ★ STAR TRAIL CURSOR GLOBAL
     // =========================================
-    const skillsContainer = document.querySelector('.skills-container');
-    const skillPills = document.querySelectorAll('.skill-pill');
-    let currentSkillIndex = 0;
-    let skillInterval = null;
-    const ROTATION_TIME = 5000; // 5 segundos
+    if (window.matchMedia('(pointer: fine)').matches) { 
 
-    function animatePillBorder(activePill) {
-        // Resetear todos los bordes
-        skillPills.forEach(pill => {
-            const rect = pill.querySelector('.pill-border-rect');
-            if (rect) {
-                rect.style.transition = 'none';
-                rect.style.strokeDasharray = '0';
-                rect.style.strokeDashoffset = '0';
+        const starCanvas = document.getElementById('globalStarCanvas');
+
+        if (starCanvas) {
+            const ctx = starCanvas.getContext('2d');
+
+            function resizeCanvas() {
+                starCanvas.width  = window.innerWidth;
+                starCanvas.height = window.innerHeight;
             }
-        });
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
 
-        // Configurar la pastilla activa
-        const rect = activePill.querySelector('.pill-border-rect');
-        if (rect) {
-            // Calcular el perímetro del botón redondeado dinámicamente
-            const length = rect.getTotalLength() || 300; 
-            rect.style.transition = 'none';
-            rect.style.strokeDasharray = length;
-            rect.style.strokeDashoffset = length;
-            // Forzar reflow para reiniciar la animación
-            rect.getBoundingClientRect();
-            rect.style.transition = `stroke-dashoffset ${ROTATION_TIME}ms linear`;
-            rect.style.strokeDashoffset = '0';
-        }
-    }
+            const MAX_PARTICLES  = 100;
+            const SPAWN_PER_MOVE = 2;
+            const LIFETIME_MIN   = 500;
+            const LIFETIME_MAX   = 800;
+            const COLORS = ['255,255,255', '33,208,255', '4,116,196'];
 
-    function changeSkill(pill, index) {
-        if (!pill) return;
-        currentSkillIndex = index;
+            let particles = [];
+            let rafId     = null;
+            let isMouseIn = false;
 
-        // Cambiar clases activas
-        skillPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
+            function spawnParticles(x, y) {
+                if (particles.length >= MAX_PARTICLES) return;
+                const count = Math.min(SPAWN_PER_MOVE, MAX_PARTICLES - particles.length);
+                for (let i = 0; i < count; i++) {
+                    const lifetime = LIFETIME_MIN + Math.random() * (LIFETIME_MAX - LIFETIME_MIN);
+                    particles.push({
+                        x:       x + (Math.random() - 0.5) * 6,
+                        y:       y + (Math.random() - 0.5) * 6,
+                        radius:  1.5 + Math.random() * 2,
+                        color:   COLORS[Math.floor(Math.random() * COLORS.length)],
+                        alpha:   0.7 + Math.random() * 0.3,
+                        vx:      (Math.random() - 0.5) * 0.6,
+                        vy:      -0.3 - Math.random() * 0.5,
+                        born:    performance.now(),
+                        lifetime,
+                    });
+                }
+            }
 
-        const bgImage = pill.getAttribute('data-bg');
-        const activeName = pill.getAttribute('data-name');
+            function drawFrame(now) {
+                ctx.clearRect(0, 0, starCanvas.width, starCanvas.height);
 
-        // Cambiar el fondo del contenedor usando la CSS Variable para el blur
-        if (bgImage && skillsContainer) {
-            skillsContainer.style.setProperty('--skills-bg', `url('../imagenes/${bgImage}.jpg')`);
-        }
+                particles = particles.filter(p => {
+                    const age      = now - p.born;
+                    const progress = age / p.lifetime;
+                    if (progress >= 1) return false;
 
-        // Cambiar la imagen de la tarjeta derecha con transición de fundido
-        const showcaseImg = document.getElementById('skillsShowcaseImage');
-        const showcaseLabel = document.getElementById('skillsShowcaseLabel');
+                    const alpha = p.alpha * (1 - progress);
 
-        if (showcaseImg) {
-            showcaseImg.classList.add('fade-out');
-            setTimeout(() => {
-                showcaseImg.src = `imagenes/${bgImage}.jpg`;
-                showcaseImg.alt = activeName;
-                showcaseImg.classList.remove('fade-out');
-            }, 200);
-        }
+                    ctx.save();
+                    ctx.shadowBlur  = 8;
+                    ctx.shadowColor = `rgba(${p.color}, ${alpha})`;
+                    ctx.fillStyle   = `rgba(${p.color}, ${alpha})`;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
 
-        if (showcaseLabel) {
-            showcaseLabel.textContent = activeName;
-        }
+                    p.x += p.vx;
+                    p.y += p.vy;
 
-        // Animar el borde SVG
-        animatePillBorder(pill);
-    }
+                    return true;
+                });
 
-    function startSkillRotation() {
-        // Inicializar el primer elemento
-        const activePill = skillPills[currentSkillIndex];
-        changeSkill(activePill, currentSkillIndex);
+                if (isMouseIn || particles.length > 0) {
+                    rafId = requestAnimationFrame(drawFrame);
+                } else {
+                    rafId = null;
+                }
+            }
 
-        // Crear bucle
-        skillInterval = setInterval(() => {
-            currentSkillIndex = (currentSkillIndex + 1) % skillPills.length;
-            const nextPill = skillPills[currentSkillIndex];
-            changeSkill(nextPill, currentSkillIndex);
-        }, ROTATION_TIME);
-    }
+            function startLoop() {
+                if (!rafId) {
+                    rafId = requestAnimationFrame(drawFrame);
+                }
+            }
 
-    function resetSkillInterval() {
-        clearInterval(skillInterval);
-        startSkillRotation();
-    }
-
-    if (skillsContainer && skillPills.length > 0) {
-        // Evento de clic en las pastillas
-        skillPills.forEach((pill, idx) => {
-            pill.addEventListener('click', () => {
-                changeSkill(pill, idx);
-                resetSkillInterval(); // Detiene e inicializa el autogiro de nuevo
+            window.addEventListener('mousemove', (e) => {
+                isMouseIn = true;
+                startLoop();
+                spawnParticles(e.clientX, e.clientY);
             });
-        });
 
-        // Iniciar
-        startSkillRotation();
+            document.addEventListener('mouseleave', () => {
+                isMouseIn = false;
+            });
+        }
     }
+
+    // =========================================
+    // EFECTO TERMINAL TYPEWRITER (WHY ATTEND)
+    // =========================================
+    const typewriterText = document.getElementById('typewriterText');
+    const terminalWindow = document.getElementById('terminalWindow');
+    
+    if (typewriterText && terminalWindow) {
+        const fullText = "Technology on Business (ToB) es una oportunidad única en Costa Rica para estudiantes, profesionales, emprendedores y apasionados por la tecnología que desean impulsar su crecimiento personal y profesional. Durante dos días podrás aprender de expertos de la industria, descubrir las tendencias que transforman el mundo, fortalecer tus habilidades y conectar con personas que comparten tus intereses.\n\nAdemás, ToB 2026 es un evento completamente gratuito y abierto al público, brindando acceso a conferencias, experiencias y networking de alto nivel.\n\nSi buscas aprender, inspirarte y construir conexiones que impulsen tu futuro, este es el lugar para hacerlo.";
+        
+        let index = 0;
+        let isTyping = false;
+        let typingTimeout = null;
+        
+        function typeWriter() {
+            if (index < fullText.length) {
+                typewriterText.textContent += fullText.charAt(index);
+                index++;
+                // Velocidad de tipeo variable (simula a un humano tecleando en terminal)
+                const delay = Math.random() * 25 + 15; 
+                typingTimeout = setTimeout(typeWriter, delay);
+            }
+        }
+
+        function restartTypewriter() {
+            if (typingTimeout) clearTimeout(typingTimeout);
+            typewriterText.textContent = '';
+            index = 0;
+            setTimeout(typeWriter, 400); // Pequeña pausa antes de reiniciar
+        }
+
+        // IntersectionObserver para activar el efecto solo cuando la terminal es visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isTyping) {
+                    isTyping = true;
+                    // Breve pausa para simular el enter del comando
+                    setTimeout(typeWriter, 600);
+                    observer.unobserve(terminalWindow); 
+                }
+            });
+        }, { threshold: 0.4 });
+
+        observer.observe(terminalWindow);
+
+        // --- LÓGICA DE BOTONES DEL TERMINAL ---
+        const termCloseBtn = document.getElementById('termCloseBtn');
+        const termMinBtn = document.getElementById('termMinBtn');
+        const termMaxBtn = document.getElementById('termMaxBtn');
+        const sysErrorModal = document.getElementById('sysErrorModal');
+        const sysErrorCloseBtn = document.getElementById('sysErrorCloseBtn');
+
+        // Botón Rojo (Cerrar) -> Muestra Modal de Error
+        if (termCloseBtn && sysErrorModal) {
+            termCloseBtn.addEventListener('click', () => {
+                sysErrorModal.classList.add('active');
+            });
+        }
+
+        // Botón del Modal para cerrar el error
+        if (sysErrorCloseBtn && sysErrorModal) {
+            sysErrorCloseBtn.addEventListener('click', () => {
+                sysErrorModal.classList.remove('active');
+            });
+        }
+
+        // Botón Amarillo (Minimizar) -> Quita maximizado si lo tiene y reinicia el texto
+        if (termMinBtn) {
+            termMinBtn.addEventListener('click', () => {
+                terminalWindow.classList.remove('maximized');
+                restartTypewriter();
+            });
+        }
+
+        // Botón Verde (Maximizar) -> Alterna maximizado y reinicia el texto
+        if (termMaxBtn) {
+            termMaxBtn.addEventListener('click', () => {
+                terminalWindow.classList.toggle('maximized');
+                restartTypewriter();
+            });
+        }
+    }
+
+    // 3. Botón de Registro con Animación de Avión de Papel
+    const btnPaperPlane = document.getElementById('btnPaperPlane');
+    const planeIcon = document.getElementById('planeIcon');
+    let isRegistering = false;
+
+    if (btnPaperPlane && planeIcon) {
+        btnPaperPlane.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (isRegistering) return; // Debounce
+            isRegistering = true;
+
+            // Animar el avión
+            planeIcon.classList.add('flying');
+
+            // Redirigir tras finalizar la animación (~800ms)
+            setTimeout(() => {
+                // Cambiar por la URL final si es necesario (ej: Lu.ma)
+                window.location.href = '#'; 
+                
+                // Resetear estado después de redirigir
+                setTimeout(() => {
+                    planeIcon.classList.remove('flying');
+                    isRegistering = false;
+                }, 500);
+            }, 800);
+        });
+    }
+
 });
+
 

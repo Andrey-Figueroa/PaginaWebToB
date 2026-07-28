@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToB - Technology On Business</title>
+    <link rel="icon" type="image/png" href="../imagenes/Miniatura/Miniatura.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -98,28 +99,16 @@
 
     <!-- Hero Section -->
     <header class="hero" id="hero">
+
         <div class="hero-content">
+            <!-- Eyebrow (ocultar con display:none en CSS si no convence visualmente) -->
+            <p class="hero-eyebrow">Technology on Business</p>
+
             <h1 class="hero-title">Master <br><span class="text-cyan">The </span>Chaos</h1>
 
-            <p class="hero-slogan">
-                <span class="font-bold text-white">Technology on Business</span> es el congreso de tecnología y negocios
-                organizado por estudiantes más grande de Costa Rica. 2 días · 6 bloques · 18 conferencias para dominar
-                un mundo <span class="text-cyan font-bold">BANI</span>.
-            </p>
-
-            <div class="hero-info-box">
-                <div class="info-date">
-                    18-19 de<br>agosto 2026
-                </div>
-                <div class="info-divider"></div>
-                <div class="info-org">
-                    Congreso organizado por<br>estudiantes de <a href="#ati" class="text-cyan"
-                        style="text-decoration: underline; text-underline-offset: 4px;">ATI</a>
-                </div>
-            </div>
-
-            <div class="hero-badge">
-                <span class="badge-icon">✦</span> <span class="badge-text">15 ANIVERSARIO DEL TOB</span>
+            <!-- Línea rotativa de frases -->
+            <div class="hero-rotator" aria-live="polite">
+                <span class="rotator-phrase" id="rotatorPhrase"></span>
             </div>
 
             <div class="hero-countdown" id="countdown">
@@ -247,8 +236,10 @@
                 <div class="about-info">
                     <h2 class="about-title">Technology on Business</h2>
                     <div class="about-description">
-                        <p>Technology on Business es un congreso donde estudiantes, profesionales y empresas se reúnen para descubrir las tecnologías, ideas y tendencias que están transformando el futuro.</p>
-                        <p>Con la temática "Master the Chaos", la edición 2026 invita a desarrollar las habilidades necesarias para liderar el cambio, innovar y convertir los desafíos en oportunidades.</p>
+                        <p>Technology on Business es un congreso donde estudiantes, profesionales y empresas se reúnen
+                            para descubrir las tecnologías, ideas y tendencias que están transformando el futuro.</p>
+                        <p>Con la temática "Master the Chaos", la edición 2026 invita a desarrollar las habilidades
+                            necesarias para liderar el cambio, innovar y convertir los desafíos en oportunidades.</p>
                     </div>
                 </div>
 
@@ -289,62 +280,258 @@
             <div class="about-bottom-card glass-card">
                 <div class="bottom-card-content">
                     <h3 class="bottom-card-title">Donde las ideas se convierten en oportunidades.</h3>
-                    <p class="bottom-card-desc">Dos días para aprender, conectar con líderes de la industria y formar parte de una comunidad que impulsa la innovación y el crecimiento profesional.</p>
+                    <p class="bottom-card-desc">Dos días para aprender, conectar con líderes de la industria y formar
+                        parte de una comunidad que impulsa la innovación y el crecimiento profesional.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Habilidades -->
-    <section id="habilidades" class="skills-section">
-        <div class="skills-container">
-            <!-- Columna Izquierda: Título, Párrafo y Botones -->
-            <div class="skills-content-left">
-                <h2 class="skills-main-title">Las habilidades para dominar el caos</h2>
-                <p class="skills-main-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida nibh vel velit auctor aliquet. Siente la comodidad de aprender y adaptarte a las tendencias del futuro, desarrollando las competencias clave para liderar en un entorno empresarial de constante disrupción.
-                </p>
-                
-                <div class="skills-pills-container">
-                    <button class="skill-pill active" data-bg="InspiracionFondo" data-name="Inspiración">
-                        <span class="pill-text">Inspiración</span>
-                        <svg class="pill-border-svg"><rect class="pill-border-rect" width="100%" height="100%" /></svg>
-                    </button>
-                    <button class="skill-pill" data-bg="DisrupcionFondo" data-name="Disrupción">
-                        <span class="pill-text">Disrupción</span>
-                        <svg class="pill-border-svg"><rect class="pill-border-rect" width="100%" height="100%" /></svg>
-                    </button>
-                    <button class="skill-pill" data-bg="IntegracionFondo" data-name="Integración">
-                        <span class="pill-text">Integración</span>
-                        <svg class="pill-border-svg"><rect class="pill-border-rect" width="100%" height="100%" /></svg>
-                    </button>
-                    <button class="skill-pill" data-bg="InnovacionFondo" data-name="Innovación">
-                        <span class="pill-text">Innovación</span>
-                        <svg class="pill-border-svg"><rect class="pill-border-rect" width="100%" height="100%" /></svg>
-                    </button>
-                    <button class="skill-pill" data-bg="NetworkingFondo" data-name="Networking">
-                        <span class="pill-text">Networking</span>
-                        <svg class="pill-border-svg"><rect class="pill-border-rect" width="100%" height="100%" /></svg>
-                    </button>
-                    <button class="skill-pill" data-bg="SinergiaFondo" data-name="Sinergia">
-                        <span class="pill-text">Sinergia</span>
-                        <svg class="pill-border-svg"><rect class="pill-border-rect" width="100%" height="100%" /></svg>
-                    </button>
+    <!-- =============================================
+         SECCIÓN: ¿Quiénes Asisten? (WhoAttend)
+         ============================================= -->
+    <section id="quienes-asisten" class="wa-section">
+
+
+        <!-- Encabezado de la sección -->
+        <div class="wa-header">
+            <h2 class="wa-title">¿Quiénes asisten?</h2>
+        </div>
+
+        <!-- Grid full-bleed 3x2 -->
+        <div class="wa-grid">
+
+            <!-- TARJETA 1 — Estudiantes -->
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/estudiantes.jpg -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/estudiantes.jpg')">
+                <div class="wa-card-inner">
+                    <span class="wa-card-num">01</span>
+                    <h3 class="wa-card-title">Estudiantes Universitarios</h3>
+                    <p class="wa-card-desc">Personas que buscan fortalecer sus conocimientos, descubrir nuevas
+                        tecnologías y conectar con profesionales de la industria.</p>
+                </div>
+            </article>
+
+            <!-- TARJETA 2 — Profesionales TI -->
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/profesionales.jpg -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/profesionales.jpg')">
+                <div class="wa-card-inner">
+                    <span class="wa-card-num">02</span>
+                    <h3 class="wa-card-title">Profesionales de TI</h3>
+                    <p class="wa-card-desc">Especialistas en desarrollo de software, infraestructura, datos,
+                        inteligencia artificial, ciberseguridad y transformación digital.</p>
+                </div>
+            </article>
+
+            <!-- TARJETA 3 — Emprendedores -->
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/emprendedores.jpg -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/emprendedores.jpg')">
+                <div class="wa-card-inner">
+                    <span class="wa-card-num">03</span>
+                    <h3 class="wa-card-title">Emprendedores e Innovadores</h3>
+                    <p class="wa-card-desc">Fundadores de startups, emprendedores tecnológicos y personas interesadas en
+                        convertir ideas en proyectos con impacto.</p>
+                </div>
+            </article>
+
+            <!-- TARJETA 4 — Empresas -->
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/empresas.jpg -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/empresas.jpg')">
+                <div class="wa-card-inner">
+                    <span class="wa-card-num">04</span>
+                    <h3 class="wa-card-title">Empresas y Patrocinadores</h3>
+                    <p class="wa-card-desc">Organizaciones que buscan acercarse al talento universitario, fortalecer su
+                        marca y generar oportunidades de colaboración.</p>
+                </div>
+            </article>
+
+            <!-- TARJETA 5 — Docentes -->
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/docentes.jpg -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/docentes.jpg')">
+                <div class="wa-card-inner">
+                    <span class="wa-card-num">05</span>
+                    <h3 class="wa-card-title">Docentes e Investigadores</h3>
+                    <p class="wa-card-desc">Académicos y expertos que impulsan la innovación mediante investigación,
+                        transferencia de conocimiento y nuevas metodologías.</p>
+                </div>
+            </article>
+
+            <!-- TARJETA 6 — Entusiastas -->
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/entusiastas.jpg -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/entusiastas.jpg')">
+                <div class="wa-card-inner">
+                    <span class="wa-card-num">06</span>
+                    <h3 class="wa-card-title">Entusiastas de la Tecnología</h3>
+                    <p class="wa-card-desc">Cualquier persona apasionada por la tecnología, la innovación y los negocios
+                        que quiera aprender de expertos y ampliar su red.</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- =============================================
+         SECCIÓN: Sponsors (Vitrina de Logos)
+         ============================================= -->
+    <section id="sponsors" class="sponsors-section">
+        <h3 class="sponsors-title">Nuestros Sponsors</h3>
+
+        <div class="sponsors-marquee-wrapper">
+            <!-- FILA 1: Movimiento hacia la Izquierda -->
+            <div class="sponsors-marquee marquee-left">
+                <div class="sponsors-track">
+                    <!-- Set 1 (6 placeholders) -->
+                    <!-- INSTRUCCIÓN: Reemplazar estos div por <img src="ruta-al-logo.png" alt="Sponsor" class="sponsor-logo"> -->
+                    <div class="sponsor-logo">Logo 01</div>
+                    <div class="sponsor-logo">Logo 02</div>
+                    <div class="sponsor-logo">Logo 03</div>
+                    <div class="sponsor-logo">Logo 04</div>
+                    <div class="sponsor-logo">Logo 05</div>
+                    <div class="sponsor-logo">Logo 06</div>
+
+                    <!-- Duplicado del Set 1 para el loop infinito -->
+                    <div class="sponsor-logo">Logo 01</div>
+                    <div class="sponsor-logo">Logo 02</div>
+                    <div class="sponsor-logo">Logo 03</div>
+                    <div class="sponsor-logo">Logo 04</div>
+                    <div class="sponsor-logo">Logo 05</div>
+                    <div class="sponsor-logo">Logo 06</div>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Tarjeta con Borde Azul Luminoso -->
-            <div class="skills-content-right">
-                <div class="skills-showcase-card">
-                    <div class="skills-card-logo">tob</div>
-                    <img id="skillsShowcaseImage" class="skills-showcase-img" src="../imagenes/InspiracionFondo.jpg" alt="Inspiración">
-                    <div class="skills-card-footer">
-                        <span id="skillsShowcaseLabel" class="skills-card-label">Inspiración</span>
+            <!-- FILA 2: Movimiento hacia la Derecha -->
+            <div class="sponsors-marquee marquee-right">
+                <div class="sponsors-track">
+                    <!-- Set 2 (6 placeholders) -->
+                    <!-- INSTRUCCIÓN: Reemplazar estos div por <img src="ruta-al-logo.png" alt="Sponsor" class="sponsor-logo"> -->
+                    <div class="sponsor-logo">Logo 07</div>
+                    <div class="sponsor-logo">Logo 08</div>
+                    <div class="sponsor-logo">Logo 09</div>
+                    <div class="sponsor-logo">Logo 10</div>
+                    <div class="sponsor-logo">Logo 11</div>
+                    <div class="sponsor-logo">Logo 12</div>
+
+                    <!-- Duplicado del Set 2 para el loop infinito -->
+                    <div class="sponsor-logo">Logo 07</div>
+                    <div class="sponsor-logo">Logo 08</div>
+                    <div class="sponsor-logo">Logo 09</div>
+                    <div class="sponsor-logo">Logo 10</div>
+                    <div class="sponsor-logo">Logo 11</div>
+                    <div class="sponsor-logo">Logo 12</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         SECCIÓN: Por qué asistir + Registro
+         ============================================= -->
+    <section id="why-attend" class="why-attend-section">
+        <!-- Título centrado a todo el ancho de la sección -->
+        <h2 class="why-attend-title">¿Por qué asistir?</h2>
+
+        <div class="why-attend-container">
+            <!-- Columna Izquierda: Espacio para imágenes deslizantes -->
+            <div class="why-attend-visual">
+                <div class="why-slider-track">
+                    <!-- Set original de 7 imágenes -->
+                    <img src="../imagenes/WhyAttend/imageWhyAttend01.jpg" alt="ToB 2026 1" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend02.jpg" alt="ToB 2026 2" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend03.jpg" alt="ToB 2026 3" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend04.jpg" alt="ToB 2026 4" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend05.jpg" alt="ToB 2026 5" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend06.jpg" alt="ToB 2026 6" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend07.jpg" alt="ToB 2026 7" class="why-slide-img">
+
+                    <!-- Set duplicado para el loop continuo sin cortes -->
+                    <img src="../imagenes/WhyAttend/imageWhyAttend01.jpg" alt="ToB 2026 1" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend02.jpg" alt="ToB 2026 2" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend03.jpg" alt="ToB 2026 3" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend04.jpg" alt="ToB 2026 4" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend05.jpg" alt="ToB 2026 5" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend06.jpg" alt="ToB 2026 6" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend07.jpg" alt="ToB 2026 7" class="why-slide-img">
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Contenido en estilo Terminal -->
+            <div class="why-attend-content">
+                <div class="terminal-window" id="terminalWindow">
+                    <!-- Cabecera de la ventana -->
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="term-btn close" id="termCloseBtn"></span>
+                            <span class="term-btn minimize" id="termMinBtn"></span>
+                            <span class="term-btn maximize" id="termMaxBtn"></span>
+                        </div>
+                        <div class="terminal-title">guest@tob2026: ~</div>
+                    </div>
+                    <!-- Cuerpo de la terminal -->
+                    <div class="terminal-body">
+                        <div class="terminal-command">
+                            <span class="prompt-user">guest@tob2026</span><span class="prompt-char">:$</span>
+                            <span class="command-text">cat why_attend.txt</span>
+                        </div>
+                        <p class="terminal-text" id="typewriterText">
+                            <!-- El texto se escribirá aquí por JS -->
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Botón centrado a todo el ancho de la sección -->
+        <div class="why-attend-actions">
+            <a href="#" class="btn-paper-plane" id="btnPaperPlane">
+                <span class="btn-text">Asistir</span>
+                <span class="btn-fill"></span>
+                <svg class="plane-icon" id="planeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </a>
+        </div>
     </section>
+
+    <!-- =============================================
+         SECCIÓN: Galería / Mosaico TOB
+         ============================================= -->
+    <section id="galeria" class="gallery-section">
+        <div class="mosaic-grid">
+            <!-- FOTO 1: Ancha superior (ocupa columnas 1 y 2) -->
+            <img src="../imagenes/galeria-tob/foto-01.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-1">
+
+            <!-- FOTO 2: Vertical central (ocupa columna 3, filas 1 y 2) -->
+            <img src="../imagenes/galeria-tob/foto-02.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-2">
+
+            <!-- FOTO 3: Esquina superior derecha (ocupa columna 4, fila 1) -->
+            <img src="../imagenes/galeria-tob/foto-03.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-3">
+
+            <!-- FOTO 4: Fila inferior izquierda (ocupa columna 1, fila 2) -->
+            <img src="../imagenes/galeria-tob/foto-04.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-4">
+
+            <!-- FOTO 5: Fila inferior centro-izq (ocupa columna 2, fila 2) -->
+            <img src="../imagenes/galeria-tob/foto-05.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-5">
+
+            <!-- FOTO 6: Fila inferior derecha (ocupa columna 4, fila 2) -->
+            <img src="../imagenes/galeria-tob/foto-06.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-6">
+        </div>
+    </section>
+
+    <!-- ★ STAR TRAIL CANVAS (Efecto global) ★ -->
+    <canvas id="globalStarCanvas" class="global-star-canvas" aria-hidden="true"></canvas>
+
+    <!-- Modal de Error del Sistema -->
+    <div class="sys-modal-overlay" id="sysErrorModal">
+        <div class="sys-modal">
+            <div class="sys-modal-icon">⚠️</div>
+            <div class="sys-modal-content">
+                <p>Error al cerrar: El ToB 2026 es inevitable.</p>
+            </div>
+            <button class="sys-modal-btn" id="sysErrorCloseBtn">Aceptar</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

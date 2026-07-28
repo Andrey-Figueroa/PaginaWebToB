@@ -39,8 +39,50 @@ body {
 }
 
 /* =========================================
+   PANTALLA DE CARGA (Loader)
+   ========================================= */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader-logo {
+    width: 120px;
+    height: auto;
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-wrapper.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* =========================================
    NAVBAR (Estilo Pastilla Blanca Flotante)
    ========================================= */
+
 .navbar {
     position: fixed;
     top: 15px;
@@ -55,7 +97,22 @@ body {
     padding: 0 10px;
     z-index: 1000;
     background: transparent;
-    transition: all 0.3s ease;
+    border-radius: 0;
+    transition: all 0.4s ease;
+}
+
+/* Navbar con fondo al salir del hero */
+.navbar.scrolled {
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    background: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 0;
+    padding: 0 30px;
 }
 
 /* IZQUIERDA */
@@ -72,9 +129,10 @@ body {
 }
 
 .logo-img {
-    height: 160px;
+    height: 130px;
     width: auto;
     object-fit: contain;
+    margin-top: 4px;
 }
 
 
@@ -419,6 +477,19 @@ body {
     background-repeat: no-repeat;
 }
 
+/* ★ STAR TRAIL CANVAS — eliminar este bloque para desactivar el efecto ★ */
+#heroStarCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Sobre el fondo, bajo el contenido (z-index: 10) */
+    pointer-events: none;
+    display: block;
+}
+
 /* --- LADO IZQUIERDO: CONTENIDO --- */
 .hero-content {
     display: flex;
@@ -479,7 +550,7 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(5rem, 8vw, 8rem);
     font-weight: 800;
     line-height: 1.1;
     color: #ffffff;
@@ -493,11 +564,67 @@ body {
     margin-top: -15px;
 }
 
-.hero-slogan {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: #b0c4de;
-    max-width: 90%;
+/* Eyebrow sobre el título — ocultar con display:none si no convence */
+.hero-eyebrow {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+/* Rotator de frases dinámicas */
+.hero-rotator {
+    height: 4rem; /* Mayor altura para evitar cortes en las letras */
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.rotator-phrase {
+    display: block;
+    font-size: 2.20rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #ffffff;
+    position: absolute;
+    width: 100%;
+    padding: 10px 0; /* Espaciado extra arriba y abajo */
+    opacity: 0;
+    transform: translateY(-110%);
+}
+
+.rotator-phrase.entering {
+    animation: phrase-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.rotator-phrase.leaving {
+    animation: phrase-leave 0.4s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+@keyframes phrase-enter {
+    from {
+        transform: translateY(-110%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes phrase-leave {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(110%);
+        opacity: 0;
+    }
 }
 
 .text-cyan {
@@ -857,8 +984,173 @@ body {
 }
 
 /* =========================================
+   SECCIÓN: ¿Quiénes Asisten?
+   ========================================= */
+
+.wa-section {
+    width: 100%;
+    background: var(--color-background);
+    color: #ffffff;
+    padding: 140px 0;
+}
+
+/* Encabezado */
+.wa-header {
+    padding: 0 10% 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wa-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+/* Grid full-bleed 3x2 */
+.wa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Líneas de divisor sobre fondo oscuro */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tarjeta base */
+.wa-card {
+    position: relative;
+    overflow: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: default;
+    min-height: 320px;
+    display: flex;
+    background: var(--color-background);
+}
+
+/* ── Capa de imagen de fondo (::before) ──
+   Usa la custom property --wa-bg inyectada en el HTML de cada tarjeta.
+   PARA CAMBIAR IMAGEN: editar el atributo style="--wa-bg: url('...')" en el HTML */
+.wa-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--wa-bg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1;
+}
+
+/* ── Overlay oscuro (::after) ── */
+.wa-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(0, 0, 0, 0.35) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+/* Contenido de la tarjeta */
+.wa-card-inner {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 36px 40px;
+    width: 100%;
+    transition: color 0.4s ease;
+}
+
+/* Número de tarjeta */
+.wa-card-num {
+    font-family: var(--font-tech, monospace);
+    font-size: 1.20rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--color-primary, #0474C4);
+    margin-bottom: 16px;
+    display: block;
+    transition: color 0.4s ease;
+}
+
+/* Título bold grande */
+.wa-card-title {
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 14px;
+    transition: color 0.4s ease;
+}
+
+/* Descripción */
+.wa-card-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.4s ease;
+}
+
+/* ── Estado HOVER ── */
+.wa-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.wa-card:hover::after {
+    opacity: 1;
+}
+
+.wa-card:hover .wa-card-num,
+.wa-card:hover .wa-card-title,
+.wa-card:hover .wa-card-desc {
+    color: #ffffff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .wa-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wa-header {
+        padding: 52px 6% 36px;
+    }
+}
+
+@media (max-width: 640px) {
+    .wa-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wa-card {
+        min-height: 220px;
+    }
+
+    .wa-card-inner {
+        padding: 28px 24px;
+    }
+
+    .wa-header {
+        padding: 40px 6% 28px;
+    }
+}
+
+/* =========================================
    DIVIDER MARQUEE (Crossed)
    ========================================= */
+
 .divider-marquee {
     position: relative;
     width: 100%;
@@ -990,7 +1282,7 @@ body {
    ========================================= */
 .about-section {
     width: 100%;
-    padding: 60px 1.5%;
+    padding: 140px 1.5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1009,7 +1301,7 @@ body {
     padding: 60px 50px;
     box-sizing: border-box;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.75) 100%),
-                url('../imagenes/FondoAbout.jpg') no-repeat center center / cover;
+        url('../imagenes/FondoAbout.jpg') no-repeat center center / cover;
     /* Layout interior */
     display: flex;
     flex-direction: column;
@@ -1056,7 +1348,7 @@ body {
     color: #ffffff;
     margin-bottom: 24px;
     letter-spacing: -1px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .about-description {
@@ -1089,16 +1381,19 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
 .about-container.reveal-active .about-grid .glass-card:nth-child(2) {
     transition-delay: 0.65s;
     opacity: 1;
     transform: translateY(0);
 }
+
 .about-container.reveal-active .about-grid .glass-card:nth-child(3) {
     transition-delay: 0.8s;
     opacity: 1;
     transform: translateY(0);
 }
+
 .about-container.reveal-active .about-grid .glass-card:nth-child(4) {
     transition-delay: 0.95s;
     opacity: 1;
@@ -1206,7 +1501,8 @@ body {
         flex-direction: column;
     }
 
-    .about-info, .about-grid {
+    .about-info,
+    .about-grid {
         max-width: 100%;
     }
 
@@ -1222,259 +1518,584 @@ body {
         padding: 35px 20px;
     }
 
-    .about-description, .about-grid {
+    .about-description,
+    .about-grid {
         grid-template-columns: 1fr;
     }
 }
 
 /* =========================================
-   SECCIÓN HABILIDADES (Showcase Interactiva)
+   SECCIÓN: POR QUÉ ASISTIR + REGISTRO
    ========================================= */
-.skills-section {
+.why-attend-section {
     width: 100%;
-    padding: 60px 1.5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.skills-container {
-    width: 98%;
-    max-width: 1650px;
-    min-height: 600px;
-    border-radius: 32px;
-    border: none;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    position: relative;
-    padding: 60px 70px;
-    box-sizing: border-box;
-    z-index: 1;
-    --skills-bg: url('../imagenes/InspiracionFondo.jpg');
-    display: flex;
-    gap: 60px;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Efecto Blur en el fondo del bloque */
-.skills-container::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.8) 100%),
-                var(--skills-bg) no-repeat center center / cover;
-    filter: blur(16px);
-    z-index: -1;
-}
-
-/* Columna Izquierda: Título y Textos */
-.skills-content-left {
-    flex: 1.2;
+    background: var(--color-background);
+    padding: 140px 5%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
     position: relative;
-    max-width: 800px;
+    box-sizing: border-box;
 }
 
-.skills-main-title {
-    font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+.why-attend-container {
+    max-width: 1350px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Columna Izquierda: Carrusel Visual */
+.why-attend-visual {
+    width: 100%;
+    height: 520px;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    /* Se agregan pseudo-elementos para crear un fade en los bordes del slider */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.why-slider-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    gap: 24px;
+    animation: scrollSlider 35s linear infinite;
+    align-items: center;
+}
+
+.why-slider-track:hover {
+    animation-play-state: paused;
+}
+
+.why-slide-img {
+    height: 100%;
+    width: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.85);
+}
+
+.why-slide-img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+@keyframes scrollSlider {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Desplaza exactamente la mitad del ancho total (los primeros 7 elementos + gap) */
+        transform: translateX(calc(-50% - 12px));
+    }
+}
+
+/* Columna Derecha: Contenido y Texto */
+.why-attend-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    font-family: var(--font-tech);
+}
+
+.why-attend-title {
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
     font-weight: 800;
     color: #ffffff;
-    line-height: 1.15;
     letter-spacing: -1px;
-}
-
-.skills-main-desc {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.65);
-    max-width: 700px;
-}
-
-/* Columna Derecha: Tarjeta con Borde Azul */
-.skills-content-right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    position: relative;
-    width: 100%;
-}
-
-.skills-showcase-card {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    aspect-ratio: 1.6;
-    border-radius: 24px;
-    border: 2px solid #21d0ff;
-    box-shadow: 0 0 35px rgba(33, 208, 255, 0.4);
-    overflow: hidden;
-    background: #090c10;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.skills-card-logo {
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    font-family: var(--font-tech);
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.95);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    z-index: 3;
-}
-
-.skills-showcase-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.skills-showcase-img.fade-out {
-    opacity: 0;
-    transform: scale(1.02);
-}
-
-.skills-card-footer {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 30px;
-    padding: 10px 24px;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 150px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-.skills-card-label {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.5px;
     text-align: center;
+    width: 100%;
+    font-family: var(--font-tech);
 }
 
-/* Pastillas / Botones interactivos (Glassmorphism) */
-.skills-pills-container {
+/* Ventana de Terminal (Reemplazo del texto justificado) */
+.terminal-window {
+    width: 100%;
+    background-color: #0b0e14;
+    border: 1px solid #1e2433;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    overflow: hidden;
+    text-align: left;
+    font-family: 'Fira Code', 'Consolas', monospace; /* Tipografía estilo consola */
+}
+
+.terminal-header {
+    background-color: #1a202c;
+    padding: 12px 16px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 15px;
-    z-index: 2;
+    align-items: center;
+    border-bottom: 1px solid #2a3140;
     position: relative;
-    max-width: 650px;
 }
 
-.skill-pill {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 50px;
-    padding: 14px 26px;
-    color: rgba(255, 255, 255, 0.7);
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.term-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+.term-btn:hover {
+    filter: brightness(1.2);
+}
+
+.term-btn.close { background-color: #ff5f56; }
+.term-btn.minimize { background-color: #ffbd2e; }
+.term-btn.maximize { background-color: #27c93f; }
+
+/* Efecto Maximizar Terminal */
+.terminal-window {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.terminal-window.maximized {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vw;
+    height: 80vh;
+    z-index: 10000;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.8);
+}
+
+/* Modal de Error del Sistema */
+.sys-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 10005;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.sys-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sys-modal {
+    background: #e2e2e2;
+    color: #333;
+    width: 320px;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transform: scale(0.9);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sys-modal-overlay.active .sys-modal {
+    transform: scale(1);
+}
+
+.sys-modal-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.sys-modal-content p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.sys-modal-btn {
+    background: #007aff;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    font-family: var(--font-main);
-    position: relative;
-    overflow: hidden;
-    outline: none;
-    display: inline-flex;
-    align-items: center;
+}
+
+.sys-modal-btn:hover {
+    background: #0056b3;
+}
+
+.terminal-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.terminal-body {
+    padding: 24px;
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.6;
+    color: #a0aec0;
+}
+
+.terminal-command {
+    margin-bottom: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.prompt-user {
+    color: #27c93f;
+    font-weight: bold;
+}
+
+.prompt-char {
+    color: #ffffff;
+}
+
+.command-text {
+    color: #e2e8f0;
+}
+
+.terminal-text {
+    color: #e2e8f0; /* Texto claro */
+    text-align: left;
+    margin: 0;
+    white-space: pre-wrap; /* Respeta saltos de línea */
+}
+
+/* El cursor parpadeante */
+.terminal-text::after {
+    content: '█';
+    display: inline-block;
+    width: 10px;
+    color: #21d0ff; /* Color cyan del sitio */
+    animation: blink 1s step-start infinite;
+    margin-left: 2px;
+    vertical-align: baseline;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Botón con animación de Avión de Papel */
+.why-attend-actions {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
 
-.skill-pill:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: #fff;
-    transform: translateY(-2px);
+.btn-paper-plane {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 42px;
+    border-radius: 50px;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+    z-index: 1;
 }
 
-.skill-pill.active {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: transparent; /* El borde real lo dibuja el SVG */
-    color: #fff;
+.btn-paper-plane .btn-text {
+    position: relative;
+    z-index: 3;
 }
 
-/* Estilo del Borde SVG Animado */
-.pill-border-svg {
+.btn-paper-plane .btn-fill {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    width: 0%;
+    height: 0%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: 2;
+}
+
+.btn-paper-plane:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(4, 116, 196, 0.4);
+}
+
+.btn-paper-plane:hover .btn-fill {
+    width: 300%;
+    height: 500%;
+}
+
+.plane-icon {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.btn-paper-plane:hover .plane-icon {
+    transform: translateX(4px) translateY(-2px);
+}
+
+/* Animación de vuelo del avión */
+@keyframes flyAway {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translate(-10px, 10px) rotate(-20deg) scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(250px, -250px) rotate(45deg) scale(0.4);
+        opacity: 0;
+    }
+}
+
+.plane-icon.flying {
+    animation: flyAway 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* =========================================
+   SECCIÓN: SPONSORS (VITRINA DE LOGOS)
+   ========================================= */
+.sponsors-section {
+    width: 100%;
+    background: var(--color-background);
+    padding: 140px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.sponsors-title {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.sponsors-marquee-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* Efecto de desvanecido a los lados */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.sponsors-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+.sponsors-track {
+    display: flex;
+    width: max-content;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Animaciones */
+.marquee-left .sponsors-track {
+    animation: scrollSponsorsLeft 40s linear infinite;
+}
+
+.marquee-right .sponsors-track {
+    animation: scrollSponsorsRight 40s linear infinite;
+}
+
+/* Pausar al hacer hover en la fila */
+.sponsors-marquee:hover .sponsors-track {
+    animation-play-state: paused;
+}
+
+/* Estilos de los Logos (Placeholders y Futuras Imágenes) */
+.sponsor-logo {
+    width: 200px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: var(--font-tech, monospace);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    cursor: pointer;
+    object-fit: contain;
+    /* Para cuando sean <img> reales */
+}
+
+/* Efecto hover sobre el logo individual */
+.sponsor-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Keyframes para scroll continuo */
+@keyframes scrollSponsorsLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Desplaza exactamente la mitad del track (6 elementos + gap) */
+        transform: translateX(calc(-50% - 20px));
+        /* 20px es la mitad del gap de 40px */
+    }
+}
+
+@keyframes scrollSponsorsRight {
+    0% {
+        transform: translateX(calc(-50% - 20px));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* =========================================
+   SECCIÓN: Mosaico de Fotos TOB
+   ========================================= */
+.gallery-section {
+    width: 100%;
+    background: var(--color-background);
+    padding: 140px 0; /* Espaciado generoso solicitado */
+    display: flex;
+    justify-content: center;
+}
+
+.mosaic-grid {
+    width: 100%;
+    /* Removido max-width para ocupar pantalla completa de borde a borde */
+    display: grid;
+    /* 4 columnas en desktop para lograr el efecto asimétrico pedido */
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(280px, 25vw); /* Filas fluidas proporcionales al ancho de pantalla */
+    gap: 4px; /* Gutter fino */
+    background: var(--color-background); /* Color del fondo para que los divisores sean oscuros */
+    border-top: 4px solid var(--color-background); /* Bordes superior e inferior invisibles/mimetizados */
+    border-bottom: 4px solid var(--color-background);
+    box-sizing: border-box;
+}
+
+/* Base para todas las fotos */
+.mosaic-item {
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    overflow: visible;
+    object-fit: cover;
+    display: block;
+    background: #1e2433; /* Placeholder oscuro temporal */
+    border-radius: 0; /* Sin bordes redondeados (esquinas rectas) */
 }
 
-.pill-border-rect {
-    fill: none;
-    stroke: transparent;
-    stroke-width: 2px;
-    rx: 25px; /* Crea el mismo borde redondeado capsular */
-    ry: 25px;
-    transition: stroke-dashoffset 5s linear; /* La animación del borde dura exactamente 5 segundos */
-}
+/* Distribución asimétrica */
+.foto-1 { grid-column: span 2; }
+.foto-2 { grid-column: span 1; grid-row: span 2; }
+.foto-3 { grid-column: span 1; }
+.foto-4 { grid-column: span 1; }
+.foto-5 { grid-column: span 1; }
+.foto-6 { grid-column: span 1; }
 
-.skill-pill.active .pill-border-rect {
-    stroke: #21d0ff;
-    filter: drop-shadow(0 0 5px rgba(33, 208, 255, 0.6));
-}
-
-/* --- Responsividad --- */
-@media (max-width: 1024px) {
-    .skills-container {
-        flex-direction: column;
-        padding: 50px 30px;
+/* Responsivo para Why Attend, Sponsors y Galería */
+@media (max-width: 980px) {
+    .why-attend-container {
+        grid-template-columns: 1fr;
         gap: 40px;
-        min-height: auto;
     }
-    
-    .skills-content-left, .skills-content-right {
-        width: 100%;
-        max-width: 100%;
+
+    .why-attend-visual {
+        height: 380px;
     }
-    
-    .skills-showcase-card {
-        max-width: 500px;
+
+    /* Galería pasa a un grid de 2 columnas simple */
+    .mosaic-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 250px;
+    }
+
+    .foto-1, .foto-2, .foto-3, .foto-4, .foto-5, .foto-6 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    /* Opcional: la foto 1 sigue ocupando 2 columnas si queremos una ancha arriba */
+    .foto-1 {
+        grid-column: span 2;
     }
 }
 
-@media (max-width: 640px) {
-    .skills-container {
-        padding: 40px 20px;
+@media (max-width: 600px) {
+    /* En móvil todo en 1 columna apilada */
+    .mosaic-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
     }
-    
-    .skills-pills-container {
-        gap: 10px;
+
+    .foto-1 {
+        grid-column: span 1;
     }
-    
-    .skill-pill {
-        padding: 12px 22px;
-        font-size: 0.9rem;
-    }
+}
+
+/* =========================================
+   CANVAS GLOBAL PARA EL CURSOR (Efecto Estrellas)
+   ========================================= */
+.global-star-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
 }
