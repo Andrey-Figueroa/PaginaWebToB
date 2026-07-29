@@ -425,8 +425,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const terminalWindow = document.getElementById('terminalWindow');
     
     if (typewriterText && terminalWindow) {
-        const fullText = "Technology on Business (ToB) es una oportunidad única en Costa Rica para estudiantes, profesionales, emprendedores y apasionados por la tecnología que desean impulsar su crecimiento personal y profesional. Durante dos días podrás aprender de expertos de la industria, descubrir las tendencias que transforman el mundo, fortalecer tus habilidades y conectar con personas que comparten tus intereses.\n\nAdemás, ToB 2026 es un evento completamente gratuito y abierto al público, brindando acceso a conferencias, experiencias y networking de alto nivel.\n\nSi buscas aprender, inspirarte y construir conexiones que impulsen tu futuro, este es el lugar para hacerlo.";
+        // Función para obtener el texto actual según el idioma
+        const getTerminalText = () => {
+            const currentLang = localStorage.getItem('tob_lang') || 'es';
+            if (currentLang === 'en') {
+                return "Technology on Business (ToB) is a unique opportunity in Costa Rica for students, professionals, entrepreneurs, and tech enthusiasts who want to boost their personal and professional growth. Over two days, you will learn from industry experts, discover the trends transforming the world, strengthen your skills, and connect with people who share your interests.\n\nFurthermore, ToB 2026 is a completely free event open to the public, providing access to top-tier conferences, experiences, and networking.\n\nIf you are looking to learn, get inspired, and build connections that will drive your future, this is the place to do it.";
+            } else {
+                return "Technology on Business (ToB) es una oportunidad única en Costa Rica para estudiantes, profesionales, emprendedores y apasionados por la tecnología que desean impulsar su crecimiento personal y profesional. Durante dos días podrás aprender de expertos de la industria, descubrir las tendencias que transforman el mundo, fortalecer tus habilidades y conectar con personas que comparten tus intereses.\n\nAdemás, ToB 2026 es un evento completamente gratuito y abierto al público, brindando acceso a conferencias, experiencias y networking de alto nivel.\n\nSi buscas aprender, inspirarte y construir conexiones que impulsen tu futuro, este es el lugar para hacerlo.";
+            }
+        };
         
+        let fullText = getTerminalText();
+        
+        // Escuchar cambios de idioma para actualizar en tiempo real
+        window.addEventListener('languageChanged', (e) => {
+            fullText = getTerminalText();
+            if (hasTyped) {
+                typewriterText.textContent = fullText;
+            }
+        });
         let index = 0;
         let isTyping = false;
         let typingTimeout = null;
@@ -528,6 +545,175 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800);
         });
     }
+
+    // ==========================================
+    // HOVER 3D SPEAKERS (Existente)
+    // ==========================================
+    const speakerCards = document.querySelectorAll('.speaker-card-inner');
+    speakerCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'rotateY(180deg)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateY(0deg)';
+        });
+    });
+
+    // ==========================================
+    // BACK TO TOP (FOOTER)
+    // ==========================================
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // =========================================
+    // LÓGICA DE SPEAKERS (Expositores)
+    // =========================================
+    const speakersData = Array.from({ length: 18 }, (_, i) => ({
+        foto: `../imagenes/WA/entusiastas.jpg`, // Placeholder de imagen mientras se obtienen las reales
+        nombre: `Speaker ${i + 1}`,
+        puesto: "Cargo pendiente / Rol",
+        descripcion: "Breve bio del speaker (2-3 líneas). Conoce más sobre su experiencia y la visión que compartirá en ToB 2026.",
+        linkedin: "#",
+        instagram: "#",
+        charla: "Título de la charla por definir"
+    }));
+
+    // Paleta de colores derivados de la marca para las tarjetas
+    const speakerColors = [
+        '#0474C4', // --color-primary
+        '#06457F', // --color-primary-dark
+        '#5379AE', // --color-secondary
+        '#2C444C', // --color-dark-teal
+        '#21d0ff', // cyan
+        '#09095d'  // azul profundo (usado en marquee)
+    ];
+
+    const speakersGrid = document.getElementById('speakersGrid');
+    const btnMoreSpeakers = document.getElementById('btn-more-speakers');
+    let isShowingAll = false;
+
+    function renderSpeakerCard(speaker, index, isHidden = false) {
+        const colorIndex = index % speakerColors.length;
+        let bgColor = speakerColors[colorIndex];
+        // Para colores muy claros como el cyan, oscurecer el texto para mejor contraste
+        const isLightBg = bgColor === '#21d0ff';
+        const textColorStr = isLightBg ? 'color: #0b0e14;' : '';
+        const roleColorStr = isLightBg ? 'color: rgba(11, 14, 20, 0.85);' : '';
+        const btnBgColor = isLightBg ? '#0b0e14' : '#ffffff';
+        const btnTextColor = isLightBg ? '#ffffff' : 'var(--color-background)';
+
+        const hiddenClass = isHidden ? 'style="display:none;"' : '';
+        
+        return `
+            <div class="speaker-card" data-index="${index}" ${hiddenClass}>
+                <div class="speaker-inner">
+                    <!-- Frente -->
+                    <div class="speaker-front" style="--speaker-color: ${bgColor};">
+                        <div class="speaker-photo-wrapper">
+                            <img src="${speaker.foto}" alt="${speaker.nombre}" class="speaker-photo">
+                        </div>
+                        <div class="speaker-info" style="${textColorStr}">
+                            <h3 class="speaker-name">${speaker.nombre}</h3>
+                            <p class="speaker-role" style="${roleColorStr}">${speaker.puesto}</p>
+                        </div>
+                    </div>
+                    <!-- Reverso -->
+                    <div class="speaker-back" style="--speaker-color: ${bgColor}; ${textColorStr}">
+                        <h3 class="speaker-name">${speaker.nombre}</h3>
+                        <p class="speaker-role" style="${roleColorStr}">${speaker.puesto}</p>
+                        <p class="speaker-bio" style="${roleColorStr}">${speaker.descripcion}</p>
+                        <p class="speaker-talk" style="${textColorStr}">
+                            <span style="${roleColorStr}">Charla:</span>
+                            ${speaker.charla}
+                        </p>
+                        <div class="speaker-socials">
+                            <a href="${speaker.linkedin}" target="_blank" class="social-link" style="background: ${isLightBg ? 'rgba(0,0,0,0.1)' : ''}; color: ${isLightBg ? '#0b0e14' : '#fff'}">
+                                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="${speaker.instagram}" target="_blank" class="social-link" style="background: ${isLightBg ? 'rgba(0,0,0,0.1)' : ''}; color: ${isLightBg ? '#0b0e14' : '#fff'}">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    if (speakersGrid) {
+        // Generar HTML, ocultando las tarjetas más allá del índice 5
+        const cardsHTML = speakersData.map((sp, i) => renderSpeakerCard(sp, i, i >= 6)).join('');
+        speakersGrid.innerHTML = cardsHTML;
+
+
+    }
+
+    // ==========================================
+    // MAPBOX E INTERACCIÓN DE UBICACIÓN (SCROLL ZOOM)
+    // ==========================================
+    const locationWrapper = document.getElementById('ubicacion');
+    const layerEarth = document.getElementById('layerEarth');
+    const layerContent = document.getElementById('layerContent');
+
+    if (locationWrapper) {
+        let isTicking = false;
+
+        function updateLocationAnimation() {
+            let rect = locationWrapper.getBoundingClientRect();
+            let scrollDistance = rect.height - window.innerHeight;
+            
+            // Protección contra caché de CSS o fallos de cálculo (scrollDistance = 0 causa NaN)
+            if (scrollDistance <= 0) {
+                locationWrapper.style.height = '250vh';
+                rect = locationWrapper.getBoundingClientRect();
+                scrollDistance = rect.height - window.innerHeight;
+            }
+            
+            // Progreso del 0 al 1
+            let progress = -rect.top / scrollDistance;
+            progress = Math.max(0, Math.min(1, progress));
+            
+            // --- TIERRA ---
+            let earthScale = 1 + (progress * 4);
+            let earthOpacity = 1;
+            if (progress > 0.6) earthOpacity = 1 - ((progress - 0.6) / 0.4);
+            
+            // --- CONTENIDO FINAL ---
+            let contentOpacity = 0;
+            if (progress > 0.6) {
+                contentOpacity = (progress - 0.6) / 0.4;
+            }
+            
+            // Aplicar estilos
+            layerEarth.style.transform = `scale(${earthScale})`;
+            layerEarth.style.opacity = Math.max(0, Math.min(1, earthOpacity));
+            
+            layerContent.style.opacity = Math.max(0, Math.min(1, contentOpacity));
+            layerContent.style.pointerEvents = progress > 0.9 ? 'auto' : 'none';
+            
+            isTicking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            const rect = locationWrapper.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                if (!isTicking) {
+                    requestAnimationFrame(updateLocationAnimation);
+                    isTicking = true;
+                }
+            }
+        });
+        
+        updateLocationAnimation();
+    }
+
 
 });
 
