@@ -436,17 +436,21 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         let fullText = getTerminalText();
+        let index = 0;
+        let isTyping = false;
+        let typingTimeout = null;
         
         // Escuchar cambios de idioma para actualizar en tiempo real
         window.addEventListener('languageChanged', (e) => {
             fullText = getTerminalText();
-            if (hasTyped) {
-                typewriterText.textContent = fullText;
+            if (isTyping) {
+                if (index >= fullText.length) {
+                    typewriterText.textContent = fullText;
+                } else {
+                    typewriterText.textContent = fullText.substring(0, index);
+                }
             }
         });
-        let index = 0;
-        let isTyping = false;
-        let typingTimeout = null;
         
         function typeWriter() {
             if (index < fullText.length) {
