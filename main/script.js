@@ -75,29 +75,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================
     // LÍNEA ROTATIVA DEL HERO
-    // =========================================
     const DISPLAY_TIME = 2000; // ms que se muestra cada frase (ajustar aquí)
     const TRANSITION_TIME = 400; // ms de la animación de salida (debe coincidir con phrase-leave en CSS)
 
-    const PHRASES = [
-        { text: '15 Aniversario del TOB' },
-        { text: 'Mundo BANI' },
-        { text: '2 días' },
-        { text: '6 bloques' },
-        { text: '18 conferencias' },
-        { html: 'Estudiantes de <a href="#ati" class="text-cyan" style="text-decoration:underline;text-underline-offset:4px">ATI</a>' },
-        { text: 'Congreso de tecnología' },
-        { text: '18-19 de agosto 2026' },
-    ];
-
     const phraseEl = document.getElementById('rotatorPhrase');
     if (phraseEl) {
+        let PHRASES = [];
         let currentIndex = 0;
+
+        const updatePhrases = () => {
+            const lang = localStorage.getItem('tob_lang') || 'es';
+            // Wait, we need to access translations object from lang.js which is loaded globally
+            // translations[lang] exists because lang.js is loaded first
+            const t = translations[lang] || translations.es;
+            PHRASES = [
+                { text: t.phrase_1 },
+                { text: t.phrase_2 },
+                { text: t.phrase_3 },
+                { text: t.phrase_4 },
+                { text: t.phrase_5 },
+                { html: t.phrase_6 },
+                { text: t.phrase_7 },
+                { text: t.phrase_8 },
+            ];
+        };
+        updatePhrases();
+
+        window.addEventListener('languageChanged', () => {
+            updatePhrases();
+            showPhrase(currentIndex);
+        });
 
         function showPhrase(index) {
             const phrase = PHRASES[index];
+            if (!phrase) return;
             if (phrase.html) {
                 phraseEl.innerHTML = phrase.html;
             } else {
@@ -122,11 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(nextPhrase, DISPLAY_TIME + TRANSITION_TIME);
     }
 
-    // =========================================
     // LÓGICA DEL HERO Y SISTEMA SOLAR
-    // =========================================
-
-    // 1. Contador de tiempo (Hasta 18 Agosto 2026 08:30:00)
+    // Contador de tiempo (hasta 18 agosto 2026 08:30:00)
     const countdownDate = new Date("August 18, 2026 08:30:00").getTime();
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -162,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateCountdown, 1000); // Actualizar cada segundo
     }
 
-    // 2. Efecto Parallax con el Mouse para el Sistema Solar
+    // Efecto parallax con el mouse para el sistema solar
     const solarSystem = document.getElementById('solarSystem');
 
 
@@ -196,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Animación de "Moneda" al hacer clic en el Logo (Isotipo)
+    // Animación de "moneda" al hacer clic en el logo (isotipo)
     const heroLogo = document.getElementById('heroLogo');
     if (heroLogo) {
         heroLogo.addEventListener('click', () => {
@@ -211,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Interactividad de Planetas (Atenuar los demás al hacer clic)
+    // Interactividad de planetas (atenuar los demás al hacer clic)
     const planets = document.querySelectorAll('.planet');
     const orbits = document.querySelectorAll('.orbit');
 
@@ -255,9 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // =========================================
     // PANTALLA DE CARGA
-    // =========================================
     // Bloquear el scroll mientras carga
     document.body.style.overflow = 'hidden';
 
@@ -270,9 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1500);
 
-    // =========================================
     // ANIMACIÓN SCROLL REVEAL Y CONTADORES (ABOUT)
-    // =========================================
     function animateCounters() {
         const statNumbers = document.querySelectorAll('.stat-number');
         statNumbers.forEach(numEl => {
@@ -281,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const target = parseInt(numEl.getAttribute('data-target'), 10);
             const suffix = numEl.getAttribute('data-suffix') || '';
-            const duration = 2400; // 2.4s para que se aprecie cada número
+            const duration = 2400; // 4s para que se aprecie cada número
             const startTime = performance.now();
 
             function updateCount(currentTime) {
@@ -322,9 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(aboutContainer);
     }
 
-    // =========================================
     // ★ STAR TRAIL CURSOR GLOBAL
-    // =========================================
     if (window.matchMedia('(pointer: fine)').matches) { 
 
         const starCanvas = document.getElementById('globalStarCanvas');
@@ -406,21 +409,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            window.addEventListener('mousemove', (e) => {
-                isMouseIn = true;
-                startLoop();
-                spawnParticles(e.clientX, e.clientY);
-            });
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    isMouseIn = true;
+                    startLoop();
+                    spawnParticles(e.clientX, e.clientY);
+                });
 
-            document.addEventListener('mouseleave', () => {
-                isMouseIn = false;
-            });
+                heroSection.addEventListener('mouseleave', () => {
+                    isMouseIn = false;
+                });
+            }
         }
     }
 
-    // =========================================
     // EFECTO TERMINAL TYPEWRITER (WHY ATTEND)
-    // =========================================
     const typewriterText = document.getElementById('typewriterText');
     const terminalWindow = document.getElementById('terminalWindow');
     
@@ -521,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 3. Botón de Registro con Animación de Avión de Papel
+    // Botón de registro con animación de avión de papel
     const btnPaperPlane = document.getElementById('btnPaperPlane');
     const planeIcon = document.getElementById('planeIcon');
     let isRegistering = false;
@@ -539,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Redirigir tras finalizar la animación (~800ms)
             setTimeout(() => {
                 // Cambiar por la URL final si es necesario (ej: Lu.ma)
-                window.location.href = '#'; 
+                window.open('https://luma.com/home', '_blank'); 
                 
                 // Resetear estado después de redirigir
                 setTimeout(() => {
@@ -550,9 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
     // HOVER 3D SPEAKERS (Existente)
-    // ==========================================
     const speakerCards = document.querySelectorAll('.speaker-card-inner');
     speakerCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -563,9 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==========================================
     // BACK TO TOP (FOOTER)
-    // ==========================================
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
@@ -576,18 +576,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================
     // LÓGICA DE SPEAKERS (Expositores)
-    // =========================================
-    const speakersData = Array.from({ length: 18 }, (_, i) => ({
-        foto: `../imagenes/WA/entusiastas.jpg`, // Placeholder de imagen mientras se obtienen las reales
-        nombre: `Speaker ${i + 1}`,
-        puesto: "Cargo pendiente / Rol",
-        descripcion: "Breve bio del speaker (2-3 líneas). Conoce más sobre su experiencia y la visión que compartirá en ToB 2026.",
-        linkedin: "#",
-        instagram: "#",
-        charla: "Título de la charla por definir"
-    }));
+    const speakersData = [
+        { foto: "../imagenes/speakers/speaker01.jpg", nombre: "Pedro Gutiérrez", puesto: "Avify", descripcion: "CEO de Avify. Compartirá el camino de construir una startup.", linkedin: "#", instagram: "#", charla: "Empresa de 0 a 1M" },
+        { foto: "../imagenes/speakers/speaker02.jpg", nombre: "Tamara Sancho", puesto: "P&G", descripcion: "Transformando el miedo en una herramienta de crecimiento profesional.", linkedin: "#", instagram: "#", charla: "Extraordinary Fears" },
+        { foto: "../imagenes/speakers/speaker03.jpg", nombre: "Pilar Sánchez", puesto: "Avify", descripcion: "Líder de la industria compartiendo su visión en resiliencia.", linkedin: "#", instagram: "#", charla: "Panel Mujeres en Tech" },
+        { foto: "../imagenes/speakers/speaker04.jpg", nombre: "Wendy Badilla", puesto: "Microsoft", descripcion: "Experta de Microsoft enfocada en empoderamiento femenino en STEM.", linkedin: "#", instagram: "#", charla: "Panel Mujeres en Tech" },
+        { foto: "../imagenes/speakers/speaker05.jpg", nombre: "Aaron Omodeo", puesto: "Doji Club", descripcion: "Especialista en finanzas prácticas y toma de decisiones de inversión.", linkedin: "#", instagram: "#", charla: "Finanzas personales en inversiones" },
+        { foto: "../imagenes/speakers/speaker06.jpg", nombre: "Cynthia Navarrete", puesto: "P&G", descripcion: "Especialista en impacto y claridad en comunicación profesional.", linkedin: "#", instagram: "#", charla: "Comunicación Efectiva" },
+        { foto: "../imagenes/speakers/speaker07.jpg", nombre: "María José Artavia", puesto: "Directora", descripcion: "Directora dando apertura oficial a TOB-ATI 2026.", linkedin: "#", instagram: "#", charla: "Inauguración" },
+        { foto: "../imagenes/speakers/speaker08.jpg", nombre: "Nicole", puesto: "Líder Tecnológica", descripcion: "Experta en liderazgo adaptativo en entornos de cambio acelerado.", linkedin: "#", instagram: "#", charla: "Liderazgo en la era de la transformación digital" },
+        { foto: "../imagenes/speakers/speaker09.jpg", nombre: "Alejandro Hidalgo", puesto: "P&G", descripcion: "Aplicación de metodologías ágiles para entregar valor más rápido.", linkedin: "#", instagram: "#", charla: "Metodologías ágiles" },
+        { foto: "../imagenes/speakers/speaker10.jpg", nombre: "Gerardo Nájera", puesto: "Sefisa", descripcion: "Estrategias de ciberseguridad para proteger información vital.", linkedin: "#", instagram: "#", charla: "Ciberseguridad" },
+        { foto: "../imagenes/speakers/speaker11.jpg", nombre: "Karla Córdoba", puesto: "Aso Blockchain CR", descripcion: "Aplicaciones reales de la confianza digital más allá de cripto.", linkedin: "#", instagram: "#", charla: "Blockchain" },
+        { foto: "../imagenes/speakers/speaker12.jpg", nombre: "Diego Loud", puesto: "Loud", descripcion: "Estrategias de mercadeo para conectar con audiencias saturadas.", linkedin: "#", instagram: "#", charla: "Mercadeo en la era digital" },
+        { foto: "../imagenes/speakers/speaker13.jpg", nombre: "Ronald Arce", puesto: "INCAE", descripcion: "Cómo la IA está redefiniendo los modelos de negocio.", linkedin: "#", instagram: "#", charla: "IA" }
+    ];
 
     // Paleta de colores derivados de la marca para las tarjetas
     const speakerColors = [
@@ -614,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnTextColor = isLightBg ? '#ffffff' : 'var(--color-background)';
 
         const hiddenClass = isHidden ? 'style="display:none;"' : '';
-        
+        const i18nId = String(index + 1).padStart(2, '0');
         return `
             <div class="speaker-card" data-index="${index}" ${hiddenClass}>
                 <div class="speaker-inner">
@@ -624,18 +628,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="${speaker.foto}" alt="${speaker.nombre}" class="speaker-photo">
                         </div>
                         <div class="speaker-info" style="${textColorStr}">
-                            <h3 class="speaker-name">${speaker.nombre}</h3>
-                            <p class="speaker-role" style="${roleColorStr}">${speaker.puesto}</p>
+                            <h3 class="speaker-name" data-i18n="speaker_${i18nId}_name">${speaker.nombre}</h3>
+                            <p class="speaker-role" style="${roleColorStr}" data-i18n="speaker_${i18nId}_role">${speaker.puesto}</p>
                         </div>
                     </div>
                     <!-- Reverso -->
                     <div class="speaker-back" style="--speaker-color: ${bgColor}; ${textColorStr}">
-                        <h3 class="speaker-name">${speaker.nombre}</h3>
-                        <p class="speaker-role" style="${roleColorStr}">${speaker.puesto}</p>
-                        <p class="speaker-bio" style="${roleColorStr}">${speaker.descripcion}</p>
+                        <h3 class="speaker-name" data-i18n="speaker_${i18nId}_name">${speaker.nombre}</h3>
+                        <p class="speaker-role" style="${roleColorStr}" data-i18n="speaker_${i18nId}_role">${speaker.puesto}</p>
+                        <p class="speaker-bio" style="${roleColorStr}" data-i18n="speaker_${i18nId}_bio">${speaker.descripcion}</p>
                         <p class="speaker-talk" style="${textColorStr}">
                             <span style="${roleColorStr}">Charla:</span>
-                            ${speaker.charla}
+                            <span data-i18n="speaker_${i18nId}_charla">${speaker.charla}</span>
                         </p>
                         <div class="speaker-socials">
                             <a href="${speaker.linkedin}" target="_blank" class="social-link" style="background: ${isLightBg ? 'rgba(0,0,0,0.1)' : ''}; color: ${isLightBg ? '#0b0e14' : '#fff'}">
@@ -644,6 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="${speaker.instagram}" target="_blank" class="social-link" style="background: ${isLightBg ? 'rgba(0,0,0,0.1)' : ''}; color: ${isLightBg ? '#0b0e14' : '#fff'}">
                                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -652,16 +657,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (speakersGrid) {
-        // Generar HTML, ocultando las tarjetas más allá del índice 5
-        const cardsHTML = speakersData.map((sp, i) => renderSpeakerCard(sp, i, i >= 6)).join('');
+        // Generar HTML, ocultando las tarjetas más allá del índice 5 si no tiene el atributo data-show-all
+        const showAll = speakersGrid.hasAttribute('data-show-all');
+        const cardsHTML = speakersData.map((sp, i) => renderSpeakerCard(sp, i, showAll ? false : i >= 6)).join('');
         speakersGrid.innerHTML = cardsHTML;
-
-
     }
 
-    // ==========================================
     // MAPBOX E INTERACCIÓN DE UBICACIÓN (SCROLL ZOOM)
-    // ==========================================
     const locationWrapper = document.getElementById('ubicacion');
     const layerEarth = document.getElementById('layerEarth');
     const layerContent = document.getElementById('layerContent');
@@ -695,12 +697,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 contentOpacity = (progress - 0.6) / 0.4;
             }
             
-            // Aplicar estilos
-            layerEarth.style.transform = `scale(${earthScale})`;
-            layerEarth.style.opacity = Math.max(0, Math.min(1, earthOpacity));
+            // Aplicar estilos defensivamente
+            if (layerEarth) {
+                layerEarth.style.transform = `scale(${earthScale})`;
+                layerEarth.style.opacity = Math.max(0, Math.min(1, earthOpacity));
+            }
             
-            layerContent.style.opacity = Math.max(0, Math.min(1, contentOpacity));
-            layerContent.style.pointerEvents = progress > 0.9 ? 'auto' : 'none';
+            if (layerContent) {
+                layerContent.style.opacity = Math.max(0, Math.min(1, contentOpacity));
+                layerContent.style.pointerEvents = progress > 0.9 ? 'auto' : 'none';
+            }
             
             isTicking = false;
         }
@@ -718,7 +724,174 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLocationAnimation();
     }
 
-
+    if (typeof applyTranslations === 'function') {
+        applyTranslations(localStorage.getItem('tob_lang') || 'es');
+    }
 });
 
 
+
+
+/* =========================================
+   Coverflow Presentadores Logic + Modal ATI
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const carouselTrack = document.getElementById('presenters-track');
+    if (carouselTrack) {
+        // Dinámicamente generar 3 presentadores
+        const presentersData = [
+            {
+                foto: "../imagenes/host/presentador01.jpg",
+                nombre: "Anthony Fuentes",
+                puesto: "Presentador/a oficial del ToB 2026",
+                bio: "Software Engineer y estudiante de Ingeniería en Computación en el TEC. Fotógrafo y creador de contenido con más de 137 mil seguidores, combinando su pasión por la tecnología con la narrativa visual.",
+                linkedin: "https://www.linkedin.com/in/anthony-fuentes-2595a7282/",
+                instagram: "https://www.instagram.com/anthonyfuentes__/"
+            },
+            {
+                foto: "../imagenes/host/presentador02.jpg",
+                nombre: "",
+                puesto: "",
+                bio: "",
+                linkedin: "#",
+                instagram: "#",
+                isComingSoon: true
+            },
+            {
+                foto: "../imagenes/host/presentador03.jpg",
+                nombre: "",
+                puesto: "",
+                bio: "",
+                linkedin: "#",
+                instagram: "#",
+                isComingSoon: true
+            }
+        ];
+
+        carouselTrack.innerHTML = presentersData.map((p, i) => {
+            if (p.isComingSoon) {
+                return `
+                    <div class="lamina card" style="position: relative;">
+                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; backdrop-filter: blur(12px); background: rgba(0,0,0,0.3); z-index: 10; display: flex; align-items: center; justify-content: center; border-radius: 20px;">
+                            <h3 data-i18n="presenter_coming_name" style="color: var(--color-cyan); font-size: 1.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(33, 208, 255, 0.5);">Pronto...</h3>
+                        </div>
+                        <div class="card-img-wrapper" style="opacity: 0.1; background: var(--bg-dark);">
+                            <div style="width: 100%; height: 100%;"></div>
+                        </div>
+                        <div class="card-content" style="opacity: 0.1;">
+                            <h3 style="background: rgba(255,255,255,0.2); width: 60%; height: 24px; border-radius: 4px; margin-bottom: 8px;"></h3>
+                            <p style="background: rgba(255,255,255,0.2); width: 80%; height: 16px; border-radius: 4px; margin-bottom: 12px;"></p>
+                            <p style="background: rgba(255,255,255,0.2); width: 100%; height: 48px; border-radius: 4px;"></p>
+                        </div>
+                    </div>
+                `;
+            }
+            return `
+                <div class="lamina card">
+                    <div class="card-img-wrapper">
+                        <img src="${p.foto}" alt="Presentador ${i + 1}">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="presenter_${i + 1}_name">${p.nombre}</h3>
+                        <p class="presenter-event-role" data-i18n="presenter_${i + 1}_role">${p.puesto}</p>
+                        <p data-i18n="presenter_${i + 1}_bio">${p.bio}</p>
+                        <div class="presenter-socials">
+                            <a href="${p.linkedin}" target="_blank" class="social-link" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </a>
+                            <a href="${p.instagram}" target="_blank" class="social-link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        const cards = Array.from(carouselTrack.querySelectorAll('.card'));
+        const nextBtn = document.getElementById('carousel-next');
+        const prevBtn = document.getElementById('carousel-prev');
+        const dotsContainer = document.getElementById('carousel-dots');
+
+        let currentIndex = Math.floor(cards.length / 2);
+        const total = cards.length;
+
+        cards.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === currentIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => { currentIndex = i; update(); });
+            dotsContainer.appendChild(dot);
+        });
+        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+
+        function update() {
+            cards.forEach((card, i) => {
+                card.classList.remove('active', 'prev', 'next', 'prev-far', 'next-far');
+                let dist = i - currentIndex;
+                const half = Math.floor(total / 2);
+                if (dist > half) dist -= total;
+                if (dist < -half) dist += total;
+                if (dist === 0)       card.classList.add('active');
+                else if (dist === -1) card.classList.add('prev');
+                else if (dist === 1)  card.classList.add('next');
+                else if (dist === -2) card.classList.add('prev-far');
+                else if (dist === 2)  card.classList.add('next-far');
+            });
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+        }
+
+        prevBtn?.addEventListener('click', () => { currentIndex = (currentIndex - 1 + total) % total; update(); });
+        nextBtn?.addEventListener('click', () => { currentIndex = (currentIndex + 1) % total; update(); });
+
+        let dragging = false, startX = 0, diffX = 0;
+        const THRESHOLD = 50;
+
+        carouselTrack.addEventListener('mousedown',  e => { dragging = true; startX = e.pageX; });
+        window.addEventListener('mousemove',         e => { if (dragging) diffX = e.pageX - startX; });
+        window.addEventListener('mouseup',           () => { if (!dragging) return; dragging = false; applySwipe(); });
+        carouselTrack.addEventListener('touchstart', e => { dragging = true; startX = e.touches[0].clientX; }, { passive: true });
+        window.addEventListener('touchmove',         e => { if (dragging) diffX = e.touches[0].clientX - startX; }, { passive: true });
+        window.addEventListener('touchend',          () => { if (!dragging) return; dragging = false; applySwipe(); });
+
+        function applySwipe() {
+            if (diffX > THRESHOLD)       currentIndex = (currentIndex - 1 + total) % total;
+            else if (diffX < -THRESHOLD) currentIndex = (currentIndex + 1) % total;
+            diffX = 0;
+            update();
+        }
+
+        update();
+    }
+
+    const atiModal = document.getElementById('atiModal');
+    const atiClose = document.getElementById('atiModalClose');
+
+    if (atiModal) {
+        atiClose?.addEventListener('click', closeAtiModal);
+        atiModal.addEventListener('click', e => { if (e.target === atiModal) closeAtiModal(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && atiModal.classList.contains('active')) closeAtiModal();
+        });
+    }
+
+    if (typeof applyTranslations === 'function') {
+        applyTranslations(localStorage.getItem('tob_lang') || 'es');
+    }
+});
+
+function openAtiModal(e) {
+    e.preventDefault();
+    const modal = document.getElementById('atiModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAtiModal() {
+    const modal = document.getElementById('atiModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}

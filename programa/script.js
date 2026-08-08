@@ -1,59 +1,120 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Menú Móvil
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileNav = document.getElementById('mobileNav');
 
-    if (menuToggle && mobileNav) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menuToggle.classList.toggle('active');
-            mobileNav.classList.toggle('active');
+    // LOADER
+    const loader = document.getElementById('loader-wrapper');
+    if (loader) {
+        window.addEventListener('load', () => {
+            loader.classList.add('loader-hidden');
         });
+        setTimeout(() => loader.classList.add('loader-hidden'), 1500);
+    }
 
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !mobileNav.contains(e.target) && mobileNav.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
+    // NAVBAR SCROLL (igual que el main)
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
     }
 
-    // 2. Toggle de Idioma
-    const langToggles = [document.getElementById('langToggle'), document.getElementById('langToggleMobile')];
-    langToggles.forEach(toggle => {
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                const currentLang = toggle.getAttribute('data-lang');
-                const newLang = currentLang === 'ES' ? 'EN' : 'ES';
-                toggle.setAttribute('data-lang', newLang);
+    // HAMBURGER MENU
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
 
-                const spans = toggle.querySelectorAll('.lang-text');
-                spans.forEach(span => {
-                    if (span.textContent === newLang) {
-                        span.classList.add('active');
-                    } else {
-                        span.classList.remove('active');
-                    }
-                });
-            });
-        }
+    if (menuToggle && mobileNav) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('open');
+        });
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mobileNav.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('open');
+            }
+        });
+    }
+
+    // LANG TOGGLE
+    function setupLangToggle(toggleId) {
+        const toggle = document.getElementById(toggleId);
+        if (!toggle) return;
+        toggle.addEventListener('click', () => {
+            const current = toggle.getAttribute('data-lang');
+            const newLang = current === 'ES' ? 'EN' : 'ES';
+            toggle.setAttribute('data-lang', newLang);
+            const texts = toggle.querySelectorAll('.lang-text');
+            texts.forEach(t => t.classList.remove('active'));
+            if (newLang === 'ES') {
+                texts[0].classList.add('active');
+            } else {
+                texts[1].classList.add('active');
+            }
+        });
+    }
+
+    setupLangToggle('langToggle');
+    setupLangToggle('langToggleMobile');
+
+    // ANIMACIÓN ENTRADA TIMELINE
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }, i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    timelineItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(item);
     });
 
-    // 3. Loader
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => {
-        const loader = document.getElementById("loader-wrapper");
-        if (loader) {
-            loader.classList.add("loader-hidden");
-            document.body.style.overflow = '';
-        }
-    }, 1500);
 });
+
+// SWITCH DE DÍAS (Función Global)
+function switchDay(dayId) {
+    // Ocultar todos los días
+    document.querySelectorAll('.schedule-day').forEach(el => {
+        el.classList.remove('active-day');
+    });
+
+    // Quitar active de todos los tabs
+    document.querySelectorAll('.schedule-tab').forEach(el => {
+        el.classList.remove('active');
+    });
+
+    // Mostrar el día seleccionado
+    const target = document.getElementById(dayId);
+    if (target) {
+        target.classList.add('active-day');
+
+        // Animar items del timeline nuevo
+        const items = target.querySelectorAll('.timeline-item');
+        items.forEach((item, i) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, i * 80 + 50);
+        });
+    }
+
+    // Activar tab correspondiente
+    const tabId = 'tab-' + dayId;
+    const activeTab = document.getElementById(tabId);
+    if (activeTab) activeTab.classList.add('active');
+}

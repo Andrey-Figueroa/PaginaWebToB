@@ -64,8 +64,20 @@ const translations = {
         "wa_card6_title": "Entusiastas de la Tecnología",
         "wa_card6_desc": "Cualquier persona apasionada por la tecnología, la innovación y los negocios que quiera aprender de expertos y ampliar su red.",
 
+        // Phrases
+        "phrase_1": "15 Aniversario del TOB",
+        "phrase_2": "Mundo BANI",
+        "phrase_3": "2 días",
+        "phrase_4": "6 bloques",
+        "phrase_5": "18 conferencias",
+        "phrase_6": 'Estudiantes de <a href="#" onclick="openAtiModal(event)" class="text-cyan" style="text-decoration:underline;text-underline-offset:4px">ATI</a>',
+        "phrase_7": "Congreso de tecnología",
+        "phrase_8": "18-19 de agosto 2026",
+
         // Sponsors
-        "sponsors_title": "Nuestros Sponsors",
+        "sponsors_title": "Nuestros Partners",
+        "main_spon_title": "Nuestros Sponsors",
+        "main_spon_text": "Gracias a nuestros sponsors por creer en el poder de la tecnología y la innovación. Su confianza y apoyo hacen posible que el ToB 2026 siga transformando la forma en que conectamos talento, ideas y oportunidades.",
 
         // Why Attend
         "why_title": "¿Por qué asistir?",
@@ -75,6 +87,9 @@ const translations = {
         "term_text_3": "> Participar en el HackaToB y demostrar tus habilidades.",
         "term_text_4": "> Descubrir oportunidades de networking y crecimiento.",
         "term_text_5": "> Vivir una experiencia inmersiva y única en el TEC.",
+
+        // Presenters
+        "presenters_title": "Voces que guían el caos",
 
         // Speakers
         "speak_label": "Expositores",
@@ -105,7 +120,226 @@ const translations = {
 
         // Modal
         "modal_text": "Error al cerrar: El ToB 2026 es inevitable.",
-        "modal_btn": "Aceptar"
+        "modal_btn": "Aceptar",
+
+        // Presenters (Specific)
+        "presenter_1_name": "Anthony Fuentes",
+        "presenter_1_role": "Presentador oficial del ToB 2026",
+        "presenter_1_bio": "Software Engineer y estudiante de Ingeniería en Computación en el TEC. Fotógrafo y creador de contenido con más de 137 mil seguidores, combinando su pasión por la tecnología con la narrativa visual.",
+        
+        "presenter_coming_name": "Pronto...",
+        "presenter_coming_role": "---",
+        "presenter_coming_bio": "Más información próximamente.",
+
+        // Speakers Details
+        "speaker_01_name": "Pedro Gutiérrez",
+        "speaker_01_role": "Avify",
+        "speaker_01_bio": "CEO de Avify. Compartirá el camino de construir una startup.",
+        "speaker_01_charla": "Empresa de 0 a 1M",
+
+        "speaker_02_name": "Tamara Sancho",
+        "speaker_02_role": "P&G",
+        "speaker_02_bio": "Transformando el miedo en una herramienta de crecimiento profesional.",
+        "speaker_02_charla": "Extraordinary Fears",
+
+        "speaker_03_name": "Pilar Sánchez",
+        "speaker_03_role": "Avify",
+        "speaker_03_bio": "Líder de la industria compartiendo su visión en resiliencia.",
+        "speaker_03_charla": "Panel Mujeres en Tech",
+
+        "speaker_04_name": "Wendy Badilla",
+        "speaker_04_role": "Microsoft",
+        "speaker_04_bio": "Experta de Microsoft enfocada en empoderamiento femenino en STEM.",
+        "speaker_04_charla": "Panel Mujeres en Tech",
+
+        "speaker_05_name": "Aaron Omodeo",
+        "speaker_05_role": "Doji Club",
+        "speaker_05_bio": "Especialista en finanzas prácticas y toma de decisiones de inversión.",
+        "speaker_05_charla": "Finanzas personales en inversiones",
+
+        "speaker_06_name": "Cynthia Navarrete",
+        "speaker_06_role": "P&G",
+        "speaker_06_bio": "Especialista en impacto y claridad en comunicación profesional.",
+        "speaker_06_charla": "Comunicación Efectiva",
+
+        "speaker_07_name": "María José Artavia",
+        "speaker_07_role": "Directora",
+        "speaker_07_bio": "Directora dando apertura oficial a TOB-ATI 2026.",
+        "speaker_07_charla": "Inauguración",
+
+        "speaker_08_name": "Nicole",
+        "speaker_08_role": "Líder Tecnológica",
+        "speaker_08_bio": "Experta en liderazgo adaptativo en entornos de cambio acelerado.",
+        "speaker_08_charla": "Liderazgo en la era de la transformación digital",
+
+        "speaker_09_name": "Alejandro Hidalgo",
+        "speaker_09_role": "P&G",
+        "speaker_09_bio": "Aplicación de metodologías ágiles para entregar valor más rápido.",
+        "speaker_09_charla": "Metodologías ágiles",
+
+        "speaker_10_name": "Gerardo Nájera",
+        "speaker_10_role": "Sefisa",
+        "speaker_10_bio": "Estrategias de ciberseguridad para proteger información vital.",
+        "speaker_10_charla": "Ciberseguridad",
+
+        "speaker_11_name": "Karla Córdoba",
+        "speaker_11_role": "Aso Blockchain CR",
+        "speaker_11_bio": "Aplicaciones reales de la confianza digital más allá de cripto.",
+        "speaker_11_charla": "Blockchain",
+
+        "speaker_12_name": "Diego Loud",
+        "speaker_12_role": "Loud",
+        "speaker_12_bio": "Estrategias de mercadeo para conectar con audiencias saturadas.",
+        "speaker_12_charla": "Mercadeo en la era digital",
+
+        "speaker_13_name": "Ronald Arce",
+        "speaker_13_role": "INCAE",
+        "speaker_13_bio": "Cómo la IA está redefiniendo los modelos de negocio.",
+        "speaker_13_charla": "IA",
+
+        // Program Day 1
+        "prog_d1_tab": "Día 1 - 18 de Agosto",
+        "prog_d2_tab": "Día 2 - 19 de Agosto",
+        
+        "prog_d1_block1_title": "BLOQUE - INICIO",
+        "prog_d1_t1_title": "Inauguración",
+        "prog_d1_t1_desc": "Palabras de bienvenida para dar apertura oficial a TOB-ATI 2026, marcando el inicio de dos días dedicados a la innovación, el crecimiento profesional y la conexión con la industria tecnológica.",
+        "prog_d1_t1_tag": "Introducción",
+        "prog_d1_t2_title": "Acto Cultural: Bandati",
+        "prog_d1_t2_desc": "Presentación cultural para dar un respiro musical/artístico antes de arrancar con el contenido del día.",
+        "prog_d1_t2_tag": "Acto Cultural",
+        "prog_d1_t3_title": "Introducción al evento",
+        "prog_d1_t3_desc": "Dinámica de bienvenida para romper el hielo entre los asistentes y presentar la mecánica, tracks y objetivos de TOB-ATI 2026.",
+        "prog_d1_t3_tag": "Dinámica",
+
+        "prog_d1_block2_title": "BLOQUE - EQUILIBRIO PROPIO",
+        "prog_d1_block2_quote": '"You can\'t make change if you can\'t master yourself"',
+        "prog_d1_t4_title": "Extraordinary Fears: a quick guide on how to transform fear",
+        "prog_d1_t4_desc": "Una guía práctica para identificar el miedo como catalizador en lugar de obstáculo, aprendiendo a gestionarlo para tomar decisiones audaces en la vida y los negocios.",
+        "prog_d1_t4_tag": "Charla",
+        "prog_d1_t5_title": "Comunicación Efectiva",
+        "prog_d1_t5_desc": "Estrategias para transmitir ideas con claridad y poder, logrando que el mensaje no solo se escuche, sino que genere impacto y acción en cualquier entorno profesional.",
+        "prog_d1_t5_tag": "Taller",
+        "prog_d1_t6_title": "Retroalimentación y Rifa",
+        "prog_d1_t6_desc": "Espacio para retroalimentación vía QR con rifa incluida.",
+        "prog_d1_t6_tag": "Rifa",
+        "prog_d1_t7_title": "Almuerzo",
+        "prog_d1_t7_desc": "Espacio de receso para almorzar y hacer networking.",
+        "prog_d1_t7_tag": "Receso",
+        
+        "prog_d1_block3_title": "BLOQUE - CRECIMIENTO CONTINUO",
+        "prog_d1_block3_quote": '"We are only as strong as we are united, as weak as we are divided"',
+        "prog_d1_t8_title": "Empresa de 0 a 1M",
+        "prog_d1_t8_desc": "El camino real, sin filtros, de construir una startup desde cero hasta alcanzar su primer millón: los errores, los aciertos y las estrategias de crecimiento acelerado.",
+        "prog_d1_t8_tag": "Charla",
+        "prog_d1_t9_title": "Liderazgo en la era de la transformación digital",
+        "prog_d1_t9_desc": "Cómo guiar equipos a través del cambio tecnológico constante, fomentando una cultura de adaptabilidad e innovación cuando las reglas del juego cambian todos los días.",
+        "prog_d1_t9_tag": "Charla",
+        "prog_d1_t10_title": "Acto Cultural",
+        "prog_d1_t10_desc": "Presentación cultural para dar dinamismo entre bloques.",
+        "prog_d1_t10_tag": "Acto Cultural",
+        "prog_d1_t11_title": "Panel: Mujeres en Tech",
+        "prog_d1_t11_desc": "Un panel imperdible sobre los retos, perspectivas y el impacto del liderazgo femenino en la industria tecnológica, con voces referentes que están marcando el camino.",
+        "prog_d1_t11_tag": "Panel",
+        "prog_d1_t12_title": "Retroalimentación y Rifa",
+        "prog_d1_t12_desc": "Espacio para retroalimentación vía QR con rifa incluida.",
+        "prog_d1_t12_tag": "Rifa",
+        "prog_d1_t13_title": "Receso",
+        "prog_d1_t13_desc": "Pausa corta antes del último bloque del día.",
+        "prog_d1_t13_tag": "Receso",
+
+        "prog_d1_block4_title": "BLOQUE - PRODUCTIVIDAD PERSONAL",
+        "prog_d1_block4_quote": '"Master your money, master your life"',
+        "prog_d1_t14_title": "Finanzas personales en inversiones",
+        "prog_d1_t14_desc": "Educación financiera aplicada: cómo tomar el control del dinero, diversificar ingresos y entender los fundamentos de la inversión para construir riqueza a largo plazo.",
+        "prog_d1_t14_tag": "Charla",
+        "prog_d1_t15_title": "Actividad Colectiva",
+        "prog_d1_t15_desc": "Dinámica grupal de cierre para consolidar lo aprendido durante el día e incentivar la conexión entre todos los participantes.",
+        "prog_d1_t15_tag": "Dinámica",
+        "prog_d1_t16_title": "Cierre y Rifa",
+        "prog_d1_t16_desc": "Retroalimentación final, palabras de cierre del día 1 y rifa para los asistentes.",
+        "prog_d1_t16_tag": "Cierre",
+
+        // Program Day 2
+        "prog_d2_block1_title": "BLOQUE - INICIO",
+        "prog_d2_t1_title": "Inicio del último día",
+        "prog_d2_t1_desc": "Apertura de la segunda y última jornada de TOB-ATI 2026, dando el tono para un día enfocado en optimización, datos y tecnologías disruptivas.",
+        "prog_d2_t1_tag": "Introducción",
+        "prog_d2_t2_title": "Acto Cultural",
+        "prog_d2_t2_desc": "Presentación cultural para dar inicio al día con energía.",
+        "prog_d2_t2_tag": "Acto Cultural",
+        "prog_d2_t3_title": "Introducción al día",
+        "prog_d2_t3_desc": "Formato podcast (o video) para presentar de forma dinámica los temas y objetivos del día: optimización de procesos, cultura de datos y tecnologías disruptivas.",
+        "prog_d2_t3_tag": "Podcast",
+        
+        "prog_d2_block2_title": "BLOQUE - OPTIMIZACIÓN DE PROCESOS",
+        "prog_d2_block2_quote": '"Keep it simple to keep the flow going"',
+        "prog_d2_t4_title": "Metodologías ágiles",
+        "prog_d2_t4_desc": "Cómo aplicar metodologías ágiles para simplificar procesos, mejorar la colaboración en equipo y entregar valor de forma más rápida y eficiente.",
+        "prog_d2_t4_tag": "Charla",
+        "prog_d2_t5_title": "Foro: AI Engineer",
+        "prog_d2_t5_desc": "Un espacio de storytelling sobre el rol del AI Engineer: cómo es el día a día, qué habilidades se requieren y hacia dónde va esta disciplina en pleno auge de la inteligencia artificial.",
+        "prog_d2_t5_tag": "Foro",
+        "prog_d2_t6_title": "Retroalimentación y Rifa",
+        "prog_d2_t6_desc": "Espacio para retroalimentación vía QR con rifa incluida.",
+        "prog_d2_t6_tag": "Rifa",
+        "prog_d2_t7_title": "Almuerzo",
+        "prog_d2_t7_desc": "Espacio de receso para almorzar y hacer networking.",
+        "prog_d2_t7_tag": "Receso",
+
+        "prog_d2_block3_title": "BLOQUE - CULTURA DE DATOS",
+        "prog_d2_block3_quote": '"Knowledge is power, but data is control"',
+        "prog_d2_t8_title": "Ciberseguridad",
+        "prog_d2_t8_desc": "Cómo mantener seguros nuestros datos: buenas prácticas, amenazas actuales y estrategias esenciales de ciberseguridad para proteger la información personal y empresarial.",
+        "prog_d2_t8_tag": "Charla",
+        "prog_d2_t9_title": "Business Intelligence (BI)",
+        "prog_d2_t9_desc": "Cómo el uso estratégico de datos impulsa la toma de decisiones empresariales, transformando información en insights accionables para el negocio.",
+        "prog_d2_t9_tag": "Charla",
+        "prog_d2_t10_title": "Acto Cultural",
+        "prog_d2_t10_desc": "Presentación cultural para dar dinamismo entre bloques.",
+        "prog_d2_t10_tag": "Acto Cultural",
+        "prog_d2_t11_title": "Cloud",
+        "prog_d2_t11_desc": "Datos en la nube: cómo manejarlos de forma segura y eficiente, y qué modelos de cloud computing están transformando la manera en que las empresas almacenan y procesan información.",
+        "prog_d2_t11_tag": "Charla",
+        "prog_d2_t12_title": "Retroalimentación y Rifa",
+        "prog_d2_t12_desc": "Espacio para retroalimentación vía QR con rifa incluida.",
+        "prog_d2_t12_tag": "Rifa",
+        "prog_d2_t13_title": "Receso",
+        "prog_d2_t13_desc": "Pausa corta antes del último bloque del evento.",
+        "prog_d2_t13_tag": "Receso",
+
+        "prog_d2_block4_title": "BLOQUE - TECNOLOGÍAS DISRUPTIVAS",
+        "prog_d2_block4_quote": '"The rules are being rewritten and we are holding the pen"',
+        "prog_d2_t14_title": "Blockchain",
+        "prog_d2_t14_desc": "Un vistazo al estado actual del blockchain: aplicaciones reales más allá de las criptomonedas y cómo esta tecnología está reescribiendo las reglas de la confianza digital.",
+        "prog_d2_t14_tag": "Charla",
+        "prog_d2_t15_title": "Mercadeo en la era digital",
+        "prog_d2_t15_desc": "Estrategias de mercadeo digital para conectar con audiencias en un entorno cada vez más saturado de contenido, y cómo destacar con propuestas de valor claras.",
+        "prog_d2_t15_tag": "Charla",
+        "prog_d2_t16_title": "Acto Cultural",
+        "prog_d2_t16_desc": "Presentación cultural para cerrar el ciclo de charlas del día.",
+        "prog_d2_t16_tag": "Acto Cultural",
+        "prog_d2_t17_title": "IA",
+        "prog_d2_t17_desc": "Cómo la inteligencia artificial está redefiniendo los modelos de negocio y por qué adaptarse rápidamente es la única opción viable en el mercado actual.",
+        "prog_d2_t17_tag": "Charla",
+        "prog_d2_t18_title": "Cierre y Rifa",
+        "prog_d2_t18_desc": "Retroalimentación final, cierre oficial del evento y última rifa de TOB-ATI 2026.",
+        "prog_d2_t18_tag": "Cierre",
+
+        // ATI Modal
+        "ati_lead": "Toda empresa quiere innovar con tecnología. Pocas saben cómo hacerlo bien.",
+        "ati_p1": "Ahí es donde entra el Administrador de Tecnología de Información: el profesional que habla el idioma del negocio y el idioma de TI, y logra que ambos se entiendan.",
+        "ati_p2": "No es \"el de sistemas\" que solo ejecuta lo que le piden. Tampoco es un gerente que decide sin entender la tecnología. Es el intérprete-negociador que se sienta en el medio: escucha lo que la empresa realmente necesita y traduce eso en soluciones tecnológicas que funcionan de verdad — no solo en teoría.",
+        "ati_h1": "¿Por qué esto importa para tu negocio?",
+        "ati_p3": "Porque la mayoría de los proyectos de TI fallan no por falta de tecnología, sino por falta de alguien que entienda ambos lados de la mesa.",
+        "ati_h2": "Un ATI puede:",
+        "ati_li1": "Liderar equipos multidisciplinarios en proyectos de tecnología, de principio a fin",
+        "ati_li2": "Evaluar si un proyecto realmente vale la inversión (técnica y económicamente)",
+        "ati_li3": "Diseñar soluciones a la medida, no recetas genéricas",
+        "ati_li4": "Rediseñar procesos completos usando TI como motor de transformación",
+        "ati_li5": "Asesorar a nivel ejecutivo en decisiones estratégicas de tecnología",
+        "ati_li6": "Convertir el conocimiento disperso de una organización en una ventaja competitiva real",
+        "ati_cta": "Conocer más"
     },
     en: {
         // Navbar & Mobile Menu
@@ -172,8 +406,20 @@ const translations = {
         "wa_card6_title": "Tech Enthusiasts",
         "wa_card6_desc": "Anyone passionate about technology, innovation, and business who wants to learn from experts and expand their network.",
 
+        // Phrases
+        "phrase_1": "15th Anniversary of TOB",
+        "phrase_2": "BANI World",
+        "phrase_3": "2 days",
+        "phrase_4": "6 blocks",
+        "phrase_5": "18 conferences",
+        "phrase_6": 'Students of <a href="#" onclick="openAtiModal(event)" class="text-cyan" style="text-decoration:underline;text-underline-offset:4px">ATI</a>',
+        "phrase_7": "Technology Congress",
+        "phrase_8": "August 18-19, 2026",
+
         // Sponsors
-        "sponsors_title": "Our Sponsors",
+        "sponsors_title": "Our Partners",
+        "main_spon_title": "Our Sponsors",
+        "main_spon_text": "Thanks to our sponsors for believing in the power of technology and innovation. Your trust and support make it possible for ToB 2026 to continue transforming the way we connect talent, ideas, and opportunities.",
 
         // Why Attend
         "why_title": "Why attend?",
@@ -183,6 +429,9 @@ const translations = {
         "term_text_3": "> Join HackaToB and showcase your skills.",
         "term_text_4": "> Discover networking and growth opportunities.",
         "term_text_5": "> Live a unique, immersive experience at TEC.",
+
+        // Presenters
+        "presenters_title": "Voices guiding the chaos",
 
         // Speakers
         "speak_label": "Speakers",
@@ -213,14 +462,26 @@ const translations = {
 
         // Modal
         "modal_text": "Error closing: ToB 2026 is inevitable.",
-        "modal_btn": "Accept"
+        "modal_btn": "Accept",
+
+        // ATI Modal
+        "ati_lead": "Every company wants to innovate with technology. Few know how to do it right.",
+        "ati_p1": "That's where the Information Technology Administrator comes in: the professional who speaks both the language of business and IT, and makes them understand each other.",
+        "ati_p2": "They are not just the \"IT guy\" who executes requests. Nor a manager who decides without understanding technology. They are the interpreter-negotiator in the middle: listening to what the company truly needs and translating that into technological solutions that actually work — not just in theory.",
+        "ati_h1": "Why does this matter for your business?",
+        "ati_p3": "Because most IT projects fail not due to a lack of technology, but due to the absence of someone who understands both sides of the table.",
+        "ati_h2": "An ATI can:",
+        "ati_li1": "Lead multidisciplinary teams in technology projects, from start to finish",
+        "ati_li2": "Evaluate whether a project is truly worth the investment (technologically and economically)",
+        "ati_li3": "Design tailor-made solutions, not generic recipes",
+        "ati_li4": "Redesign entire processes using IT as a transformation engine",
+        "ati_li5": "Advise at the executive level on strategic technology decisions",
+        "ati_li6": "Turn an organization's scattered knowledge into a real competitive advantage",
+        "ati_cta": "Learn more"
     }
 };
 
-// =========================================
 // LOGICA DE TRADUCCION
-// =========================================
-
 function applyTranslations(lang) {
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
@@ -275,10 +536,10 @@ function setLanguage(lang) {
 
 // Initial setup
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Get saved language or default to 'es'
+    // Get saved language or default to 'es'
     const savedLang = localStorage.getItem('tob_lang') || 'es';
     
-    // 2. Add click events to main toggles (Navbar and Mobile menu)
+    // Add click events to main toggles (navbar and mobile menu)
     const langToggles = document.querySelectorAll('.lang-selector');
     langToggles.forEach(toggle => {
         // Toggle on click anywhere in the selector
@@ -289,6 +550,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // 3. Apply translations
+    // Apply translations
     setLanguage(savedLang);
 });

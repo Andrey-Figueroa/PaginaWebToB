@@ -1,0 +1,97 @@
+/* speakers/style.css */
+
+.speakers-section {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 150px;
+    padding-bottom: 80px;
+    z-index: 1;
+}
+
+.speakers-section::before {
+    content: '';
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: url('../imagenes/speakers/FondoSpeakers.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+    will-change: transform;
+}
+
+/* Ensure the header text is legible over the background if it's dark/light */
+.speakers-header .speakers-label {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.speakers-header .speakers-title,
+.speakers-header .speakers-description {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Footer solid background for speakers page */
+.site-footer {
+    background: #0b0e14;
+    position: relative;
+    z-index: 10;
+}
+
+/* Static Speaker Cards (Replacing rotating cards) */
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.speaker-simple-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+}
+
+.speaker-avatar-wrap {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.speaker-avatar-wrap:hover {
+    transform: scale(1.05);
+}
+
+.speaker-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.speaker-simple-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.speaker-simple-role {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
