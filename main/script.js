@@ -135,8 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // LÓGICA DEL HERO Y SISTEMA SOLAR
-    // Contador de tiempo (hasta 18 agosto 2026 08:30:00)
-    const countdownDate = new Date("August 18, 2026 08:30:00").getTime();
+    // Contador de tiempo (hasta 18 agosto 2026 09:15:00)
+    const countdownDate = new Date("August 18, 2026 09:15:00").getTime();
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
     const minutesEl = document.getElementById("minutes");
@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ★ STAR TRAIL CURSOR GLOBAL
-    if (window.matchMedia('(pointer: fine)').matches) { 
+    if (window.matchMedia('(pointer: fine)').matches) {
 
         const starCanvas = document.getElementById('globalStarCanvas');
 
@@ -336,20 +336,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const ctx = starCanvas.getContext('2d');
 
             function resizeCanvas() {
-                starCanvas.width  = window.innerWidth;
+                starCanvas.width = window.innerWidth;
                 starCanvas.height = window.innerHeight;
             }
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
 
-            const MAX_PARTICLES  = 100;
+            const MAX_PARTICLES = 100;
             const SPAWN_PER_MOVE = 2;
-            const LIFETIME_MIN   = 500;
-            const LIFETIME_MAX   = 800;
+            const LIFETIME_MIN = 500;
+            const LIFETIME_MAX = 800;
             const COLORS = ['255,255,255', '33,208,255', '4,116,196'];
 
             let particles = [];
-            let rafId     = null;
+            let rafId = null;
             let isMouseIn = false;
 
             function spawnParticles(x, y) {
@@ -358,14 +358,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 for (let i = 0; i < count; i++) {
                     const lifetime = LIFETIME_MIN + Math.random() * (LIFETIME_MAX - LIFETIME_MIN);
                     particles.push({
-                        x:       x + (Math.random() - 0.5) * 6,
-                        y:       y + (Math.random() - 0.5) * 6,
-                        radius:  1.5 + Math.random() * 2,
-                        color:   COLORS[Math.floor(Math.random() * COLORS.length)],
-                        alpha:   0.7 + Math.random() * 0.3,
-                        vx:      (Math.random() - 0.5) * 0.6,
-                        vy:      -0.3 - Math.random() * 0.5,
-                        born:    performance.now(),
+                        x: x + (Math.random() - 0.5) * 6,
+                        y: y + (Math.random() - 0.5) * 6,
+                        radius: 1.5 + Math.random() * 2,
+                        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                        alpha: 0.7 + Math.random() * 0.3,
+                        vx: (Math.random() - 0.5) * 0.6,
+                        vy: -0.3 - Math.random() * 0.5,
+                        born: performance.now(),
                         lifetime,
                     });
                 }
@@ -375,16 +375,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.clearRect(0, 0, starCanvas.width, starCanvas.height);
 
                 particles = particles.filter(p => {
-                    const age      = now - p.born;
+                    const age = now - p.born;
                     const progress = age / p.lifetime;
                     if (progress >= 1) return false;
 
                     const alpha = p.alpha * (1 - progress);
 
                     ctx.save();
-                    ctx.shadowBlur  = 8;
+                    ctx.shadowBlur = 8;
                     ctx.shadowColor = `rgba(${p.color}, ${alpha})`;
-                    ctx.fillStyle   = `rgba(${p.color}, ${alpha})`;
+                    ctx.fillStyle = `rgba(${p.color}, ${alpha})`;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                     ctx.fill();
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // EFECTO TERMINAL TYPEWRITER (WHY ATTEND)
     const typewriterText = document.getElementById('typewriterText');
     const terminalWindow = document.getElementById('terminalWindow');
-    
+
     if (typewriterText && terminalWindow) {
         // Función para obtener el texto actual según el idioma
         const getTerminalText = () => {
@@ -438,12 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return "Technology on Business (ToB) es una oportunidad única en Costa Rica para estudiantes, profesionales, emprendedores y apasionados por la tecnología que desean impulsar su crecimiento personal y profesional. Durante dos días podrás aprender de expertos de la industria, descubrir las tendencias que transforman el mundo, fortalecer tus habilidades y conectar con personas que comparten tus intereses.\n\nAdemás, ToB 2026 es un evento completamente gratuito y abierto al público, brindando acceso a conferencias, experiencias y networking de alto nivel.\n\nSi buscas aprender, inspirarte y construir conexiones que impulsen tu futuro, este es el lugar para hacerlo.";
             }
         };
-        
+
         let fullText = getTerminalText();
         let index = 0;
         let isTyping = false;
         let typingTimeout = null;
-        
+
         // Escuchar cambios de idioma para actualizar en tiempo real
         window.addEventListener('languageChanged', (e) => {
             fullText = getTerminalText();
@@ -455,13 +455,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         function typeWriter() {
             if (index < fullText.length) {
                 typewriterText.textContent += fullText.charAt(index);
                 index++;
                 // Velocidad de tipeo variable (simula a un humano tecleando en terminal)
-                const delay = Math.random() * 25 + 15; 
+                const delay = Math.random() * 25 + 15;
                 typingTimeout = setTimeout(typeWriter, delay);
             }
         }
@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     isTyping = true;
                     // Breve pausa para simular el enter del comando
                     setTimeout(typeWriter, 600);
-                    observer.unobserve(terminalWindow); 
+                    observer.unobserve(terminalWindow);
                 }
             });
         }, { threshold: 0.4 });
@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnPaperPlane && planeIcon) {
         btnPaperPlane.addEventListener('click', (e) => {
             e.preventDefault();
-            
+
             if (isRegistering) return; // Debounce
             isRegistering = true;
 
@@ -543,8 +543,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Redirigir tras finalizar la animación (~800ms)
             setTimeout(() => {
                 // Cambiar por la URL final si es necesario (ej: Lu.ma)
-                window.open('https://luma.com/home', '_blank'); 
-                
+                window.open('https://luma.com/ak4bt58b', '_blank');
+
                 // Resetear estado después de redirigir
                 setTimeout(() => {
                     planeIcon.classList.remove('flying');
@@ -578,19 +578,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // LÓGICA DE SPEAKERS (Expositores)
     const speakersData = [
-        { foto: "../imagenes/speakers/speaker01.jpg", nombre: "Pedro Gutiérrez", puesto: "Avify", descripcion: "CEO de Avify. Compartirá el camino de construir una startup.", linkedin: "#", instagram: "#", charla: "Empresa de 0 a 1M" },
-        { foto: "../imagenes/speakers/speaker02.jpg", nombre: "Tamara Sancho", puesto: "P&G", descripcion: "Transformando el miedo en una herramienta de crecimiento profesional.", linkedin: "#", instagram: "#", charla: "Extraordinary Fears" },
-        { foto: "../imagenes/speakers/speaker03.jpg", nombre: "Pilar Sánchez", puesto: "Avify", descripcion: "Líder de la industria compartiendo su visión en resiliencia.", linkedin: "#", instagram: "#", charla: "Panel Mujeres en Tech" },
-        { foto: "../imagenes/speakers/speaker04.jpg", nombre: "Wendy Badilla", puesto: "Microsoft", descripcion: "Experta de Microsoft enfocada en empoderamiento femenino en STEM.", linkedin: "#", instagram: "#", charla: "Panel Mujeres en Tech" },
-        { foto: "../imagenes/speakers/speaker05.jpg", nombre: "Aaron Omodeo", puesto: "Doji Club", descripcion: "Especialista en finanzas prácticas y toma de decisiones de inversión.", linkedin: "#", instagram: "#", charla: "Finanzas personales en inversiones" },
-        { foto: "../imagenes/speakers/speaker06.jpg", nombre: "Cynthia Navarrete", puesto: "P&G", descripcion: "Especialista en impacto y claridad en comunicación profesional.", linkedin: "#", instagram: "#", charla: "Comunicación Efectiva" },
-        { foto: "../imagenes/speakers/speaker07.jpg", nombre: "María José Artavia", puesto: "Directora", descripcion: "Directora dando apertura oficial a TOB-ATI 2026.", linkedin: "#", instagram: "#", charla: "Inauguración" },
-        { foto: "../imagenes/speakers/speaker08.jpg", nombre: "Nicole", puesto: "Líder Tecnológica", descripcion: "Experta en liderazgo adaptativo en entornos de cambio acelerado.", linkedin: "#", instagram: "#", charla: "Liderazgo en la era de la transformación digital" },
-        { foto: "../imagenes/speakers/speaker09.jpg", nombre: "Alejandro Hidalgo", puesto: "P&G", descripcion: "Aplicación de metodologías ágiles para entregar valor más rápido.", linkedin: "#", instagram: "#", charla: "Metodologías ágiles" },
-        { foto: "../imagenes/speakers/speaker10.jpg", nombre: "Gerardo Nájera", puesto: "Sefisa", descripcion: "Estrategias de ciberseguridad para proteger información vital.", linkedin: "#", instagram: "#", charla: "Ciberseguridad" },
-        { foto: "../imagenes/speakers/speaker11.jpg", nombre: "Karla Córdoba", puesto: "Aso Blockchain CR", descripcion: "Aplicaciones reales de la confianza digital más allá de cripto.", linkedin: "#", instagram: "#", charla: "Blockchain" },
-        { foto: "../imagenes/speakers/speaker12.jpg", nombre: "Diego Loud", puesto: "Loud", descripcion: "Estrategias de mercadeo para conectar con audiencias saturadas.", linkedin: "#", instagram: "#", charla: "Mercadeo en la era digital" },
-        { foto: "../imagenes/speakers/speaker13.jpg", nombre: "Ronald Arce", puesto: "INCAE", descripcion: "Cómo la IA está redefiniendo los modelos de negocio.", linkedin: "#", instagram: "#", charla: "IA" }
+        { foto: "../imagenes/speakers/speaker01.webp", nombre: "Pedro Gutiérrez", puesto: "Avify", descripcion: "CEO de Avify. Compartirá el camino de construir una startup.", linkedin: "https://www.linkedin.com/in/peter-gg/", instagram: "#", charla: "Empresa de 0 a 1M" },
+        { foto: "../imagenes/speakers/speaker02.webp", nombre: "Tamara Sancho", puesto: "P&G", descripcion: "Transformando el miedo en una herramienta de crecimiento profesional.", linkedin: "https://www.linkedin.com/in/tamarajudit/", instagram: "#", charla: "Extraordinary Fears" },
+        { foto: "../imagenes/speakers/speaker03.webp", nombre: "Pilar Sánchez", puesto: "Avify", descripcion: "Líder de la industria compartiendo su visión en resiliencia.", linkedin: "https://www.linkedin.com/in/tamarajudit/?locale=Pilar%20S%C3%A1nchez%20Avify", instagram: "#", charla: "Panel Mujeres en Tech" },
+        { foto: "../imagenes/speakers/speaker04.webp", nombre: "Wendy Badilla", puesto: "Microsoft", descripcion: "Experta de Microsoft enfocada en empoderamiento femenino en STEM.", linkedin: "https://www.linkedin.com/in/wendy-badilla-225630a0/", instagram: "#", charla: "Panel Mujeres en Tech" },
+        { foto: "../imagenes/speakers/speaker05.webp", nombre: "Aaron Omodeo", puesto: "Doji Club", descripcion: "Especialista en finanzas prácticas y toma de decisiones de inversión.", linkedin: "https://www.linkedin.com/in/aaron-omodeo/", instagram: "#", charla: "Finanzas personales en inversiones" },
+        { foto: "../imagenes/speakers/speaker06.webp", nombre: "Cynthia Navarrete", puesto: "P&G", descripcion: "Especialista en impacto y claridad en comunicación profesional.", linkedin: "https://www.linkedin.com/in/cynthia-navarrete-704854105/", instagram: "#", charla: "Comunicación Efectiva" },
+        { foto: "../imagenes/speakers/speaker07.webp", nombre: "María José Artavia", puesto: "Directora", descripcion: "Directora dando apertura oficial a TOB-ATI 2026.", linkedin: "#", instagram: "#", charla: "Inauguración" },
+        { foto: "../imagenes/speakers/speaker08.webp", nombre: "Nicole", puesto: "Líder Tecnológica", descripcion: "Experta en liderazgo adaptativo en entornos de cambio acelerado.", linkedin: "#", instagram: "#", charla: "Liderazgo en la era de la transformación digital" },
+        { foto: "../imagenes/speakers/speaker09.webp", nombre: "Alejandro Hidalgo", puesto: "P&G", descripcion: "Aplicación de metodologías ágiles para entregar valor más rápido.", linkedin: "#", instagram: "#", charla: "Metodologías ágiles" },
+        { foto: "../imagenes/speakers/speaker10.webp", nombre: "Gerardo Nájera", puesto: "Sefisa", descripcion: "Estrategias de ciberseguridad para proteger información vital.", linkedin: "#", instagram: "#", charla: "Ciberseguridad" },
+        { foto: "../imagenes/speakers/speaker11.webp", nombre: "Karla Córdoba", puesto: "Aso Blockchain CR", descripcion: "Aplicaciones reales de la confianza digital más allá de cripto.", linkedin: "#", instagram: "#", charla: "Blockchain" },
+        { foto: "../imagenes/speakers/speaker12.webp", nombre: "Diego Loud", puesto: "Loud", descripcion: "Estrategias de mercadeo para conectar con audiencias saturadas.", linkedin: "#", instagram: "#", charla: "Mercadeo en la era digital" },
+        { foto: "../imagenes/speakers/speaker13.webp", nombre: "Ronald Arce", puesto: "INCAE", descripcion: "Cómo la IA está redefiniendo los modelos de negocio.", linkedin: "#", instagram: "#", charla: "IA" }
     ];
 
     // Paleta de colores derivados de la marca para las tarjetas
@@ -642,13 +642,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span data-i18n="speaker_${i18nId}_charla">${speaker.charla}</span>
                         </p>
                         <div class="speaker-socials">
+                            ${speaker.linkedin && speaker.linkedin !== "#" ? `
                             <a href="${speaker.linkedin}" target="_blank" class="social-link" style="background: ${isLightBg ? 'rgba(0,0,0,0.1)' : ''}; color: ${isLightBg ? '#0b0e14' : '#fff'}">
                                 <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
+                            </a>` : ''}
+                            ${speaker.instagram && speaker.instagram !== "#" ? `
                             <a href="${speaker.instagram}" target="_blank" class="social-link" style="background: ${isLightBg ? 'rgba(0,0,0,0.1)' : ''}; color: ${isLightBg ? '#0b0e14' : '#fff'}">
                                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            </a>
-
+                            </a>` : ''}
                         </div>
                     </div>
                 </div>
@@ -674,40 +675,40 @@ document.addEventListener('DOMContentLoaded', () => {
         function updateLocationAnimation() {
             let rect = locationWrapper.getBoundingClientRect();
             let scrollDistance = rect.height - window.innerHeight;
-            
+
             // Protección contra caché de CSS o fallos de cálculo (scrollDistance = 0 causa NaN)
             if (scrollDistance <= 0) {
                 locationWrapper.style.height = '250vh';
                 rect = locationWrapper.getBoundingClientRect();
                 scrollDistance = rect.height - window.innerHeight;
             }
-            
+
             // Progreso del 0 al 1
             let progress = -rect.top / scrollDistance;
             progress = Math.max(0, Math.min(1, progress));
-            
+
             // --- TIERRA ---
             let earthScale = 1 + (progress * 4);
             let earthOpacity = 1;
             if (progress > 0.6) earthOpacity = 1 - ((progress - 0.6) / 0.4);
-            
+
             // --- CONTENIDO FINAL ---
             let contentOpacity = 0;
             if (progress > 0.6) {
                 contentOpacity = (progress - 0.6) / 0.4;
             }
-            
+
             // Aplicar estilos defensivamente
             if (layerEarth) {
                 layerEarth.style.transform = `scale(${earthScale})`;
                 layerEarth.style.opacity = Math.max(0, Math.min(1, earthOpacity));
             }
-            
+
             if (layerContent) {
                 layerContent.style.opacity = Math.max(0, Math.min(1, contentOpacity));
                 layerContent.style.pointerEvents = progress > 0.9 ? 'auto' : 'none';
             }
-            
+
             isTicking = false;
         }
 
@@ -720,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         updateLocationAnimation();
     }
 
@@ -742,7 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Dinámicamente generar 3 presentadores
         const presentersData = [
             {
-                foto: "../imagenes/host/presentador01.jpg",
+                foto: "../imagenes/host/presentador01.webp",
                 nombre: "Anthony Fuentes",
                 puesto: "Presentador/a oficial del ToB 2026",
                 bio: "Software Engineer y estudiante de Ingeniería en Computación en el TEC. Fotógrafo y creador de contenido con más de 137 mil seguidores, combinando su pasión por la tecnología con la narrativa visual.",
@@ -750,16 +751,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 instagram: "https://www.instagram.com/anthonyfuentes__/"
             },
             {
-                foto: "../imagenes/host/presentador02.jpg",
-                nombre: "",
-                puesto: "",
-                bio: "",
-                linkedin: "#",
-                instagram: "#",
-                isComingSoon: true
+                foto: "../imagenes/host/presentador02.webp",
+                nombre: "María de la Paz Bloise",
+                puesto: "Presentadora oficial del ToB 2026",
+                bio: "Coordinadora de Alianzas en Technology on Business. Estudiante de Administración de Tecnología de Información en el TEC. Persona líder con altas capacidades de comunicación oral y escrita, buenas relaciones interpersonales, creativa y con hábito de mejora constante. Apasionada por el servicio al cliente, la mejora de procesos y la transformación digital de negocio, combinando su experiencia en alimentos y bebidas con formación tecnológica para proponer soluciones en entornos dinámicos.",
+                linkedin: "https://www.linkedin.com/in/pazbloise/",
+                instagram: "https://www.instagram.com/pazbloise/",
+                isComingSoon: false
             },
             {
-                foto: "../imagenes/host/presentador03.jpg",
+                foto: "../imagenes/host/presentador03.webp",
                 nombre: "",
                 puesto: "",
                 bio: "",
@@ -833,11 +834,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const half = Math.floor(total / 2);
                 if (dist > half) dist -= total;
                 if (dist < -half) dist += total;
-                if (dist === 0)       card.classList.add('active');
+                if (dist === 0) card.classList.add('active');
                 else if (dist === -1) card.classList.add('prev');
-                else if (dist === 1)  card.classList.add('next');
+                else if (dist === 1) card.classList.add('next');
                 else if (dist === -2) card.classList.add('prev-far');
-                else if (dist === 2)  card.classList.add('next-far');
+                else if (dist === 2) card.classList.add('next-far');
             });
             dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
         }
@@ -848,15 +849,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let dragging = false, startX = 0, diffX = 0;
         const THRESHOLD = 50;
 
-        carouselTrack.addEventListener('mousedown',  e => { dragging = true; startX = e.pageX; });
-        window.addEventListener('mousemove',         e => { if (dragging) diffX = e.pageX - startX; });
-        window.addEventListener('mouseup',           () => { if (!dragging) return; dragging = false; applySwipe(); });
+        carouselTrack.addEventListener('mousedown', e => { dragging = true; startX = e.pageX; });
+        window.addEventListener('mousemove', e => { if (dragging) diffX = e.pageX - startX; });
+        window.addEventListener('mouseup', () => { if (!dragging) return; dragging = false; applySwipe(); });
         carouselTrack.addEventListener('touchstart', e => { dragging = true; startX = e.touches[0].clientX; }, { passive: true });
-        window.addEventListener('touchmove',         e => { if (dragging) diffX = e.touches[0].clientX - startX; }, { passive: true });
-        window.addEventListener('touchend',          () => { if (!dragging) return; dragging = false; applySwipe(); });
+        window.addEventListener('touchmove', e => { if (dragging) diffX = e.touches[0].clientX - startX; }, { passive: true });
+        window.addEventListener('touchend', () => { if (!dragging) return; dragging = false; applySwipe(); });
 
         function applySwipe() {
-            if (diffX > THRESHOLD)       currentIndex = (currentIndex - 1 + total) % total;
+            if (diffX > THRESHOLD) currentIndex = (currentIndex - 1 + total) % total;
             else if (diffX < -THRESHOLD) currentIndex = (currentIndex + 1) % total;
             diffX = 0;
             update();

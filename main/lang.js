@@ -13,6 +13,10 @@ const translations = {
         "nav_hackatob": "HackaToB",
         "nav_hack_title": "Hackathon ToB",
         "nav_hack_desc": "Participa en el reto de programación.",
+        "nav_gallery": "Galería ToB",
+        "nav_gallery_title": "Muy pronto...",
+        "nav_gallery_desc": "Revive los mejores momentos.",
+        "hero_btn_gallery": "Ver Galería",
         "nav_asistir": "Asistir",
 
         // Hero
@@ -22,7 +26,7 @@ const translations = {
         "hero_time_hrs": "HRS",
         "hero_time_min": "MIN",
         "hero_time_seg": "SEG",
-        
+
         // Solar System
         "planet_1": "Innovación",
         "planet_2": "Networking",
@@ -76,6 +80,7 @@ const translations = {
 
         // Sponsors
         "sponsors_title": "Nuestros Partners",
+        "sponsors_text": "Organizaciones que creen en el talento costarricense y se suman para hacer del ToB 2026 una experiencia inolvidable. Su apoyo impulsa a nuestra comunidad y fortalece el futuro de la tecnología en Costa Rica.",
         "main_spon_title": "Nuestros Sponsors",
         "main_spon_text": "Gracias a nuestros sponsors por creer en el poder de la tecnología y la innovación. Su confianza y apoyo hacen posible que el ToB 2026 siga transformando la forma en que conectamos talento, ideas y oportunidades.",
 
@@ -102,9 +107,9 @@ const translations = {
         "loc_title": "Centro de las Artes, TEC",
         "loc_address": "V34Q+X9W, Centro de las Artes, Tecnológico de Costa Rica,<br>Provincia de Cartago, Cartago",
         "loc_door": "Apertura de puertas",
-        "loc_tbd1": "Por definir",
+        "loc_tbd1": "9:00 am",
         "loc_start": "Inicio de evento",
-        "loc_tbd2": "Por definir",
+        "loc_tbd2": "9:15 am",
         "loc_maps": "Ver ubicación en Google Maps",
 
         // Footer
@@ -126,7 +131,11 @@ const translations = {
         "presenter_1_name": "Anthony Fuentes",
         "presenter_1_role": "Presentador oficial del ToB 2026",
         "presenter_1_bio": "Software Engineer y estudiante de Ingeniería en Computación en el TEC. Fotógrafo y creador de contenido con más de 137 mil seguidores, combinando su pasión por la tecnología con la narrativa visual.",
-        
+
+        "presenter_2_name": "María de la Paz Bloise",
+        "presenter_2_role": "Presentadora oficial del ToB 2026",
+        "presenter_2_bio": "Coordinadora de Alianzas en Technology on Business. Estudiante de Administración de Tecnología de Información en el TEC. Persona líder con altas capacidades de comunicación oral y escrita, buenas relaciones interpersonales, creativa y con hábito de mejora constante.",
+
         "presenter_coming_name": "Pronto...",
         "presenter_coming_role": "---",
         "presenter_coming_bio": "Más información próximamente.",
@@ -200,7 +209,7 @@ const translations = {
         // Program Day 1
         "prog_d1_tab": "Día 1 - 18 de Agosto",
         "prog_d2_tab": "Día 2 - 19 de Agosto",
-        
+
         "prog_d1_block1_title": "BLOQUE - INICIO",
         "prog_d1_t1_title": "Inauguración",
         "prog_d1_t1_desc": "Palabras de bienvenida para dar apertura oficial a TOB-ATI 2026, marcando el inicio de dos días dedicados a la innovación, el crecimiento profesional y la conexión con la industria tecnológica.",
@@ -226,7 +235,7 @@ const translations = {
         "prog_d1_t7_title": "Almuerzo",
         "prog_d1_t7_desc": "Espacio de receso para almorzar y hacer networking.",
         "prog_d1_t7_tag": "Receso",
-        
+
         "prog_d1_block3_title": "BLOQUE - CRECIMIENTO CONTINUO",
         "prog_d1_block3_quote": '"We are only as strong as we are united, as weak as we are divided"',
         "prog_d1_t8_title": "Empresa de 0 a 1M",
@@ -271,7 +280,7 @@ const translations = {
         "prog_d2_t3_title": "Introducción al día",
         "prog_d2_t3_desc": "Formato podcast (o video) para presentar de forma dinámica los temas y objetivos del día: optimización de procesos, cultura de datos y tecnologías disruptivas.",
         "prog_d2_t3_tag": "Podcast",
-        
+
         "prog_d2_block2_title": "BLOQUE - OPTIMIZACIÓN DE PROCESOS",
         "prog_d2_block2_quote": '"Keep it simple to keep the flow going"',
         "prog_d2_t4_title": "Metodologías ágiles",
@@ -339,7 +348,19 @@ const translations = {
         "ati_li4": "Rediseñar procesos completos usando TI como motor de transformación",
         "ati_li5": "Asesorar a nivel ejecutivo en decisiones estratégicas de tecnología",
         "ati_li6": "Convertir el conocimiento disperso de una organización en una ventaja competitiva real",
-        "ati_cta": "Conocer más"
+        "ati_cta": "Conocer más",
+        
+        "prog_hero_eyebrow": "Technology on Business 2026",
+        "prog_hero_title": "Programa del <span class=\"text-cyan\">Evento</span>",
+        "prog_hero_slogan": "Dos días de conferencias, talleres y networking con los líderes de la industria tecnológica.",
+        "prog_date1": "18 de Agosto, 2026",
+        "prog_date2": "19 de Agosto, 2026",
+        "prog_tab1_day": "Día 1",
+        "prog_tab1_date": "18 de Agosto",
+        "prog_tab2_day": "Día 2",
+        "prog_tab2_date": "19 de Agosto",
+        "prog_footer_address": "Área de Tecnología de Información · <strong>ATI TEC</strong><br>Tecnológico de Costa Rica",
+        "prog_footer_copy": "© 2026 Technology on Business · ToB. Todos los derechos reservados."
     },
     en: {
         // Navbar & Mobile Menu
@@ -355,6 +376,10 @@ const translations = {
         "nav_hackatob": "HackaToB",
         "nav_hack_title": "ToB Hackathon",
         "nav_hack_desc": "Join the programming challenge.",
+        "nav_gallery": "ToB Gallery",
+        "nav_gallery_title": "Coming soon...",
+        "nav_gallery_desc": "Relive the best moments.",
+        "hero_btn_gallery": "View Gallery",
         "nav_asistir": "Attend",
 
         // Hero
@@ -364,7 +389,7 @@ const translations = {
         "hero_time_hrs": "HRS",
         "hero_time_min": "MIN",
         "hero_time_seg": "SEC",
-        
+
         // Solar System
         "planet_1": "Innovation",
         "planet_2": "Networking",
@@ -418,6 +443,7 @@ const translations = {
 
         // Sponsors
         "sponsors_title": "Our Partners",
+        "sponsors_text": "Organizations that believe in Costa Rican talent and join us to make ToB 2026 an unforgettable experience. Their support boosts our community and strengthens the future of technology in Costa Rica.",
         "main_spon_title": "Our Sponsors",
         "main_spon_text": "Thanks to our sponsors for believing in the power of technology and innovation. Your trust and support make it possible for ToB 2026 to continue transforming the way we connect talent, ideas, and opportunities.",
 
@@ -439,14 +465,58 @@ const translations = {
         "speak_desc": "At ToB you will have the opportunity to listen to industry experts, discover emerging technologies, and connect with people who share your passion for innovation, business, and the digital future.",
         "speak_btn": "See more speakers",
 
+        // Presenters (Specific)
+        "presenter_1_name": "Anthony Fuentes",
+        "presenter_1_role": "Official Host of ToB 2026",
+        "presenter_1_bio": "Software Engineer and Computer Engineering student at TEC. Photographer and content creator with over 137 thousand followers, combining his passion for technology with visual storytelling.",
+
+        "presenter_2_name": "María de la Paz Bloise",
+        "presenter_2_role": "Official Host of ToB 2026",
+        "presenter_2_bio": "Partnerships Coordinator at Technology on Business. Information Technology Administration student at TEC. A leader with high oral and written communication skills, great interpersonal relationships, creative, and with a habit of constant improvement.",
+
+        "presenter_coming_name": "Coming Soon...",
+        "presenter_coming_role": "---",
+        "presenter_coming_bio": "More information coming soon.",
+
+        // Speakers Details
+        "speaker_01_name": "Pedro Gutiérrez",
+        "speaker_01_role": "Avify",
+        "speaker_01_bio": "CEO of Avify. He will share the journey of building a startup.",
+        "speaker_01_charla": "Company from 0 to 1M",
+
+        "speaker_02_name": "Tamara Sancho",
+        "speaker_02_role": "P&G",
+        "speaker_02_bio": "Transforming fear into a tool for professional growth.",
+        "speaker_02_charla": "Extraordinary Fears",
+
+        "speaker_03_name": "Pilar Sánchez",
+        "speaker_03_role": "Avify",
+        "speaker_03_bio": "Industry leader sharing her vision on resilience.",
+        "speaker_03_charla": "Women in Tech Panel",
+
+        "speaker_04_name": "Wendy Badilla",
+        "speaker_04_role": "Microsoft",
+        "speaker_04_bio": "Microsoft expert focused on female empowerment in STEM.",
+        "speaker_04_charla": "Women in Tech Panel",
+
+        "speaker_05_name": "Aaron Omodeo",
+        "speaker_05_role": "Doji Club",
+        "speaker_05_bio": "Specialist in practical finance and investment decision making.",
+        "speaker_05_charla": "Personal Finance in Investments",
+
+        "speaker_06_name": "Cynthia Navarrete",
+        "speaker_06_role": "P&G",
+        "speaker_06_bio": "Specialist in impact and clarity in professional communication.",
+        "speaker_06_charla": "Effective Communication",
+
         // Location
         "loc_label": "Meeting Point",
         "loc_title": "Arts Center, TEC",
         "loc_address": "V34Q+X9W, Arts Center, Tecnológico de Costa Rica,<br>Cartago Province, Cartago",
         "loc_door": "Doors open",
-        "loc_tbd1": "To be defined",
+        "loc_tbd1": "9:00am",
         "loc_start": "Event starts",
-        "loc_tbd2": "To be defined",
+        "loc_tbd2": "9:15 am",
         "loc_maps": "View location on Google Maps",
 
         // Footer
@@ -464,6 +534,135 @@ const translations = {
         "modal_text": "Error closing: ToB 2026 is inevitable.",
         "modal_btn": "Accept",
 
+        // Program Day 1
+        "prog_d1_tab": "Day 1 - August 18",
+        "prog_d2_tab": "Day 2 - August 19",
+
+        "prog_d1_block1_title": "BLOCK - START",
+        "prog_d1_t1_title": "Inauguration",
+        "prog_d1_t1_desc": "Welcoming words to officially open TOB-ATI 2026, marking the start of two days dedicated to innovation, professional growth, and connection with the tech industry.",
+        "prog_d1_t1_tag": "Introduction",
+        "prog_d1_t2_title": "Cultural Act: Bandati",
+        "prog_d1_t2_desc": "Cultural presentation to provide a musical/artistic break before starting with the day's content.",
+        "prog_d1_t2_tag": "Cultural Act",
+        "prog_d1_t3_title": "Introduction to the event",
+        "prog_d1_t3_desc": "Welcome dynamic to break the ice among attendees and present the mechanics, tracks, and objectives of TOB-ATI 2026.",
+        "prog_d1_t3_tag": "Dynamic",
+
+        "prog_d1_block2_title": "BLOCK - SELF BALANCE",
+        "prog_d1_block2_quote": '"You can\'t make change if you can\'t master yourself"',
+        "prog_d1_t4_title": "Extraordinary Fears: a quick guide on how to transform fear",
+        "prog_d1_t4_desc": "A practical guide to identify fear as a catalyst rather than an obstacle, learning to manage it to make bold decisions in life and business.",
+        "prog_d1_t4_tag": "Talk",
+        "prog_d1_t5_title": "Effective Communication",
+        "prog_d1_t5_desc": "Strategies to convey ideas with clarity and power, ensuring the message is not only heard but generates impact and action in any professional environment.",
+        "prog_d1_t5_tag": "Workshop",
+        "prog_d1_t6_title": "Feedback and Raffle",
+        "prog_d1_t6_desc": "Space for feedback via QR with raffle included.",
+        "prog_d1_t6_tag": "Raffle",
+        "prog_d1_t7_title": "Lunch",
+        "prog_d1_t7_desc": "Break space to have lunch and network.",
+        "prog_d1_t7_tag": "Break",
+
+        "prog_d1_block3_title": "BLOCK - CONTINUOUS GROWTH",
+        "prog_d1_block3_quote": '"We are only as strong as we are united, as weak as we are divided"',
+        "prog_d1_t8_title": "Company from 0 to 1M",
+        "prog_d1_t8_desc": "The real path, without filters, of building a startup from scratch to reaching its first million: the mistakes, the successes, and accelerated growth strategies.",
+        "prog_d1_t8_tag": "Talk",
+        "prog_d1_t9_title": "Leadership in the era of digital transformation",
+        "prog_d1_t9_desc": "How to guide teams through constant technological change, fostering a culture of adaptability and innovation when the rules of the game change every day.",
+        "prog_d1_t9_tag": "Talk",
+        "prog_d1_t10_title": "Cultural Act",
+        "prog_d1_t10_desc": "Cultural presentation to provide dynamism between blocks.",
+        "prog_d1_t10_tag": "Cultural Act",
+        "prog_d1_t11_title": "Panel: Women in Tech",
+        "prog_d1_t11_desc": "An unmissable panel on the challenges, perspectives, and impact of female leadership in the tech industry, with leading voices paving the way.",
+        "prog_d1_t11_tag": "Panel",
+        "prog_d1_t12_title": "Feedback and Raffle",
+        "prog_d1_t12_desc": "Space for feedback via QR with raffle included.",
+        "prog_d1_t12_tag": "Raffle",
+        "prog_d1_t13_title": "Break",
+        "prog_d1_t13_desc": "Short pause before the last block of the day.",
+        "prog_d1_t13_tag": "Break",
+
+        "prog_d1_block4_title": "BLOCK - PERSONAL PRODUCTIVITY",
+        "prog_d1_block4_quote": '"Master your money, master your life"',
+        "prog_d1_t14_title": "Personal finances in investments",
+        "prog_d1_t14_desc": "Applied financial education: how to take control of money, diversify income, and understand the fundamentals of investing to build long-term wealth.",
+        "prog_d1_t14_tag": "Talk",
+        "prog_d1_t15_title": "Collective Activity",
+        "prog_d1_t15_desc": "Closing group dynamic to consolidate what was learned during the day and encourage connection among all participants.",
+        "prog_d1_t15_tag": "Dynamic",
+        "prog_d1_t16_title": "Closing and Raffle",
+        "prog_d1_t16_desc": "Final feedback, closing words for day 1, and raffle for attendees.",
+        "prog_d1_t16_tag": "Closing",
+
+        // Program Day 2
+        "prog_d2_block1_title": "BLOCK - START",
+        "prog_d2_t1_title": "Start of the last day",
+        "prog_d2_t1_desc": "Opening of the second and last day of TOB-ATI 2026, setting the tone for a day focused on optimization, data, and disruptive technologies.",
+        "prog_d2_t1_tag": "Introduction",
+        "prog_d2_t2_title": "Cultural Act",
+        "prog_d2_t2_desc": "Cultural presentation to start the day with energy.",
+        "prog_d2_t2_tag": "Cultural Act",
+        "prog_d2_t3_title": "Introduction to the day",
+        "prog_d2_t3_desc": "Podcast (or video) format to dynamically present the day's topics and objectives: process optimization, data culture, and disruptive technologies.",
+        "prog_d2_t3_tag": "Podcast",
+
+        "prog_d2_block2_title": "BLOCK - PROCESS OPTIMIZATION",
+        "prog_d2_block2_quote": '"Keep it simple to keep the flow going"',
+        "prog_d2_t4_title": "Agile methodologies",
+        "prog_d2_t4_desc": "How to apply agile methodologies to simplify processes, improve team collaboration, and deliver value faster and more efficiently.",
+        "prog_d2_t4_tag": "Talk",
+        "prog_d2_t5_title": "Forum: AI Engineer",
+        "prog_d2_t5_desc": "A storytelling space about the role of the AI Engineer: what the day-to-day is like, what skills are required, and where this discipline is heading in the midst of the artificial intelligence boom.",
+        "prog_d2_t5_tag": "Forum",
+        "prog_d2_t6_title": "Feedback and Raffle",
+        "prog_d2_t6_desc": "Space for feedback via QR with raffle included.",
+        "prog_d2_t6_tag": "Raffle",
+        "prog_d2_t7_title": "Lunch",
+        "prog_d2_t7_desc": "Break space to have lunch and network.",
+        "prog_d2_t7_tag": "Break",
+
+        "prog_d2_block3_title": "BLOCK - DATA CULTURE",
+        "prog_d2_block3_quote": '"Knowledge is power, but data is control"',
+        "prog_d2_t8_title": "Cybersecurity",
+        "prog_d2_t8_desc": "How to keep our data safe: best practices, current threats, and essential cybersecurity strategies to protect personal and business information.",
+        "prog_d2_t8_tag": "Talk",
+        "prog_d2_t9_title": "Business Intelligence (BI)",
+        "prog_d2_t9_desc": "How the strategic use of data drives business decision-making, transforming information into actionable insights for the business.",
+        "prog_d2_t9_tag": "Talk",
+        "prog_d2_t10_title": "Cultural Act",
+        "prog_d2_t10_desc": "Cultural presentation to provide dynamism between blocks.",
+        "prog_d2_t10_tag": "Cultural Act",
+        "prog_d2_t11_title": "Cloud",
+        "prog_d2_t11_desc": "Data in the cloud: how to manage it securely and efficiently, and what cloud computing models are transforming the way companies store and process information.",
+        "prog_d2_t11_tag": "Talk",
+        "prog_d2_t12_title": "Feedback and Raffle",
+        "prog_d2_t12_desc": "Space for feedback via QR with raffle included.",
+        "prog_d2_t12_tag": "Raffle",
+        "prog_d2_t13_title": "Break",
+        "prog_d2_t13_desc": "Short pause before the last block of the event.",
+        "prog_d2_t13_tag": "Break",
+
+        "prog_d2_block4_title": "BLOCK - DISRUPTIVE TECHNOLOGIES",
+        "prog_d2_block4_quote": '"The rules are being rewritten and we are holding the pen"',
+        "prog_d2_t14_title": "Blockchain",
+        "prog_d2_t14_desc": "A look at the current state of blockchain: real applications beyond cryptocurrencies and how this technology is rewriting the rules of digital trust.",
+        "prog_d2_t14_tag": "Talk",
+        "prog_d2_t15_title": "Marketing in the digital era",
+        "prog_d2_t15_desc": "Digital marketing strategies to connect with audiences in an increasingly content-saturated environment, and how to stand out with clear value propositions.",
+        "prog_d2_t15_tag": "Talk",
+        "prog_d2_t16_title": "Cultural Act",
+        "prog_d2_t16_desc": "Cultural presentation to close the day's cycle of talks.",
+        "prog_d2_t16_tag": "Cultural Act",
+        "prog_d2_t17_title": "AI",
+        "prog_d2_t17_desc": "How artificial intelligence is redefining business models and why adapting quickly is the only viable option in today's market.",
+        "prog_d2_t17_tag": "Talk",
+        "prog_d2_t18_title": "Closing and Raffle",
+        "prog_d2_t18_desc": "Final feedback, official closing of the event, and the last raffle of TOB-ATI 2026.",
+        "prog_d2_t18_tag": "Closing",
+
         // ATI Modal
         "ati_lead": "Every company wants to innovate with technology. Few know how to do it right.",
         "ati_p1": "That's where the Information Technology Administrator comes in: the professional who speaks both the language of business and IT, and makes them understand each other.",
@@ -477,7 +676,19 @@ const translations = {
         "ati_li4": "Redesign entire processes using IT as a transformation engine",
         "ati_li5": "Advise at the executive level on strategic technology decisions",
         "ati_li6": "Turn an organization's scattered knowledge into a real competitive advantage",
-        "ati_cta": "Learn more"
+        "ati_cta": "Learn more",
+        
+        "prog_hero_eyebrow": "Technology on Business 2026",
+        "prog_hero_title": "Event <span class=\"text-cyan\">Program</span>",
+        "prog_hero_slogan": "Two days of conferences, workshops, and networking with technology industry leaders.",
+        "prog_date1": "August 18, 2026",
+        "prog_date2": "August 19, 2026",
+        "prog_tab1_day": "Day 1",
+        "prog_tab1_date": "August 18",
+        "prog_tab2_day": "Day 2",
+        "prog_tab2_date": "August 19",
+        "prog_footer_address": "Information Technology Area · <strong>ATI TEC</strong><br>Costa Rica Institute of Technology",
+        "prog_footer_copy": "© 2026 Technology on Business · ToB. All rights reserved."
     }
 };
 
@@ -490,29 +701,29 @@ function applyTranslations(lang) {
             el.innerHTML = translations[lang][key];
         }
     });
-    
+
     // Update active class on language selectors
     document.querySelectorAll('.lang-selector').forEach(selector => {
         const spans = selector.querySelectorAll('.lang-text');
         const slider = selector.querySelector('.lang-slider');
-        
+
         spans.forEach(span => span.classList.remove('active'));
-        
+
         if (lang === 'en') {
-            if(spans.length > 1) spans[1].classList.add('active'); // EN
-            if(slider) slider.style.transform = 'translateX(100%)';
+            if (spans.length > 1) spans[1].classList.add('active'); // EN
+            if (slider) slider.style.transform = 'translateX(100%)';
         } else {
-            if(spans.length > 0) spans[0].classList.add('active'); // ES
-            if(slider) slider.style.transform = 'translateX(0)';
+            if (spans.length > 0) spans[0].classList.add('active'); // ES
+            if (slider) slider.style.transform = 'translateX(0)';
         }
     });
 
     // Also update footer language selectors (which are just simple spans/a)
     document.querySelectorAll('.footer-lang-selector').forEach(selector => {
-        selector.innerHTML = lang === 'es' 
+        selector.innerHTML = lang === 'es'
             ? `<span class="lang-active">ES</span> | <a href="#" class="lang-switch" data-target="en">EN</a>`
             : `<a href="#" class="lang-switch" data-target="es">ES</a> | <span class="lang-active">EN</span>`;
-            
+
         // Re-attach listeners for footer newly generated links
         const newLinks = selector.querySelectorAll('.lang-switch');
         newLinks.forEach(link => {
@@ -529,7 +740,7 @@ function applyTranslations(lang) {
 function setLanguage(lang) {
     localStorage.setItem('tob_lang', lang);
     applyTranslations(lang);
-    
+
     // Trigger a custom event in case other scripts need to know (like the terminal text)
     window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
 }
@@ -538,7 +749,7 @@ function setLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
     // Get saved language or default to 'es'
     const savedLang = localStorage.getItem('tob_lang') || 'es';
-    
+
     // Add click events to main toggles (navbar and mobile menu)
     const langToggles = document.querySelectorAll('.lang-selector');
     langToggles.forEach(toggle => {
@@ -549,7 +760,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setLanguage(newLang);
         });
     });
-    
+
     // Apply translations
     setLanguage(savedLang);
 });

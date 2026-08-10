@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToB - Speakers</title>
-    <link rel="icon" type="image/png" href="../imagenes/Miniatura/Miniatura.png">
+    <link rel="icon" type="image/webp" href="../imagenes/Miniatura/Miniatura.webp">
     <link rel="stylesheet" href="../main/style.css?v=2">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,7 +14,7 @@
 
     <!-- Pantalla de Carga -->
     <div id="loader-wrapper" class="loader-wrapper">
-        <img src="../imagenes/IsotipoColor.png" alt="Cargando ToB..." class="loader-logo">
+        <img src="../imagenes/IsotipoColor.webp" alt="Cargando ToB..." class="loader-logo" width="4096" height="4096">
     </div>
 
     <!-- Navbar -->
@@ -22,11 +22,12 @@
         <!-- Izquierda -->
         <div class="navbar-left">
             <a href="../main/index.html" class="logo-link">
-                <img src="../imagenes/LogoTob.png" alt="Logo ToB" class="logo-img">
+                <img src="../imagenes/LogoTob.webp" alt="Logo ToB" class="logo-img" width="4096" height="4096">
             </a>
         </div>
 
         <!-- Centro -->
+        <div class="navbar-center">
             <div class="nav-item">
                 <a href="../programa/index.html" class="nav-link" data-i18n="nav_programa">Programa del evento</a>
                 <div class="dropdown-duna">
@@ -37,7 +38,7 @@
                 </div>
             </div>
             <div class="nav-item">
-                <a href="../speakers/index.html" class="nav-link" data-i18n="nav_speakers">Speakers</a>
+                <a href="../speakers/index.html" class="nav-link active" data-i18n="nav_speakers">Speakers</a>
                 <div class="dropdown-duna">
                     <div class="dropdown-content">
                         <h4 data-i18n="nav_speak_title">Nuestros Ponentes</h4>
@@ -55,11 +56,20 @@
                 </div>
             </div>
             <div class="nav-item">
+                <a href="../galeria/index.html" class="nav-link" data-i18n="nav_gallery">Galería ToB</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_gallery_title">Muy pronto...</h4>
+                        <p data-i18n="nav_gallery_desc">Revive los mejores momentos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
                 <a href="../main/index.html#hackatob" class="nav-link highlight-link disabled-link" data-i18n="nav_hackatob">HackaToB</a>
                 <div class="dropdown-duna">
                     <div class="dropdown-content">
                         <h4 data-i18n="nav_hack_title">Hackathon ToB</h4>
-                        <p data-i18n="nav_hack_desc">Participa en el reto de programación.</p>
+                        <p data-i18n="nav_hack_desc">Muy pronto nuevas noticias.</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +82,8 @@
                 <span class="lang-text">EN</span>
                 <div class="lang-slider"></div>
             </div>
-            <a href="https://luma.com/home" target="_blank" class="btn btn-primary" data-i18n="nav_asistir">Asistir</a>
+            <a href="https://luma.com/ak4bt58b" target="_blank" class="btn btn-primary"
+                data-i18n="nav_asistir">Asistir</a>
 
             <!-- Hamburger Menu Toggle (Mobile) -->
             <button class="menu-toggle" id="menuToggle" aria-label="Menú">
@@ -138,7 +149,7 @@
         <div class="footer-container">
             <!-- Marca -->
             <div class="footer-col footer-col-brand">
-                <img src="../imagenes/LogoTob.png" alt="ToB Logo" class="footer-logo">
+                <img src="../imagenes/LogoTob.webp" alt="ToB Logo" class="footer-logo" width="4096" height="4096">
                 <p class="footer-desc" data-i18n="footer_desc">El congreso de tecnología y negocios organizado por estudiantes más grande de Costa Rica.</p>
                 <div class="footer-social">
                     <a href="https://www.instagram.com/tob.tec/" target="_blank" class="social-link-footer" aria-label="Instagram">

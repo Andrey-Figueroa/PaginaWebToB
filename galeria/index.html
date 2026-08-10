@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería ToB - Technology On Business</title>
+    <link rel="icon" type="image/webp" href="../imagenes/Miniatura/Miniatura.webp">
+    <link rel="stylesheet" href="../main/style.css">
+    <style>
+        .gallery-soon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .gallery-soon-title {
+            font-size: 3rem;
+            color: var(--color-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        @media (max-width: 640px) {
+            .gallery-soon-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (same as main) -->
+    <nav class="navbar" id="navbar">
+        <!-- Izquierda -->
+        <div class="navbar-left">
+            <a href="../main/index.html" class="logo-link">
+                <img src="../imagenes/LogoTob.webp" alt="Logo ToB" class="logo-img" width="4096" height="4096">
+            </a>
+        </div>
+
+        <!-- Centro -->
+        <div class="navbar-center">
+            <div class="nav-item">
+                <a href="../programa/index.html" class="nav-link" data-i18n="nav_programa">Programa del evento</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_prog_title">Agenda completa</h4>
+                        <p data-i18n="nav_prog_desc">Descubre todas las charlas y talleres del ToB.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="../speakers/index.html" class="nav-link" data-i18n="nav_speakers">Speakers</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_speak_title">Nuestros Ponentes</h4>
+                        <p data-i18n="nav_speak_desc">Conoce a los expertos que liderarán el evento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="../main/index.html#sponsors" class="nav-link" data-i18n="nav_sponsors">Sponsors</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_spon_title">Nuestros Aliados</h4>
+                        <p data-i18n="nav_spon_desc">Empresas que hacen posible este evento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="../galeria/index.html" class="nav-link active" data-i18n="nav_gallery">Galería ToB</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_gallery_title">Muy pronto...</h4>
+                        <p data-i18n="nav_gallery_desc">Revive los mejores momentos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="../main/index.html#hackatob" class="nav-link highlight-link disabled-link" data-i18n="nav_hackatob">HackaToB</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_hack_title">Hackathon ToB</h4>
+                        <p data-i18n="nav_hack_desc">Muy pronto nuevas noticias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Derecha -->
+        <div class="navbar-right">
+            <div class="lang-selector" id="langToggle" data-lang="ES">
+                <span class="lang-text active">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="lang-slider"></div>
+            </div>
+            <a href="https://luma.com/ak4bt58b" target="_blank" class="btn btn-primary"
+                data-i18n="nav_asistir">Asistir</a>
+
+            <!-- Hamburger Menu Toggle (Mobile) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="mobile-nav" id="mobileNav">
+        <a href="../programa/index.html" class="mobile-link" data-i18n="nav_programa">Programa del evento</a>
+        <a href="../speakers/index.html" class="mobile-link" data-i18n="nav_speakers">Speakers</a>
+        <a href="../main/index.html#sponsors" class="mobile-link" data-i18n="nav_sponsors">Sponsors</a>
+        <a href="../galeria/index.html" class="mobile-link" data-i18n="nav_gallery">Galería ToB</a>
+        <a href="../main/index.html#hackatob" class="mobile-link highlight-link disabled-link" data-i18n="nav_hackatob">HackaToB</a>
+        <div class="mobile-actions">
+            <div class="lang-selector" id="langToggleMobile" data-lang="ES">
+                <span class="lang-text active">ES</span>
+                <span class="lang-text">EN</span>
+                <div class="lang-slider"></div>
+            </div>
+            <a href="https://luma.com/ak4bt58b" target="_blank" class="btn btn-primary"
+                data-i18n="nav_asistir">Asistir</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="gallery-soon-container">
+        <h1 class="gallery-soon-title" data-i18n="nav_gallery_title">Muy pronto...</h1>
+        <p data-i18n="nav_gallery_desc" style="color: rgba(255,255,255,0.7); font-size: 1.2rem;">Revive los mejores momentos.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col footer-brand">
+                <img src="../imagenes/LogoTob.webp" alt="ToB Logo" class="footer-logo" width="4096" height="4096">
+                <p class="footer-desc" data-i18n="footer_desc">El congreso de tecnología y negocios organizado por estudiantes más grande de Costa Rica.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/tob.ati" target="_blank" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4 data-i18n="footer_nav">Navegación</h4>
+                <a href="../main/index.html" data-i18n="about_title">Technology on Business</a>
+                <a href="../programa/index.html" data-i18n="nav_programa">Programa</a>
+                <a href="../speakers/index.html" data-i18n="nav_speakers">Speakers</a>
+                <a href="../galeria/index.html" data-i18n="nav_gallery">Galería ToB</a>
+            </div>
+
+            <div class="footer-col">
+                <h4 data-i18n="footer_legal">Legal</h4>
+                <a href="#" data-i18n="footer_privacy">Política de Privacidad</a>
+                <a href="#" data-i18n="footer_terms">Términos y Condiciones</a>
+            </div>
+            
+            <div class="footer-col footer-lang">
+                <div class="footer-lang-selector" id="langToggleFooter">
+                    <!-- Dinámico -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p data-i18n="footer_org">Organizado por estudiantes de la carrera de Administración de Tecnología de Información (ATI) del Instituto Tecnológico de Costa Rica (TEC).</p>
+            <p data-i18n="footer_copy">© 2026 Technology on Business. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../main/lang.js"></script>
+    <script src="../main/script.js"></script>
+</body>
+</html>

@@ -15,7 +15,15 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-image: url('../imagenes/speakers/FondoSpeakers.jpg');
+    background-image: url('../imagenes/speakers/FondoSpeakers.webp'); /* Fallback IE/Edge viejo */
+    background-image: -webkit-image-set(
+        url('../imagenes/speakers/FondoSpeakers.webp') type('image/webp'),
+        url('../imagenes/speakers/FondoSpeakers.webp') type('image/jpeg')
+    );
+    background-image: image-set(
+        url('../imagenes/speakers/FondoSpeakers.webp') type('image/webp'),
+        url('../imagenes/speakers/FondoSpeakers.webp') type('image/jpeg')
+    );
     background-size: cover;
     background-position: center;
     filter: blur(10px);
@@ -94,4 +102,34 @@
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.4;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Mobile Responsiveness for Speakers */
+@media (max-width: 640px) {
+    .speakers-section {
+        padding-top: 120px;
+    }
+    
+    .speakers-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 15px;
+    }
+
+    .speaker-avatar-wrap {
+        width: 65vw;
+        max-width: 280px;
+        height: 65vw;
+        max-height: 280px;
+        border-width: 4px;
+        margin-bottom: 20px;
+    }
+
+    .speaker-simple-name {
+        font-size: 1.5rem;
+    }
+
+    .speaker-simple-role {
+        font-size: 1rem;
+    }
 }

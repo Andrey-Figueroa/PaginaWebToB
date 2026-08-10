@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToB - Technology On Business</title>
-    <link rel="icon" type="image/png" href="../imagenes/Miniatura/Miniatura.png">
+    <link rel="icon" type="image/webp" href="../imagenes/Miniatura/Miniatura.webp">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
 
@@ -13,7 +13,7 @@
 
     <!-- Pantalla de Carga -->
     <div id="loader-wrapper" class="loader-wrapper">
-        <img src="../imagenes/IsotipoColor.png" alt="Cargando ToB..." class="loader-logo">
+        <img src="../imagenes/IsotipoColor.webp" alt="Cargando ToB..." class="loader-logo" width="4096" height="4096">
     </div>
 
     <!-- Navbar -->
@@ -21,47 +21,57 @@
         <!-- Izquierda -->
         <div class="navbar-left">
             <a href="#" class="logo-link">
-                <img src="../imagenes/LogoTob.png" alt="Logo ToB" class="logo-img">
+                <img src="../imagenes/LogoTob.webp" alt="Logo ToB" class="logo-img" width="4096" height="4096">
             </a>
         </div>
 
         <!-- Centro -->
-        <div class="nav-item">
-            <a href="../programa/index.html" class="nav-link" data-i18n="nav_programa">Programa del evento</a>
-            <div class="dropdown-duna">
-                <div class="dropdown-content">
-                    <h4 data-i18n="nav_prog_title">Agenda completa</h4>
-                    <p data-i18n="nav_prog_desc">Descubre todas las charlas y talleres del ToB.</p>
+        <div class="navbar-center">
+            <div class="nav-item">
+                <a href="../programa/index.html" class="nav-link" data-i18n="nav_programa">Programa del evento</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_prog_title">Agenda completa</h4>
+                        <p data-i18n="nav_prog_desc">Descubre todas las charlas y talleres del ToB.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="nav-item">
-            <a href="../speakers/index.html" class="nav-link" data-i18n="nav_speakers">Speakers</a>
-            <div class="dropdown-duna">
-                <div class="dropdown-content">
-                    <h4 data-i18n="nav_speak_title">Nuestros Ponentes</h4>
-                    <p data-i18n="nav_speak_desc">Conoce a los expertos que liderarán el evento.</p>
+            <div class="nav-item">
+                <a href="../speakers/index.html" class="nav-link" data-i18n="nav_speakers">Speakers</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_speak_title">Nuestros Ponentes</h4>
+                        <p data-i18n="nav_speak_desc">Conoce a los expertos que liderarán el evento.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="nav-item">
-            <a href="#sponsors" class="nav-link" data-i18n="nav_sponsors">Sponsors</a>
-            <div class="dropdown-duna">
-                <div class="dropdown-content">
-                    <h4 data-i18n="nav_spon_title">Nuestros Aliados</h4>
-                    <p data-i18n="nav_spon_desc">Empresas que hacen posible este evento.</p>
+            <div class="nav-item">
+                <a href="#sponsors" class="nav-link" data-i18n="nav_sponsors">Sponsors</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_spon_title">Nuestros Aliados</h4>
+                        <p data-i18n="nav_spon_desc">Empresas que hacen posible este evento.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="nav-item">
-            <a href="#hackatob" class="nav-link highlight-link disabled-link" data-i18n="nav_hackatob">HackaToB</a>
-            <div class="dropdown-duna">
-                <div class="dropdown-content">
-                    <h4 data-i18n="nav_hack_title">Hackathon ToB</h4>
-                    <p data-i18n="nav_hack_desc">Muy pronto nuevas noticias.</p>
+            <div class="nav-item">
+                <a href="../galeria/index.html" class="nav-link" data-i18n="nav_gallery">Galería ToB</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_gallery_title">Muy pronto...</h4>
+                        <p data-i18n="nav_gallery_desc">Revive los mejores momentos.</p>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="nav-item">
+                <a href="#hackatob" class="nav-link highlight-link disabled-link" data-i18n="nav_hackatob">HackaToB</a>
+                <div class="dropdown-duna">
+                    <div class="dropdown-content">
+                        <h4 data-i18n="nav_hack_title">Hackathon ToB</h4>
+                        <p data-i18n="nav_hack_desc">Muy pronto nuevas noticias.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Derecha -->
@@ -86,6 +96,7 @@
         <a href="../programa/index.html" class="mobile-link" data-i18n="nav_programa">Programa del evento</a>
         <a href="../speakers/index.html" class="mobile-link" data-i18n="nav_speakers">Speakers</a>
         <a href="#sponsors" class="mobile-link" data-i18n="nav_sponsors">Sponsors</a>
+        <a href="../galeria/index.html" class="mobile-link" data-i18n="nav_gallery">Galería ToB</a>
         <a href="#hackatob" class="mobile-link highlight-link disabled-link" data-i18n="nav_hackatob">HackaToB</a>
         <div class="mobile-actions">
             <div class="lang-selector" id="langToggleMobile" data-lang="ES">
@@ -142,7 +153,7 @@
             <div class="solar-system" id="solarSystem">
                 <!-- Logo Central (Sol) -->
                 <div class="sun" id="heroLogo">
-                    <img src="../imagenes/IsotipoColor.png" alt="ToB Isotipo" class="sun-img">
+                    <img src="../imagenes/IsotipoColor.webp" alt="ToB Isotipo" class="sun-img" width="4096" height="4096">
                 </div>
 
                 <!-- Órbitas y Planetas (6 palabras) -->
@@ -317,8 +328,8 @@
         <div class="wa-grid">
 
             <!-- TARJETA 1 — Estudiantes -->
-            <!-- IMAGEN DE FONDO: ../imagenes/WA/estudiantes.jpg -->
-            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/estudiantes.jpg')">
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/estudiantes.webp -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/estudiantes.webp')">
                 <div class="wa-card-inner">
                     <span class="wa-card-num">01</span>
                     <h3 class="wa-card-title" data-i18n="wa_card1_title">Estudiantes Universitarios</h3>
@@ -329,8 +340,8 @@
             </article>
 
             <!-- TARJETA 2 — Profesionales TI -->
-            <!-- IMAGEN DE FONDO: ../imagenes/WA/profesionales.jpg -->
-            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/profesionales.jpg')">
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/profesionales.webp -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/profesionales.webp')">
                 <div class="wa-card-inner">
                     <span class="wa-card-num">02</span>
                     <h3 class="wa-card-title" data-i18n="wa_card2_title">Profesionales de TI</h3>
@@ -341,8 +352,8 @@
             </article>
 
             <!-- TARJETA 3 — Emprendedores -->
-            <!-- IMAGEN DE FONDO: ../imagenes/WA/emprendedores.jpg -->
-            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/emprendedores.jpg')">
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/emprendedores.webp -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/emprendedores.webp')">
                 <div class="wa-card-inner">
                     <span class="wa-card-num">03</span>
                     <h3 class="wa-card-title" data-i18n="wa_card3_title">Emprendedores e Innovadores</h3>
@@ -353,8 +364,8 @@
             </article>
 
             <!-- TARJETA 4 — Empresas -->
-            <!-- IMAGEN DE FONDO: ../imagenes/WA/empresas.jpg -->
-            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/empresas.jpg')">
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/empresas.webp -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/empresas.webp')">
                 <div class="wa-card-inner">
                     <span class="wa-card-num">04</span>
                     <h3 class="wa-card-title" data-i18n="wa_card4_title">Empresas y Patrocinadores</h3>
@@ -365,8 +376,8 @@
             </article>
 
             <!-- TARJETA 5 — Docentes -->
-            <!-- IMAGEN DE FONDO: ../imagenes/WA/docentes.jpg -->
-            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/docentes.jpg')">
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/docentes.webp -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/docentes.webp')">
                 <div class="wa-card-inner">
                     <span class="wa-card-num">05</span>
                     <h3 class="wa-card-title" data-i18n="wa_card5_title">Docentes e Investigadores</h3>
@@ -377,8 +388,8 @@
             </article>
 
             <!-- TARJETA 6 — Entusiastas -->
-            <!-- IMAGEN DE FONDO: ../imagenes/WA/entusiastas.jpg -->
-            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/entusiastas.jpg')">
+            <!-- IMAGEN DE FONDO: ../imagenes/WA/entusiastas.webp -->
+            <article class="wa-card" style="--wa-bg: url('../imagenes/WA/entusiastas.webp')">
                 <div class="wa-card-inner">
                     <span class="wa-card-num">06</span>
                     <h3 class="wa-card-title" data-i18n="wa_card6_title">Entusiastas de la Tecnología</h3>
@@ -394,7 +405,7 @@
     <!-- Sponsors (Vitrina De Logos) -->
     <section id="sponsors" class="sponsors-section">
         <h3 class="sponsors-title" data-i18n="sponsors_title">Nuestros Partners</h3>
-        <p class="sponsors-text">
+        <p class="sponsors-text" data-i18n="sponsors_text">
             Organizaciones que creen en el talento costarricense y se suman para hacer del ToB 2026 una experiencia
             inolvidable. Su apoyo impulsa a nuestra comunidad y fortalece el futuro de la tecnología en Costa Rica.
         </p>
@@ -404,34 +415,22 @@
             <div class="sponsors-marquee marquee-left">
                 <div class="sponsors-track">
                     <!-- Set 1 (patrocinadores 01-06) -->
-                    <a href="https://us.pg.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador01.png" alt="P&G" class="sponsor-logo"></a>
-                    <a href="https://www.ibm.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador02.png" alt="IBM" class="sponsor-logo"></a>
-                    <a href="https://www.wwt.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador03.png" alt="WWT" class="sponsor-logo"></a>
-                    <a href="https://wordpress.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador04.png" alt="WordPress"
-                            class="sponsor-logo"></a>
-                    <a href="https://avify.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador05.png" alt="Avify" class="sponsor-logo"></a>
-                    <a href="https://www.kyndryl.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador06.png" alt="Kyndryl" class="sponsor-logo"></a>
+                    <a href="https://us.pg.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador01.webp" alt="P&G" class="sponsor-logo" loading="lazy" width="600" height="300"></a>
+                    <a href="https://www.ibm.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador02.webp" alt="IBM" class="sponsor-logo" loading="lazy" width="1280" height="478"></a>
+                    <a href="https://www.wwt.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador03.webp" alt="WWT" class="sponsor-logo" loading="lazy" width="200" height="200"></a>
+                    <a href="https://wordpress.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador04.webp" alt="WordPress"
+                            class="sponsor-logo" loading="lazy" width="2000" height="2000"></a>
+                    <a href="https://avify.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador05.webp" alt="Avify" class="sponsor-logo" loading="lazy" width="2852" height="2853"></a>
+                    <a href="https://www.kyndryl.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador06.webp" alt="Kyndryl" class="sponsor-logo" loading="lazy" width="1098" height="576"></a>
 
                     <!-- Duplicado del Set 1 para el loop infinito -->
-                    <a href="https://us.pg.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador01.png" alt="P&G" class="sponsor-logo"></a>
-                    <a href="https://www.ibm.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador02.png" alt="IBM" class="sponsor-logo"></a>
-                    <a href="https://www.wwt.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador03.png" alt="WWT" class="sponsor-logo"></a>
-                    <a href="https://wordpress.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador04.png" alt="WordPress"
-                            class="sponsor-logo"></a>
-                    <a href="https://avify.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador05.png" alt="Avify" class="sponsor-logo"></a>
-                    <a href="https://www.kyndryl.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador06.png" alt="Kyndryl" class="sponsor-logo"></a>
+                    <a href="https://us.pg.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador01.webp" alt="P&G" class="sponsor-logo" loading="lazy" width="600" height="300"></a>
+                    <a href="https://www.ibm.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador02.webp" alt="IBM" class="sponsor-logo" loading="lazy" width="1280" height="478"></a>
+                    <a href="https://www.wwt.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador03.webp" alt="WWT" class="sponsor-logo" loading="lazy" width="200" height="200"></a>
+                    <a href="https://wordpress.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador04.webp" alt="WordPress"
+                            class="sponsor-logo" loading="lazy" width="2000" height="2000"></a>
+                    <a href="https://avify.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador05.webp" alt="Avify" class="sponsor-logo" loading="lazy" width="2852" height="2853"></a>
+                    <a href="https://www.kyndryl.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador06.webp" alt="Kyndryl" class="sponsor-logo" loading="lazy" width="1098" height="576"></a>
                 </div>
             </div>
 
@@ -439,46 +438,34 @@
             <div class="sponsors-marquee marquee-right">
                 <div class="sponsors-track">
                     <!-- Set 2 (patrocinadores 07-12) -->
-                    <a href="https://www.microsoft.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador07.png" alt="Microsoft"
-                            class="sponsor-logo"></a>
-                    <a href="https://www.equifax.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador08.png" alt="Equifax" class="sponsor-logo"></a>
-                    <a href="https://www.aboutamazon.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador09.png" alt="Amazon" class="sponsor-logo"></a>
-                    <a href="https://sefisa.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador10.png" alt="Sefisa" class="sponsor-logo"></a>
-                    <a href="https://www.incae.edu" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador11.png" alt="INCAE Business School"
-                            class="sponsor-logo"></a>
-                    <a href="https://www.moodys.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador12.png" alt="Moody's Ratings"
-                            class="sponsor-logo"></a>
+                    <a href="https://www.microsoft.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador07.webp" alt="Microsoft"
+                            class="sponsor-logo" loading="lazy" width="200" height="200"></a>
+                    <a href="https://www.equifax.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador08.webp" alt="Equifax" class="sponsor-logo" loading="lazy" width="697" height="344"></a>
+
+                    <a href="https://sefisa.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador10.webp" alt="Sefisa" class="sponsor-logo" loading="lazy" width="447" height="145"></a>
+                    <a href="https://www.incae.edu" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador11.webp" alt="INCAE Business School"
+                            class="sponsor-logo" loading="lazy" width="1044" height="281"></a>
+                    <a href="https://www.moodys.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador12.webp" alt="Moody's Ratings"
+                            class="sponsor-logo" loading="lazy" width="1198" height="400"></a>
 
                     <!-- Duplicado del Set 2 para el loop infinito -->
-                    <a href="https://www.microsoft.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador07.png" alt="Microsoft"
-                            class="sponsor-logo"></a>
-                    <a href="https://www.equifax.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador08.png" alt="Equifax" class="sponsor-logo"></a>
-                    <a href="https://www.aboutamazon.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador09.png" alt="Amazon" class="sponsor-logo"></a>
-                    <a href="https://sefisa.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador10.png" alt="Sefisa" class="sponsor-logo"></a>
-                    <a href="https://www.incae.edu" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador11.png" alt="INCAE Business School"
-                            class="sponsor-logo"></a>
-                    <a href="https://www.moodys.com" target="_blank" rel="noopener"><img
-                            src="../imagenes/patrocinadores/patrocinador12.png" alt="Moody's Ratings"
-                            class="sponsor-logo"></a>
+                    <a href="https://www.microsoft.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador07.webp" alt="Microsoft"
+                            class="sponsor-logo" loading="lazy" width="200" height="200"></a>
+                    <a href="https://www.equifax.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador08.webp" alt="Equifax" class="sponsor-logo" loading="lazy" width="697" height="344"></a>
+
+                    <a href="https://sefisa.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador10.webp" alt="Sefisa" class="sponsor-logo" loading="lazy" width="447" height="145"></a>
+                    <a href="https://www.incae.edu" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador11.webp" alt="INCAE Business School"
+                            class="sponsor-logo" loading="lazy" width="1044" height="281"></a>
+                    <a href="https://www.moodys.com" target="_blank" rel="noopener"><img src="../imagenes/patrocinadores/patrocinador12.webp" alt="Moody's Ratings"
+                            class="sponsor-logo" loading="lazy" width="1198" height="400"></a>
                 </div>
             </div>
         </div>
 
         <!-- Sección Nuestros Sponsors -->
         <div class="main-sponsors-section">
-            <h3 class="main-sponsors-title">Nuestros Sponsors</h3>
-            <p class="main-sponsors-text">
+            <h3 class="main-sponsors-title" data-i18n="main_spon_title">Nuestros Sponsors</h3>
+            <p class="main-sponsors-text" data-i18n="main_spon_text">
                 Gracias a nuestros sponsors por creer en el poder de la tecnología y la innovación.
                 Su confianza y apoyo hacen posible que el ToB 2026 siga transformando la forma en que conectamos
                 talento, ideas y oportunidades.
@@ -488,7 +475,7 @@
                 <div class="main-sponsor-item">
                     <div class="main-sponsor-card">
                         <div class="main-sponsor-glow"></div>
-                        <img src="../imagenes/patrocinadores/sponsors/imagen01.jpg" alt="P&G" class="main-sponsor-img">
+                        <img src="../imagenes/patrocinadores/sponsors/imagen01.webp" alt="P&G" class="main-sponsor-img" loading="lazy" width="600" height="300">
                     </div>
                     <div class="main-sponsor-socials">
                         <a href="https://www.instagram.com/pgcareerscr/" target="_blank" rel="noopener"
@@ -519,7 +506,7 @@
                 <div class="main-sponsor-item">
                     <div class="main-sponsor-card">
                         <div class="main-sponsor-glow"></div>
-                        <img src="../imagenes/patrocinadores/sponsors/imagen02.jpg" alt="WWT" class="main-sponsor-img">
+                        <img src="../imagenes/patrocinadores/sponsors/imagen02.webp" alt="WWT" class="main-sponsor-img" loading="lazy" width="200" height="200">
                     </div>
                     <div class="main-sponsor-socials">
                         <a href="https://www.instagram.com/wwt_inc/" target="_blank" rel="noopener"
@@ -558,22 +545,22 @@
             <div class="why-attend-visual">
                 <div class="why-slider-track">
                     <!-- Set original de 7 imágenes -->
-                    <img src="../imagenes/WhyAttend/imageWhyAttend01.jpg" alt="ToB 2026 1" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend02.jpg" alt="ToB 2026 2" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend03.jpg" alt="ToB 2026 3" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend04.jpg" alt="ToB 2026 4" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend05.jpg" alt="ToB 2026 5" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend06.jpg" alt="ToB 2026 6" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend07.jpg" alt="ToB 2026 7" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend01.webp" alt="ToB 2026 1" class="why-slide-img" loading="lazy" width="2048" height="1152">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend02.webp" alt="ToB 2026 2" class="why-slide-img" loading="lazy" width="1247" height="832">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend03.webp" alt="ToB 2026 3" class="why-slide-img" loading="lazy" width="813" height="1260">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend04.webp" alt="ToB 2026 4" class="why-slide-img" loading="lazy" width="2048" height="1365">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend05.webp" alt="ToB 2026 5" class="why-slide-img" loading="lazy" width="1280" height="609">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend06.webp" alt="ToB 2026 6" class="why-slide-img" loading="lazy" width="680" height="510">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend07.webp" alt="ToB 2026 7" class="why-slide-img" loading="lazy" width="2048" height="1152">
 
                     <!-- Set duplicado para el loop continuo sin cortes -->
-                    <img src="../imagenes/WhyAttend/imageWhyAttend01.jpg" alt="ToB 2026 1" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend02.jpg" alt="ToB 2026 2" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend03.jpg" alt="ToB 2026 3" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend04.jpg" alt="ToB 2026 4" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend05.jpg" alt="ToB 2026 5" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend06.jpg" alt="ToB 2026 6" class="why-slide-img">
-                    <img src="../imagenes/WhyAttend/imageWhyAttend07.jpg" alt="ToB 2026 7" class="why-slide-img">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend01.webp" alt="ToB 2026 1" class="why-slide-img" loading="lazy" width="2048" height="1152">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend02.webp" alt="ToB 2026 2" class="why-slide-img" loading="lazy" width="1247" height="832">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend03.webp" alt="ToB 2026 3" class="why-slide-img" loading="lazy" width="813" height="1260">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend04.webp" alt="ToB 2026 4" class="why-slide-img" loading="lazy" width="2048" height="1365">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend05.webp" alt="ToB 2026 5" class="why-slide-img" loading="lazy" width="1280" height="609">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend06.webp" alt="ToB 2026 6" class="why-slide-img" loading="lazy" width="680" height="510">
+                    <img src="../imagenes/WhyAttend/imageWhyAttend07.webp" alt="ToB 2026 7" class="why-slide-img" loading="lazy" width="2048" height="1152">
                 </div>
             </div>
 
@@ -644,22 +631,26 @@
     <section id="galeria" class="gallery-section">
         <div class="mosaic-grid">
             <!-- FOTO 1: Ancha superior (ocupa columnas 1 y 2) -->
-            <img src="../imagenes/galeria-tob/foto-01.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-1">
+            <img src="../imagenes/galeria-tob/foto-01.webp" alt="ToB Edición Anterior" class="mosaic-item foto-1" loading="lazy" width="2048" height="1152">
 
             <!-- FOTO 2: Vertical central (ocupa columna 3, filas 1 y 2) -->
-            <img src="../imagenes/galeria-tob/foto-02.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-2">
+            <img src="../imagenes/galeria-tob/foto-02.webp" alt="ToB Edición Anterior" class="mosaic-item foto-2" loading="lazy" width="1296" height="864">
 
             <!-- FOTO 3: Esquina superior derecha (ocupa columna 4, fila 1) -->
-            <img src="../imagenes/galeria-tob/foto-03.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-3">
+            <img src="../imagenes/galeria-tob/foto-03.webp" alt="ToB Edición Anterior" class="mosaic-item foto-3" loading="lazy" width="2048" height="1152">
 
             <!-- FOTO 4: Fila inferior izquierda (ocupa columna 1, fila 2) -->
-            <img src="../imagenes/galeria-tob/foto-04.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-4">
+            <img src="../imagenes/galeria-tob/foto-04.webp" alt="ToB Edición Anterior" class="mosaic-item foto-4" loading="lazy" width="2048" height="1152">
 
             <!-- FOTO 5: Fila inferior centro-izq (ocupa columna 2, fila 2) -->
-            <img src="../imagenes/galeria-tob/foto-05.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-5">
+            <img src="../imagenes/galeria-tob/foto-05.webp" alt="ToB Edición Anterior" class="mosaic-item foto-5" loading="lazy" width="1296" height="864">
 
             <!-- FOTO 6: Fila inferior derecha (ocupa columna 4, fila 2) -->
-            <img src="../imagenes/galeria-tob/foto-06.jpg" alt="ToB Edición Anterior" class="mosaic-item foto-6">
+            <img src="../imagenes/galeria-tob/foto-06.webp" alt="ToB Edición Anterior" class="mosaic-item foto-6" loading="lazy" width="1264" height="834">
+        </div>
+        
+        <div class="gallery-actions" style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
+            <a href="../galeria/index.html" class="btn btn-primary btn-large" data-i18n="hero_btn_gallery">Ver Galería</a>
         </div>
     </section>
 
@@ -689,8 +680,8 @@
         <div class="location-sticky">
 
             <!-- Capa 1: Tierra desde el espacio -->
-            <img src="../imagenes/Ubicacion/tierra_nobg.png" alt="Tierra" class="location-layer layer-earth"
-                id="layerEarth">
+            <img src="../imagenes/Ubicacion/tierra_nobg.webp" alt="Tierra" class="location-layer layer-earth"
+                id="layerEarth" loading="lazy" width="5760" height="3240">
 
             <!-- Capa 2: Contenido Final (Info + Mapbox) -->
             <div class="location-layer layer-content" id="layerContent">
@@ -715,7 +706,7 @@
                                 </div>
                                 <div>
                                     <span class="schedule-label" data-i18n="loc_door">Apertura de puertas</span>
-                                    <span class="schedule-value" data-i18n="loc_tbd1">Por definir</span>
+                                    <span class="schedule-value" data-i18n="loc_tbd1">9:00 am</span>
                                 </div>
                             </div>
                             <div class="schedule-item">
@@ -727,7 +718,7 @@
                                 </div>
                                 <div>
                                     <span class="schedule-label" data-i18n="loc_start">Inicio de evento</span>
-                                    <span class="schedule-value" data-i18n="loc_tbd2">Por definir</span>
+                                    <span class="schedule-value" data-i18n="loc_tbd2">9:15</span>
                                 </div>
                             </div>
                         </div>
@@ -763,7 +754,7 @@
         <div class="footer-container">
             <!-- Marca -->
             <div class="footer-col footer-col-brand">
-                <img src="../imagenes/LogoTob.png" alt="ToB Logo" class="footer-logo">
+                <img src="../imagenes/LogoTob.webp" alt="ToB Logo" class="footer-logo" width="4096" height="4096">
                 <p class="footer-desc" data-i18n="footer_desc">El congreso de tecnología y negocios organizado por
                     estudiantes más grande de Costa Rica.</p>
                 <div class="footer-social">

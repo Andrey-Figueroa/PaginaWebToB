@@ -40,26 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // LANG TOGGLE
-    function setupLangToggle(toggleId) {
-        const toggle = document.getElementById(toggleId);
-        if (!toggle) return;
-        toggle.addEventListener('click', () => {
-            const current = toggle.getAttribute('data-lang');
-            const newLang = current === 'ES' ? 'EN' : 'ES';
-            toggle.setAttribute('data-lang', newLang);
-            const texts = toggle.querySelectorAll('.lang-text');
-            texts.forEach(t => t.classList.remove('active'));
-            if (newLang === 'ES') {
-                texts[0].classList.add('active');
-            } else {
-                texts[1].classList.add('active');
-            }
-        });
-    }
 
-    setupLangToggle('langToggle');
-    setupLangToggle('langToggleMobile');
 
     // ANIMACIÓN ENTRADA TIMELINE
     const timelineItems = document.querySelectorAll('.timeline-item');

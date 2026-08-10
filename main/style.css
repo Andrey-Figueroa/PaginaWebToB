@@ -31,7 +31,7 @@
 }
 
 body {
-    background: linear-gradient(rgba(10, 14, 23, 0.85), rgba(10, 14, 23, 0.95)), url('../imagenes/FondoHero.jpg') center/cover fixed no-repeat;
+    background: linear-gradient(rgba(10, 14, 23, 0.85), rgba(10, 14, 23, 0.95)), url('../imagenes/FondoHero.webp') center/cover fixed no-repeat;
     background-color: var(--color-background);
     /* Fallback */
     color: var(--color-text);
@@ -145,7 +145,8 @@ body {
 }
 
 .footer-col-brand .footer-logo {
-    max-width: 150px;
+    width: 150px;
+    height: auto;
     margin-bottom: 20px;
 }
 
@@ -780,13 +781,13 @@ body {
     margin-bottom: 2px;
 }
 
-/* Rotator de frases dinámicas */
 .hero-rotator {
     height: 4rem;
     /* Mayor altura para evitar cortes en las letras */
     overflow: hidden;
     position: relative;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .rotator-phrase {
@@ -1191,6 +1192,26 @@ body {
     }
 }
 
+@media (max-width: 640px) {
+    .hero {
+        padding-top: 100px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .hero-title {
+        font-size: clamp(3.5rem, 12vw, 4.5rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+    .solar-system {
+        transform: scale(0.45) !important;
+    }
+    .hero-visual {
+        height: 300px;
+    }
+}
+
 /* ¿Quiénes Asisten? */
 
 .wa-section {
@@ -1502,7 +1523,7 @@ body {
     padding: 60px 50px;
     box-sizing: border-box;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.75) 100%),
-        url('../imagenes/FondoAbout.jpg') no-repeat center center / cover;
+        url('../imagenes/FondoAbout.webp') no-repeat center center / cover;
     /* Layout interior */
     display: flex;
     flex-direction: column;
@@ -2289,7 +2310,7 @@ body {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
@@ -2355,7 +2376,7 @@ body {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
     transition: transform 0.4s ease;
     position: relative;
     z-index: 2;
@@ -2710,7 +2731,7 @@ body {
         height: 440px;
     }
 }
-}
+
 
 /* Ubicación / Zoom Espacial */
 .location-wrapper {
@@ -3384,6 +3405,7 @@ body {
 
 /* Responsive */
 @media (max-width: 600px) {
+
     .ati-modal-header,
     .ati-modal-body {
         padding-left: 28px;
@@ -3557,4 +3579,3 @@ body {
     min-width: 300px;
     min-height: 400px;
 }
-
